@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56E18D9C1E4A438E0059432C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E18D9B1E4A438E0059432C /* Home.swift */; };
 		627F8B7625709575121AA7A1 /* Pods_Bebeaba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0A1EB979609740529B1847 /* Pods_Bebeaba.framework */; };
 		8A59182C1E4A0E4E00ED7D01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59182B1E4A0E4E00ED7D01 /* AppDelegate.swift */; };
 		8A59182E1E4A0E4E00ED7D01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59182D1E4A0E4E00ED7D01 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		0D30D10E3BA2C8DEEC9830BC /* Pods-Bebeaba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bebeaba.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba.release.xcconfig"; sourceTree = "<group>"; };
 		3CD0A71D1886145F99735574 /* Pods-Bebeaba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bebeaba.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba.debug.xcconfig"; sourceTree = "<group>"; };
+		56E18D9B1E4A438E0059432C /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		8A5918281E4A0E4E00ED7D01 /* Bebeaba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bebeaba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A59182B1E4A0E4E00ED7D01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A59182D1E4A0E4E00ED7D01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				8A5918371E4A0E4E00ED7D01 /* LaunchScreen.storyboard */,
 				8A59183A1E4A0E4E00ED7D01 /* Info.plist */,
 				8A5918321E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld */,
+				56E18D9B1E4A438E0059432C /* Home.swift */,
 			);
 			path = Bebeaba;
 			sourceTree = "<group>";
@@ -128,7 +131,7 @@
 				TargetAttributes = {
 					8A5918271E4A0E4E00ED7D01 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = H98HS8WJD5;
+						DevelopmentTeam = 8JHD2458RT;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -219,6 +222,7 @@
 			files = (
 				8A5918341E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld in Sources */,
 				8A59182E1E4A0E4E00ED7D01 /* ViewController.swift in Sources */,
+				56E18D9C1E4A438E0059432C /* Home.swift in Sources */,
 				8A59182C1E4A0E4E00ED7D01 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,7 +347,7 @@
 			baseConfigurationReference = 3CD0A71D1886145F99735574 /* Pods-Bebeaba.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = H98HS8WJD5;
+				DEVELOPMENT_TEAM = 8JHD2458RT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FSCalendar",
@@ -361,7 +365,7 @@
 			baseConfigurationReference = 0D30D10E3BA2C8DEEC9830BC /* Pods-Bebeaba.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = H98HS8WJD5;
+				DEVELOPMENT_TEAM = 8JHD2458RT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FSCalendar",
