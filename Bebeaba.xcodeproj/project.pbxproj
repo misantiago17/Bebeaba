@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		56E18D9C1E4A438E0059432C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E18D9B1E4A438E0059432C /* Home.swift */; };
+		56E18DA21E4A74EA0059432C /* NewExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E18DA11E4A74EA0059432C /* NewExam.swift */; };
 		627F8B7625709575121AA7A1 /* Pods_Bebeaba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0A1EB979609740529B1847 /* Pods_Bebeaba.framework */; };
 		8A59182C1E4A0E4E00ED7D01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59182B1E4A0E4E00ED7D01 /* AppDelegate.swift */; };
 		8A59182E1E4A0E4E00ED7D01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59182D1E4A0E4E00ED7D01 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 		0D30D10E3BA2C8DEEC9830BC /* Pods-Bebeaba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bebeaba.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba.release.xcconfig"; sourceTree = "<group>"; };
 		3CD0A71D1886145F99735574 /* Pods-Bebeaba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bebeaba.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba.debug.xcconfig"; sourceTree = "<group>"; };
 		56E18D9B1E4A438E0059432C /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		56E18DA11E4A74EA0059432C /* NewExam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewExam.swift; sourceTree = "<group>"; };
 		8A5918281E4A0E4E00ED7D01 /* Bebeaba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bebeaba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A59182B1E4A0E4E00ED7D01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A59182D1E4A0E4E00ED7D01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				8A59183A1E4A0E4E00ED7D01 /* Info.plist */,
 				8A5918321E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld */,
 				56E18D9B1E4A438E0059432C /* Home.swift */,
+				56E18DA11E4A74EA0059432C /* NewExam.swift */,
 			);
 			path = Bebeaba;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56E18DA21E4A74EA0059432C /* NewExam.swift in Sources */,
 				8A5918341E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld in Sources */,
 				8A59182E1E4A0E4E00ED7D01 /* ViewController.swift in Sources */,
 				56E18D9C1E4A438E0059432C /* Home.swift in Sources */,

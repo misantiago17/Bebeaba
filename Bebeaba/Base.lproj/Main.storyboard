@@ -173,8 +173,8 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="nomeTxt" destination="T8l-hQ-wmo" id="cUX-FR-k98"/>
-                        <outlet property="semanaTxt" destination="kwe-Ps-YRS" id="Dss-C7-37D"/>
+                        <outlet property="name" destination="T8l-hQ-wmo" id="Bhn-jt-5rb"/>
+                        <outlet property="pregnancyWeek" destination="kwe-Ps-YRS" id="PBm-fa-ClT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8SA-xG-ExA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,10 +199,10 @@
             </objects>
             <point key="canvasLocation" x="978" y="139"/>
         </scene>
-        <!--View Controller-->
+        <!--New Exam-->
         <scene sceneID="26B-VE-6g2">
             <objects>
-                <viewController id="gQd-wX-Jy2" sceneMemberID="viewController">
+                <viewController id="gQd-wX-Jy2" customClass="NewExam" customModule="Bebeaba" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ywj-O2-ren"/>
                         <viewControllerLayoutGuide type="bottom" id="V7C-we-B9R"/>
@@ -232,7 +232,7 @@
                                 <state key="normal" title="Salvar"/>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z3T-cd-5T6" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="80" width="320" height="50"/>
+                                <rect key="frame" x="27" y="80" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.93585526320000001" green="0.73630839650000002" blue="0.96558902140000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
@@ -251,7 +251,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Detalhes" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UYU-TE-WlS" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="160" width="320" height="50"/>
+                                <rect key="frame" x="27" y="160" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.93585526320000001" green="0.73630839650000002" blue="0.96558902140000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
@@ -270,7 +270,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Local" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f7T-0W-bkx" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="240" width="320" height="50"/>
+                                <rect key="frame" x="27" y="239" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.93585526320000001" green="0.73630839650000002" blue="0.96558902140000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
@@ -288,13 +288,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hora" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImH-8d-nFo">
-                                <rect key="frame" x="16" y="340" width="37" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.45103682919999999" green="0.20815595980000001" blue="0.47377299810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uDb-pW-F9O">
                                 <rect key="frame" x="16" y="370" width="343" height="187"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -302,9 +295,21 @@
                                     <!--2017-02-07 15:04:23 +0000-->
                                 </date>
                             </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hora" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImH-8d-nFo">
+                                <rect key="frame" x="27" y="341" width="37" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.45103682919999999" green="0.20815595980000001" blue="0.47377299810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="details" destination="UYU-TE-WlS" id="Q9M-b7-P0N"/>
+                        <outlet property="local" destination="f7T-0W-bkx" id="dr0-6T-1xt"/>
+                        <outlet property="name" destination="z3T-cd-5T6" id="lSl-bx-1zS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRs-Az-ijh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
