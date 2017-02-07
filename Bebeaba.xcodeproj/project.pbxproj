@@ -1,0 +1,414 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		627F8B7625709575121AA7A1 /* Pods_Bebeaba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0A1EB979609740529B1847 /* Pods_Bebeaba.framework */; };
+		8A59182C1E4A0E4E00ED7D01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59182B1E4A0E4E00ED7D01 /* AppDelegate.swift */; };
+		8A59182E1E4A0E4E00ED7D01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59182D1E4A0E4E00ED7D01 /* ViewController.swift */; };
+		8A5918311E4A0E4E00ED7D01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A59182F1E4A0E4E00ED7D01 /* Main.storyboard */; };
+		8A5918341E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A5918321E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld */; };
+		8A5918361E4A0E4E00ED7D01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5918351E4A0E4E00ED7D01 /* Assets.xcassets */; };
+		8A5918391E4A0E4E00ED7D01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5918371E4A0E4E00ED7D01 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0D30D10E3BA2C8DEEC9830BC /* Pods-Bebeaba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bebeaba.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba.release.xcconfig"; sourceTree = "<group>"; };
+		3CD0A71D1886145F99735574 /* Pods-Bebeaba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bebeaba.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba.debug.xcconfig"; sourceTree = "<group>"; };
+		8A5918281E4A0E4E00ED7D01 /* Bebeaba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bebeaba.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A59182B1E4A0E4E00ED7D01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8A59182D1E4A0E4E00ED7D01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8A5918301E4A0E4E00ED7D01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8A5918331E4A0E4E00ED7D01 /* Bebeaba.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bebeaba.xcdatamodel; sourceTree = "<group>"; };
+		8A5918351E4A0E4E00ED7D01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8A5918381E4A0E4E00ED7D01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8A59183A1E4A0E4E00ED7D01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A5918401E4A0FF900ED7D01 /* FSCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FSCalendar.framework; path = "Pods/../build/Debug-iphoneos/FSCalendar/FSCalendar.framework"; sourceTree = "<group>"; };
+		CA0A1EB979609740529B1847 /* Pods_Bebeaba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bebeaba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8A5918251E4A0E4E00ED7D01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				627F8B7625709575121AA7A1 /* Pods_Bebeaba.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B69496D736166885C30D697 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3CD0A71D1886145F99735574 /* Pods-Bebeaba.debug.xcconfig */,
+				0D30D10E3BA2C8DEEC9830BC /* Pods-Bebeaba.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7016BD36C0B7BB9D9DCF7A98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A5918401E4A0FF900ED7D01 /* FSCalendar.framework */,
+				CA0A1EB979609740529B1847 /* Pods_Bebeaba.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8A59181F1E4A0E4E00ED7D01 = {
+			isa = PBXGroup;
+			children = (
+				8A59182A1E4A0E4E00ED7D01 /* Bebeaba */,
+				8A5918291E4A0E4E00ED7D01 /* Products */,
+				3B69496D736166885C30D697 /* Pods */,
+				7016BD36C0B7BB9D9DCF7A98 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8A5918291E4A0E4E00ED7D01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8A5918281E4A0E4E00ED7D01 /* Bebeaba.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8A59182A1E4A0E4E00ED7D01 /* Bebeaba */ = {
+			isa = PBXGroup;
+			children = (
+				8A59182B1E4A0E4E00ED7D01 /* AppDelegate.swift */,
+				8A59182D1E4A0E4E00ED7D01 /* ViewController.swift */,
+				8A59182F1E4A0E4E00ED7D01 /* Main.storyboard */,
+				8A5918351E4A0E4E00ED7D01 /* Assets.xcassets */,
+				8A5918371E4A0E4E00ED7D01 /* LaunchScreen.storyboard */,
+				8A59183A1E4A0E4E00ED7D01 /* Info.plist */,
+				8A5918321E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld */,
+			);
+			path = Bebeaba;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8A5918271E4A0E4E00ED7D01 /* Bebeaba */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A59183D1E4A0E4E00ED7D01 /* Build configuration list for PBXNativeTarget "Bebeaba" */;
+			buildPhases = (
+				58FDC605AE008737880849F5 /* [CP] Check Pods Manifest.lock */,
+				8A5918241E4A0E4E00ED7D01 /* Sources */,
+				8A5918251E4A0E4E00ED7D01 /* Frameworks */,
+				8A5918261E4A0E4E00ED7D01 /* Resources */,
+				4A62177003ABCDE658640A54 /* [CP] Embed Pods Frameworks */,
+				984898180437F48F0015860C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Bebeaba;
+			productName = Bebeaba;
+			productReference = 8A5918281E4A0E4E00ED7D01 /* Bebeaba.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8A5918201E4A0E4E00ED7D01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Michelle Beadle";
+				TargetAttributes = {
+					8A5918271E4A0E4E00ED7D01 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = H98HS8WJD5;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8A5918231E4A0E4E00ED7D01 /* Build configuration list for PBXProject "Bebeaba" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8A59181F1E4A0E4E00ED7D01;
+			productRefGroup = 8A5918291E4A0E4E00ED7D01 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8A5918271E4A0E4E00ED7D01 /* Bebeaba */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8A5918261E4A0E4E00ED7D01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A5918391E4A0E4E00ED7D01 /* LaunchScreen.storyboard in Resources */,
+				8A5918361E4A0E4E00ED7D01 /* Assets.xcassets in Resources */,
+				8A5918311E4A0E4E00ED7D01 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4A62177003ABCDE658640A54 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		58FDC605AE008737880849F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		984898180437F48F0015860C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8A5918241E4A0E4E00ED7D01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A5918341E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld in Sources */,
+				8A59182E1E4A0E4E00ED7D01 /* ViewController.swift in Sources */,
+				8A59182C1E4A0E4E00ED7D01 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8A59182F1E4A0E4E00ED7D01 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A5918301E4A0E4E00ED7D01 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8A5918371E4A0E4E00ED7D01 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A5918381E4A0E4E00ED7D01 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8A59183B1E4A0E4E00ED7D01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8A59183C1E4A0E4E00ED7D01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8A59183E1E4A0E4E00ED7D01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CD0A71D1886145F99735574 /* Pods-Bebeaba.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H98HS8WJD5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FSCalendar",
+				);
+				INFOPLIST_FILE = Bebeaba/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = michellesantiago.Bebeaba;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		8A59183F1E4A0E4E00ED7D01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D30D10E3BA2C8DEEC9830BC /* Pods-Bebeaba.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H98HS8WJD5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FSCalendar",
+				);
+				INFOPLIST_FILE = Bebeaba/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = michellesantiago.Bebeaba;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8A5918231E4A0E4E00ED7D01 /* Build configuration list for PBXProject "Bebeaba" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A59183B1E4A0E4E00ED7D01 /* Debug */,
+				8A59183C1E4A0E4E00ED7D01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A59183D1E4A0E4E00ED7D01 /* Build configuration list for PBXNativeTarget "Bebeaba" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A59183E1E4A0E4E00ED7D01 /* Debug */,
+				8A59183F1E4A0E4E00ED7D01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8A5918321E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8A5918331E4A0E4E00ED7D01 /* Bebeaba.xcdatamodel */,
+			);
+			currentVersion = 8A5918331E4A0E4E00ED7D01 /* Bebeaba.xcdatamodel */;
+			path = Bebeaba.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 8A5918201E4A0E4E00ED7D01 /* Project object */;
+}
