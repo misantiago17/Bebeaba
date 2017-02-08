@@ -8,17 +8,20 @@
 
 import UIKit
 import CoreData
+import KDCircularProgress
 
 class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var ExamesSemana: UITableView!
+    var progress: KDCircularProgress!
+    var tempototal = 30.0*9.0/7.0
+    var ang = Double(20)
+    var porc = Int(20)
+    var semanaU = "30"
     
     //falta criar a classe Exame
    // var arrayExameSemana = [Exame]()
-    
-    print("sopa")
-    
-    var semanaU = ""
+        
     //var edit = false     precisa do swipe da célula
     var hora = NSDate()
     var dia = NSDate()
@@ -29,7 +32,78 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         ExamesSemana.delegate = self
         ExamesSemana.dataSource = self
         
-        //todas a animação da roda com o progresso da gestação estava aqui
+        // Animação programática
+        progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/2, height: self.view.frame.width/2))
+        progress.startAngle = -90
+        
+        
+        /*progress.progressThickness = 0.2
+        progress.trackThickness = 0.6
+        progress.clockwise = true
+        progress.gradientRotateSpeed = 2
+        progress.roundedCorners = false
+        progress.glowMode = .forward
+        progress.glowAmount = 0.9*/
+        
+
+        progress.set(colors: UIColor.cyan ,UIColor.white, UIColor.magenta, UIColor.white, UIColor.orange)
+        progress.center = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/4)
+        
+        ang = Double(Double(semanaU)!*360.0/tempototal)
+        
+        if(ang > 360.0){
+            progress.angle = 360.0
+        }
+        else {
+            progress.angle = ang
+        }
+        
+        porc = Int(Int(semanaU)!*100/Int(tempototal))
+        
+        if(porc > 100){
+            porc = 100
+        }
+        
+        
+        progress.animate(fromAngle: 0, toAngle: progress.angle, duration: 2, completion: { completed in
+            if completed {
+                print("animation stopped, completed")
+            } else {
+                print("animation stopped, was interrupted")
+            }
+        })
+        
+        
+        view.addSubview(progress)
+        
+        
+        //Ícone do centro da animação
+        var bgImage: UIImageView!
+        let image : UIImage = UIImage(named:"homeicone.png")!
+        bgImage = UIImageView(image: image)
+        bgImage.frame = CGRect(x: self.view.frame.width/4 + 5, y: self.view.frame.width/4 - 15, width: self.view.frame.width/2 - 10, height: self.view.frame.width/2 - 10)
+        view.addSubview(bgImage)
+        
+        
+        // Label programática semanas
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
+        label.center = CGPoint(x: progress.center.x, y: progress.center.y - self.view.frame.width/4 - 10)
+        label.textAlignment = NSTextAlignment.center
+        label.text = "\(porc)% da Gravidez"
+        label.font = UIFont(name: "Avenir-Light", size: 18.0)
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.textColor = UIColor(red: 115/255.0, green: 53/255.0, blue: 121/255.0, alpha: 1.0)
+        self.view.addSubview(label)
+        
+        
+        // Label do exame
+        let labelexame = UILabel(frame: CGRect(x: 0, y: 300, width: self.view.frame.width, height: 65))
+        labelexame.textAlignment = NSTextAlignment.center
+        labelexame.text = "Exames da Semana"
+        labelexame.font = UIFont(name: "Avenir-Light", size: 16.0)
+        labelexame.font = UIFont.boldSystemFont(ofSize: 14)
+        labelexame.textColor = UIColor(red: 115/255.0, green: 53/255.0, blue: 121/255.0, alpha: 1.0)
+        self.view.addSubview(labelexame)
 
     }
     
