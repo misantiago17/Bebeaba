@@ -12,6 +12,12 @@ import CoreData
 
 class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDelegate, UITableViewDataSource {
 
+    
+    
+    let emoji = UIImage(named: "bebe")
+
+    
+    
     @IBOutlet weak var ExamesDia: UITableView!
     
 //    var exame = [Exame]()
@@ -64,6 +70,33 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         ExamesDia.reloadData()
         
     }
+    
+    
+    
+    
+    
+    
+    func calendar(_ calendar: FSCalendar, hasEventFor date: Date) -> Bool {
+    
+        
+        return true
+        
+    }
+    
+    
+    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+        
+        
+        
+        
+        return emoji
+        
+    }
+    
+    
+    
+    
+    
     
     
     //MARK: TableView
