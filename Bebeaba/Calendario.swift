@@ -11,9 +11,17 @@ import FSCalendar
 
 class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate {
 
+    
+    
+    let emoji = UIImage(named: "bebe")
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+       
         // Do any additional setup after loading the view.
     }
 
@@ -35,7 +43,14 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate {
     }
     
     
-    
+    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+        
+        
+        
+        
+        return emoji
+        
+    }
     
     
     
