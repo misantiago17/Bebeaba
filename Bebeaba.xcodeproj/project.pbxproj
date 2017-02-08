@@ -11,11 +11,15 @@
 		56E18DA21E4A74EA0059432C /* NewExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E18DA11E4A74EA0059432C /* NewExam.swift */; };
 		627F8B7625709575121AA7A1 /* Pods_Bebeaba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0A1EB979609740529B1847 /* Pods_Bebeaba.framework */; };
 		8A59182C1E4A0E4E00ED7D01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59182B1E4A0E4E00ED7D01 /* AppDelegate.swift */; };
-		8A59182E1E4A0E4E00ED7D01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59182D1E4A0E4E00ED7D01 /* ViewController.swift */; };
 		8A5918311E4A0E4E00ED7D01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A59182F1E4A0E4E00ED7D01 /* Main.storyboard */; };
 		8A5918341E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A5918321E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld */; };
 		8A5918361E4A0E4E00ED7D01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5918351E4A0E4E00ED7D01 /* Assets.xcassets */; };
 		8A5918391E4A0E4E00ED7D01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5918371E4A0E4E00ED7D01 /* LaunchScreen.storyboard */; };
+		8AA99CE71E4B4A1C00BA94F0 /* Entrada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA99CE61E4B4A1C00BA94F0 /* Entrada.swift */; };
+		8AA99CE91E4B4A4100BA94F0 /* Calendario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA99CE81E4B4A4100BA94F0 /* Calendario.swift */; };
+		8AA99CEB1E4B4AA400BA94F0 /* ExamesFeitos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA99CEA1E4B4AA400BA94F0 /* ExamesFeitos.swift */; };
+		8AA99CED1E4B4ACB00BA94F0 /* Recomendados.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA99CEC1E4B4ACB00BA94F0 /* Recomendados.swift */; };
+		8AA99CEF1E4B54FF00BA94F0 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA99CEE1E4B54FF00BA94F0 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,13 +29,17 @@
 		56E18DA11E4A74EA0059432C /* NewExam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewExam.swift; sourceTree = "<group>"; };
 		8A5918281E4A0E4E00ED7D01 /* Bebeaba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bebeaba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A59182B1E4A0E4E00ED7D01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8A59182D1E4A0E4E00ED7D01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8A5918301E4A0E4E00ED7D01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8A5918331E4A0E4E00ED7D01 /* Bebeaba.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bebeaba.xcdatamodel; sourceTree = "<group>"; };
 		8A5918351E4A0E4E00ED7D01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A5918381E4A0E4E00ED7D01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A59183A1E4A0E4E00ED7D01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A5918401E4A0FF900ED7D01 /* FSCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FSCalendar.framework; path = "Pods/../build/Debug-iphoneos/FSCalendar/FSCalendar.framework"; sourceTree = "<group>"; };
+		8AA99CE61E4B4A1C00BA94F0 /* Entrada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entrada.swift; sourceTree = "<group>"; };
+		8AA99CE81E4B4A4100BA94F0 /* Calendario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendario.swift; sourceTree = "<group>"; };
+		8AA99CEA1E4B4AA400BA94F0 /* ExamesFeitos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamesFeitos.swift; sourceTree = "<group>"; };
+		8AA99CEC1E4B4ACB00BA94F0 /* Recomendados.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recomendados.swift; sourceTree = "<group>"; };
+		8AA99CEE1E4B54FF00BA94F0 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		CA0A1EB979609740529B1847 /* Pods_Bebeaba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bebeaba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -87,7 +95,6 @@
 			isa = PBXGroup;
 			children = (
 				8A59182B1E4A0E4E00ED7D01 /* AppDelegate.swift */,
-				8A59182D1E4A0E4E00ED7D01 /* ViewController.swift */,
 				8A59182F1E4A0E4E00ED7D01 /* Main.storyboard */,
 				8A5918351E4A0E4E00ED7D01 /* Assets.xcassets */,
 				8A5918371E4A0E4E00ED7D01 /* LaunchScreen.storyboard */,
@@ -95,6 +102,11 @@
 				8A5918321E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld */,
 				56E18D9B1E4A438E0059432C /* Home.swift */,
 				56E18DA11E4A74EA0059432C /* NewExam.swift */,
+				8AA99CE61E4B4A1C00BA94F0 /* Entrada.swift */,
+				8AA99CE81E4B4A4100BA94F0 /* Calendario.swift */,
+				8AA99CEA1E4B4AA400BA94F0 /* ExamesFeitos.swift */,
+				8AA99CEC1E4B4ACB00BA94F0 /* Recomendados.swift */,
+				8AA99CEE1E4B54FF00BA94F0 /* TableViewCell.swift */,
 			);
 			path = Bebeaba;
 			sourceTree = "<group>";
@@ -224,9 +236,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				56E18DA21E4A74EA0059432C /* NewExam.swift in Sources */,
+				8AA99CED1E4B4ACB00BA94F0 /* Recomendados.swift in Sources */,
 				8A5918341E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld in Sources */,
-				8A59182E1E4A0E4E00ED7D01 /* ViewController.swift in Sources */,
+				8AA99CEF1E4B54FF00BA94F0 /* TableViewCell.swift in Sources */,
+				8AA99CE71E4B4A1C00BA94F0 /* Entrada.swift in Sources */,
 				56E18D9C1E4A438E0059432C /* Home.swift in Sources */,
+				8AA99CE91E4B4A4100BA94F0 /* Calendario.swift in Sources */,
+				8AA99CEB1E4B4AA400BA94F0 /* ExamesFeitos.swift in Sources */,
 				8A59182C1E4A0E4E00ED7D01 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
