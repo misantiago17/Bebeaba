@@ -146,7 +146,7 @@
 				TargetAttributes = {
 					8A5918271E4A0E4E00ED7D01 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 8JHD2458RT;
+						DevelopmentTeam = H98HS8WJD5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -367,7 +367,7 @@
 			baseConfigurationReference = 3CD0A71D1886145F99735574 /* Pods-Bebeaba.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8JHD2458RT;
+				DEVELOPMENT_TEAM = H98HS8WJD5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FSCalendar",
@@ -385,7 +385,7 @@
 			baseConfigurationReference = 0D30D10E3BA2C8DEEC9830BC /* Pods-Bebeaba.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8JHD2458RT;
+				DEVELOPMENT_TEAM = H98HS8WJD5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FSCalendar",
