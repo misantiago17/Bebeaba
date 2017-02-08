@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		126A62C26F309BA4A1E0AD85 /* Pods_Bebeaba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7F3ACA9D7B41F59E1F0557 /* Pods_Bebeaba.framework */; };
 		56E18D9C1E4A438E0059432C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E18D9B1E4A438E0059432C /* Home.swift */; };
 		56E18DA21E4A74EA0059432C /* NewExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E18DA11E4A74EA0059432C /* NewExam.swift */; };
-		627F8B7625709575121AA7A1 /* Pods_Bebeaba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0A1EB979609740529B1847 /* Pods_Bebeaba.framework */; };
 		8A59182C1E4A0E4E00ED7D01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59182B1E4A0E4E00ED7D01 /* AppDelegate.swift */; };
 		8A5918311E4A0E4E00ED7D01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A59182F1E4A0E4E00ED7D01 /* Main.storyboard */; };
 		8A5918341E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A5918321E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld */; };
@@ -23,8 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D30D10E3BA2C8DEEC9830BC /* Pods-Bebeaba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bebeaba.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba.release.xcconfig"; sourceTree = "<group>"; };
-		3CD0A71D1886145F99735574 /* Pods-Bebeaba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bebeaba.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba.debug.xcconfig"; sourceTree = "<group>"; };
+		211F67DCFBA58C4DDFBCA48D /* Pods-Bebeaba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bebeaba.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba.release.xcconfig"; sourceTree = "<group>"; };
+		4D6F3D13474A33A67C3F90DF /* Pods-Bebeaba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bebeaba.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba.debug.xcconfig"; sourceTree = "<group>"; };
 		56E18D9B1E4A438E0059432C /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		56E18DA11E4A74EA0059432C /* NewExam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewExam.swift; sourceTree = "<group>"; };
 		8A5918281E4A0E4E00ED7D01 /* Bebeaba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bebeaba.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,7 +40,7 @@
 		8AA99CEA1E4B4AA400BA94F0 /* ExamesFeitos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamesFeitos.swift; sourceTree = "<group>"; };
 		8AA99CEC1E4B4ACB00BA94F0 /* Recomendados.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recomendados.swift; sourceTree = "<group>"; };
 		8AA99CEE1E4B54FF00BA94F0 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		CA0A1EB979609740529B1847 /* Pods_Bebeaba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bebeaba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC7F3ACA9D7B41F59E1F0557 /* Pods_Bebeaba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bebeaba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,27 +48,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				627F8B7625709575121AA7A1 /* Pods_Bebeaba.framework in Frameworks */,
+				126A62C26F309BA4A1E0AD85 /* Pods_Bebeaba.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3B69496D736166885C30D697 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3CD0A71D1886145F99735574 /* Pods-Bebeaba.debug.xcconfig */,
-				0D30D10E3BA2C8DEEC9830BC /* Pods-Bebeaba.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		7016BD36C0B7BB9D9DCF7A98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				8A5918401E4A0FF900ED7D01 /* FSCalendar.framework */,
-				CA0A1EB979609740529B1847 /* Pods_Bebeaba.framework */,
+				AC7F3ACA9D7B41F59E1F0557 /* Pods_Bebeaba.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -78,8 +69,8 @@
 			children = (
 				8A59182A1E4A0E4E00ED7D01 /* Bebeaba */,
 				8A5918291E4A0E4E00ED7D01 /* Products */,
-				3B69496D736166885C30D697 /* Pods */,
 				7016BD36C0B7BB9D9DCF7A98 /* Frameworks */,
+				C5034972BEDD4C0236C3253A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +102,15 @@
 			path = Bebeaba;
 			sourceTree = "<group>";
 		};
+		C5034972BEDD4C0236C3253A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D6F3D13474A33A67C3F90DF /* Pods-Bebeaba.debug.xcconfig */,
+				211F67DCFBA58C4DDFBCA48D /* Pods-Bebeaba.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -118,12 +118,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A59183D1E4A0E4E00ED7D01 /* Build configuration list for PBXNativeTarget "Bebeaba" */;
 			buildPhases = (
-				58FDC605AE008737880849F5 /* [CP] Check Pods Manifest.lock */,
+				313DF42968DC205DE5E8ACE5 /* [CP] Check Pods Manifest.lock */,
 				8A5918241E4A0E4E00ED7D01 /* Sources */,
 				8A5918251E4A0E4E00ED7D01 /* Frameworks */,
 				8A5918261E4A0E4E00ED7D01 /* Resources */,
-				4A62177003ABCDE658640A54 /* [CP] Embed Pods Frameworks */,
-				984898180437F48F0015860C /* [CP] Copy Pods Resources */,
+				3D10A66085F746AE6E0CA2DD /* [CP] Embed Pods Frameworks */,
+				96A1CA88F908051CF7655AFF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -183,22 +183,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4A62177003ABCDE658640A54 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		58FDC605AE008737880849F5 /* [CP] Check Pods Manifest.lock */ = {
+		313DF42968DC205DE5E8ACE5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -213,7 +198,22 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		984898180437F48F0015860C /* [CP] Copy Pods Resources */ = {
+		3D10A66085F746AE6E0CA2DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96A1CA88F908051CF7655AFF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -364,7 +364,7 @@
 		};
 		8A59183E1E4A0E4E00ED7D01 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3CD0A71D1886145F99735574 /* Pods-Bebeaba.debug.xcconfig */;
+			baseConfigurationReference = 4D6F3D13474A33A67C3F90DF /* Pods-Bebeaba.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EPL3UEE88E;
@@ -383,7 +383,7 @@
 		};
 		8A59183F1E4A0E4E00ED7D01 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D30D10E3BA2C8DEEC9830BC /* Pods-Bebeaba.release.xcconfig */;
+			baseConfigurationReference = 211F67DCFBA58C4DDFBCA48D /* Pods-Bebeaba.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EPL3UEE88E;

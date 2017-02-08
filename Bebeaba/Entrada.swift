@@ -13,6 +13,8 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var ExamesSemana: UITableView!
     
+    print("qual foi")
+    
     //falta criar a classe Exame
    // var arrayExameSemana = [Exame]()
     
