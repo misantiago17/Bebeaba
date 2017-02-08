@@ -13,8 +13,6 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var ExamesSemana: UITableView!
     
-    print("qual foi")
-    
     //falta criar a classe Exame
    // var arrayExameSemana = [Exame]()
     
@@ -28,7 +26,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         ExamesSemana.delegate = self
         ExamesSemana.dataSource = self
-        
+                
         //todas a animação da roda com o progresso da gestação estava aqui
 
     }

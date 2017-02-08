@@ -383,6 +383,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="wXf-6L-wjG"/>
+                    <connections>
+                        <outlet property="ExamesRecomendados" destination="DW9-2a-IOY" id="anG-m3-bVT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pPg-wk-Rbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
