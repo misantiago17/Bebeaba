@@ -26,7 +26,9 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         ExamesSemana.delegate = self
         ExamesSemana.dataSource = self
-                
+        
+        print("banana")
+        
         //todas a animação da roda com o progresso da gestação estava aqui
 
     }
