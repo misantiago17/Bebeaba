@@ -42,26 +42,18 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="2Dj-r1-lcL"/>
                                 </connections>
                             </view>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXn-hg-n5V">
-                                <rect key="frame" x="0.0" y="569" width="375" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <tabBarItem systemItem="favorites" id="vpa-9a-rfU"/>
-                                    <tabBarItem systemItem="more" id="Od1-lx-0Re"/>
-                                </items>
-                            </tabBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eiZ-hG-MgV">
-                                <rect key="frame" x="0.0" y="330" width="375" height="239"/>
+                                <rect key="frame" x="0.0" y="330" width="375" height="288"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="239" id="3Eu-Nk-qY6"/>
+                                    <constraint firstAttribute="height" constant="288" id="3Eu-Nk-qY6"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="YAN-2F-FUa">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YAN-2F-FUa" id="3hr-Qx-66N">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -77,25 +69,25 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="eiZ-hG-MgV" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="2gM-NF-aCr"/>
                             <constraint firstItem="eiZ-hG-MgV" firstAttribute="top" secondItem="U7V-AM-sWE" secondAttribute="bottom" constant="8" symbolic="YES" id="4mq-GY-A7m"/>
                             <constraint firstAttribute="trailingMargin" secondItem="U7V-AM-sWE" secondAttribute="trailing" constant="-16" id="97V-wW-0Z2"/>
-                            <constraint firstItem="cXn-hg-n5V" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="E7H-QJ-TyE"/>
                             <constraint firstItem="eiZ-hG-MgV" firstAttribute="top" secondItem="mkw-TE-p6q" secondAttribute="bottom" constant="-8" id="djV-L5-DrD"/>
                             <constraint firstItem="U7V-AM-sWE" firstAttribute="leading" secondItem="eiZ-hG-MgV" secondAttribute="leading" id="iU2-LV-LFa"/>
                             <constraint firstItem="U7V-AM-sWE" firstAttribute="trailing" secondItem="eiZ-hG-MgV" secondAttribute="trailing" id="oFw-tH-nHH"/>
-                            <constraint firstItem="eiZ-hG-MgV" firstAttribute="leading" secondItem="cXn-hg-n5V" secondAttribute="leading" id="oxy-Xt-GQj"/>
-                            <constraint firstItem="eiZ-hG-MgV" firstAttribute="trailing" secondItem="cXn-hg-n5V" secondAttribute="trailing" id="pVD-5l-Fhn"/>
-                            <constraint firstItem="cXn-hg-n5V" firstAttribute="top" secondItem="eiZ-hG-MgV" secondAttribute="bottom" id="u73-Bx-M1q"/>
                             <constraint firstItem="U7V-AM-sWE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="u9P-7s-rh3"/>
                             <constraint firstItem="mkw-TE-p6q" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="yA6-1G-cxu"/>
                             <constraint firstItem="U7V-AM-sWE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="zV8-KZ-Ij6"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="LmT-ao-lCt"/>
+                    <connections>
+                        <outlet property="ExamesDia" destination="eiZ-hG-MgV" id="5Mi-Eq-Pgu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6" y="904"/>
+            <point key="canvasLocation" x="5.5999999999999996" y="895.50224887556226"/>
         </scene>
         <!--Home-->
         <scene sceneID="RBb-QO-Xgh">
@@ -201,6 +193,9 @@
                                 <state key="normal" title="X">
                                     <color key="titleColor" red="0.45103682919999999" green="0.20815595980000001" blue="0.47377299810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="Voltar:" destination="gQd-wX-Jy2" eventType="touchUpInside" id="KiO-Bf-Kzl"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Novo Exame" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usW-FJ-oa0">
                                 <rect key="frame" x="139" y="29" width="96" height="21"/>
@@ -213,6 +208,9 @@
                                 <rect key="frame" x="316" y="617" width="43" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Salvar"/>
+                                <connections>
+                                    <action selector="Salvar:" destination="gQd-wX-Jy2" eventType="touchUpInside" id="wBG-Hw-Tef"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z3T-cd-5T6" customClass="AkiraTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="27" y="80" width="320" height="50"/>
@@ -290,13 +288,14 @@
                     </view>
                     <connections>
                         <outlet property="details" destination="UYU-TE-WlS" id="Q9M-b7-P0N"/>
+                        <outlet property="hora" destination="uDb-pW-F9O" id="xg8-IR-EcE"/>
                         <outlet property="local" destination="f7T-0W-bkx" id="dr0-6T-1xt"/>
                         <outlet property="name" destination="z3T-cd-5T6" id="lSl-bx-1zS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRs-Az-ijh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6" y="1618"/>
+            <point key="canvasLocation" x="7" y="1860"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="iGf-va-cQQ">
@@ -335,7 +334,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YqZ-Ge-aeq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="752.79999999999995" y="903.59820089955031"/>
+            <point key="canvasLocation" x="762" y="897"/>
         </scene>
         <!--Item-->
         <scene sceneID="gbJ-Lv-Ssu">
@@ -368,10 +367,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="wXf-6L-wjG"/>
+                    <connections>
+                        <outlet property="ExamesRecomendados" destination="DW9-2a-IOY" id="Y4l-Om-gCC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pPg-wk-Rbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1552.8" y="903.59820089955031"/>
+            <point key="canvasLocation" x="1561" y="896"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="tQN-M6-d5H">
@@ -410,7 +412,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qMe-Ya-Sat" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-810.39999999999998" y="903.59820089955031"/>
+            <point key="canvasLocation" x="-830" y="896"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="tkF-Pv-pTA">
