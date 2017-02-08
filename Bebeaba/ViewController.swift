@@ -13,6 +13,8 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("olá mundo")
 
     
     }
