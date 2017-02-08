@@ -22,6 +22,26 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    
+    
+    
+    func calendar(_ calendar: FSCalendar, hasEventFor date: Date) -> Bool {
+    
+        
+        return true
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     /*
     // MARK: - Navigation

@@ -40,5 +40,18 @@ class NewExam: UIViewController, UITextFieldDelegate{
         textField.resignFirstResponder()
         return true
     }
+    
+    //MARK Botões 
+    
+    @IBAction func cancelar(_ sender: AnyObject) {
+        
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
+    
 
 }
