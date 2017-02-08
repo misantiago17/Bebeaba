@@ -146,7 +146,7 @@
 				TargetAttributes = {
 					8A5918271E4A0E4E00ED7D01 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = H98HS8WJD5;
+						DevelopmentTeam = EPL3UEE88E;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -367,12 +367,13 @@
 			baseConfigurationReference = 3CD0A71D1886145F99735574 /* Pods-Bebeaba.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = H98HS8WJD5;
+				DEVELOPMENT_TEAM = EPL3UEE88E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FSCalendar",
 				);
 				INFOPLIST_FILE = Bebeaba/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = michellesantiago.Bebeaba;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -385,12 +386,13 @@
 			baseConfigurationReference = 0D30D10E3BA2C8DEEC9830BC /* Pods-Bebeaba.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = H98HS8WJD5;
+				DEVELOPMENT_TEAM = EPL3UEE88E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/FSCalendar",
 				);
 				INFOPLIST_FILE = Bebeaba/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = michellesantiago.Bebeaba;
 				PRODUCT_NAME = "$(TARGET_NAME)";
