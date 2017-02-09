@@ -11,15 +11,34 @@ import FSCalendar
 import CoreData
 
 
-    let emoji = UIImage(named: "bebe")
+class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDelegate, UITableViewDataSource {
+
     
+    @IBOutlet weak var calendar: FSCalendar!
+  
     @IBOutlet weak var ExamesDia: UITableView!
     
+        
     var exame = [Exame]()
     var exameDia = [Exame]()
     var dia = NSDate()
     var edit = false
     var hora = NSDate()
+  
+    
+    // Formato de data
+    fileprivate let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        return formatter
+    }()
+    
+    
+    // Tipo de calendario
+    fileprivate let gregorian: NSCalendar! = NSCalendar(calendarIdentifier:NSCalendar.Identifier.gregorian)
+
+    
+  
     
     
     override func viewDidLoad() {
@@ -282,7 +301,7 @@ import CoreData
         
         do{
             let requests: NSFetchRequest<Exame> = Exame.fetchRequest()
-            let results = try context.fetch(requests) /*as! [NSManagedObject]*/
+            let results = try context.fetch(requests)
             
             if(results.count > 0) {
                 let horaItem = item.value(forKey: "hora") as! NSDate
