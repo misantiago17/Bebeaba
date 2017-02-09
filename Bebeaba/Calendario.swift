@@ -29,7 +29,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     // Formato de data
     fileprivate let formatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
+        formatter.dateFormat = "dd/MM/yyyy"
         return formatter
     }()
     
@@ -69,7 +69,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
             exame = results 
             
             if results.count>0{
-                print(results.count)
+                print("quantidade de itens no BD \(results.count)")
                 self.ExamesDia.reloadData()
             }else{
                 print("Não há itens no BD")
@@ -82,7 +82,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         
         let format = DateFormatter()
         let diaString = format.string(from: dia as Date)
-        separaDia(diaDado: diaString)
+        separaDia(diaDado: diaString, diaNormal: dia as Date)
         
         ExamesDia.reloadData()
         
@@ -107,7 +107,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     // Data limite do calendario
     
     func maximumDate(for calendar: FSCalendar) -> Date {
-        return self.formatter.date(from: "2017/10/30")!
+        return self.formatter.date(from: "30/10/2017")!
     }
     
     // Coloca bolinha de evento na data
@@ -137,7 +137,18 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("calendar did select date \(self.formatter.string(from: date))")
+        
+        dia = date as NSDate
+        
+        let formatDia = DateFormatter()
+        formatDia.dateFormat = "dd/MM/yyyy"
+        //let dataConvertida = form
+        let dataConvertidaString = formatDia.string(from: date)
+        
+        print("calendar did select date \(dataConvertidaString)")
+        
+        separaDia(diaDado: dataConvertidaString, diaNormal: date)
+        
         if monthPosition == .previous || monthPosition == .next {
             calendar.setCurrentPage(date, animated: true)
         }
@@ -370,22 +381,30 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         }
     }
     
-    func separaDia (diaDado: String){
-        let formatDia = DateFormatter()
-        var diaExame = formatDia.date(from: diaDado)
+    func separaDia (diaDado: String, diaNormal: Date){
+        //let formatDia = DateFormatter()
+        //var diaExame = DateFormatter().date(from: diaDado)
+        //var diaExame = formatDia.date(from: diaDado)
+        //var diaExame = formatDia.date(from: diaDado)
+        var diaExame = diaNormal
         var tipo = ""
+        
+        print("dia de hj\(dia)")
+        print("dia recebido \(diaDado)")
+        print("dia clicado\(diaExame)")
         
         exameDia.removeAll()
         for item in exame{
-            diaExame = item.value(forKey: "data") as? NSDate as Date?
+            diaExame = (item.value(forKey: "data") as? Date)!
             tipo = item.value(forKey: "tipo") as! String
             if tipo != "historico" && tipo != "preload"{
-                if diaExame! == dia as Date {
+                if diaExame == dia as Date {
+                    print("kd")
                     exameDia += [item]
                 }
             }
         }
-        print(exameDia.count)
+        print("exames do dia \(exameDia.count)")
         if(exameDia.count > 2){
             ordenaExame()
         }
@@ -467,11 +486,11 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
 }
 
 
-extension Date {
-    func toString() -> String {
-        let formataData = DateFormatter()
-        formataData.dateFormat = "MMMM dd yyyy"
-        return formataData.string(from: self)
-    }
-}
-    
+//extension Date {
+//    func toString() -> String {
+//        let formataData = DateFormatter()
+//        formataData.dateFormat = "MMMM dd yyyy"
+//        return formataData.string(from: self)
+//    }
+//}
+//    
