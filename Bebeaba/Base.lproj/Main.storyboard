@@ -131,6 +131,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="LmT-ao-lCt"/>
                     <connections>
                         <outlet property="ExamesDia" destination="eiZ-hG-MgV" id="9Ls-LF-3wO"/>
+                        <outlet property="calendar" destination="U7V-AM-sWE" id="rjW-fi-aug"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

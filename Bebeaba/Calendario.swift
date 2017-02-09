@@ -10,7 +10,6 @@ import UIKit
 import FSCalendar
 import CoreData
 
-class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDelegate, UITableViewDataSource {
 
     let emoji = UIImage(named: "bebe")
     
@@ -25,6 +24,9 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
+        
         
         ExamesDia.delegate = self
         ExamesDia.dataSource = self
@@ -72,22 +74,65 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     
     
-    func calendar(_ calendar: FSCalendar, hasEventFor date: Date) -> Bool {
+    // MARK:- FSCalendarDataSource
     
-        
-        return true
-        
+    
+    
+    //Coloca título no dia
+    
+  /*  func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
+        return self.gregorian.isDateInToday(date) ? "今天" : nil
+    }*/
+    
+    
+    // Data limite do calendario
+    
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return self.formatter.date(from: "2017/10/30")!
     }
     
+    // Coloca bolinha de evento na data
+    
+  /*  func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let day: Int! = self.gregorian.component(.day, from: date)
+        return day % 5 == 0 ? day/5 : 0;
+    }*/
+    
+    
+    //Coloca imagem na data
     
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         
+         let day: Int! = self.gregorian.component(.day, from: date)
+         let month: Int! = self.gregorian.component(.month, from: date)
+        let year: Int! = self.gregorian.component(.year, from: date)
         
-        
-        
-        return emoji
-        
+        return [7].contains(day) && [6].contains(month) && [2017].contains(year) ? UIImage(named: "bebe") : nil
+
     }
+    
+    // MARK:- FSCalendarDelegate
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        print("change page to \(self.formatter.string(from: calendar.currentPage))")
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("calendar did select date \(self.formatter.string(from: date))")
+        if monthPosition == .previous || monthPosition == .next {
+            calendar.setCurrentPage(date, animated: true)
+        }
+    }
+    
+   
+
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -397,5 +442,17 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         // Pass the selected object to the new view controller.
     }
     */
+    
+
 
 }
+
+
+extension Date {
+    func toString() -> String {
+        let formataData = DateFormatter()
+        formataData.dateFormat = "MMMM dd yyyy"
+        return formataData.string(from: self)
+    }
+}
+    
