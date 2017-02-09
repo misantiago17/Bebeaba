@@ -12,22 +12,16 @@ import CoreData
 
 class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDelegate, UITableViewDataSource {
 
-    
-    
     let emoji = UIImage(named: "bebe")
-
-    
     
     @IBOutlet weak var ExamesDia: UITableView!
     
-//    var exame = [Exame]()
-//    var exameDia = [Exame]()
+    var exame = [Exame]()
+    var exameDia = [Exame]()
     var dia = NSDate()
-   // var edit = false
+    var edit = false
     var hora = NSDate()
     
-  //  let managedContext = (UIApplication.sharedApplication.delegate as! AppDelegate).managedObjectContext
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +29,6 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         ExamesDia.delegate = self
         ExamesDia.dataSource = self
 
-        // Do any additional setup after loading the view.
     }
 
     
@@ -43,26 +36,29 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     override func viewWillAppear(_ animated: Bool) {
         
-//        edit = false
-//        
-//        let fetchRequest = NSFetchRequest(entityName: "Exame")
-//        
-//        do{
-//            let results = try managedContext.executeFetchRequest(fetchRequest)
-//            exame = results as! [Exame]
-//            
-//            if results.count>0{
-//                print(results.count)
-//                self.examesTableView.reloadData()
-//            }else{
-//                print("Não há itens no BD")
-//            }
-//        } catch {
-//            print("Não foi possivel resgatar dados")
-//        }
-//        
-//        checkAtrasados()
-//        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
+        
+        edit = false
+        
+        let fetchRequest: NSFetchRequest<Exame> = Exame.fetchRequest()
+        
+        do{
+            let results = try context.fetch(fetchRequest)
+            exame = results 
+            
+            if results.count>0{
+                print(results.count)
+                self.ExamesDia.reloadData()
+            }else{
+                print("Não há itens no BD")
+            }
+        } catch {
+            print("Não foi possivel resgatar dados")
+        }
+        
+        checkAtrasados()
+        
         let format = DateFormatter()
         let diaString = format.string(from: dia as Date)
         separaDia(diaDado: diaString)
@@ -106,38 +102,38 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return /*ExamesDia.count*/ 1
+        return exameDia.count
     }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") /*as! TableViewCell*/
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewCell
         
         //        if cell == nil
         //        {
         //            cell = MGSwipeTableCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         //        }
         
-       // let exam = exameDia[indexPath.row]
+        let exam = exameDia[indexPath.row]
         
-//        let timeFormatter = DateFormatter()
-//        timeFormatter.dateFormat = "HH:mm"
-////        let hora = exam.valueForKey("hora") as? NSDate
-////        let horario = timeFormatter.stringFromDate(hora!)
-//        
-//        cell.nomeLabel.text = exam.valueForKey("nome") as? String
-//        cell.horarioLabel.text = horario
-//        if(exam.valueForKey("local") as! String == ""){
-//            cell.localLabel.hidden = true
-//        }else{
-//            cell.localLabel.hidden = false
-//            cell.localLabel.text = exam.valueForKey("local") as? String
-//        }
-//        if(exam.valueForKey("tipo") as! String == "atrasado"){
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        let hora = exam.value(forKey: "hora") as? NSDate
+        let horario = timeFormatter.string(from: hora! as Date)
+        
+        cell.nome.text = exam.value(forKey: "nome") as? String
+        cell.horario.text = horario
+        if(exam.value(forKey: "local") as! String == ""){
+            cell.local.isHidden = true
+        }else{
+            cell.local.isHidden = false
+            cell.local.text = exam.value(forKey: "local") as? String
+        }
+//        if(exam.value(forKey: "tipo") as! String == "atrasado"){
 //            cell.atrasoLabel.hidden = false
 //        } else if (exam.valueForKey("tipo") as! String == "atual"){
 //            cell.atrasoLabel.hidden = true
 //        }
-//        
+//
 //        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.redColor(), callback: {
 //            (sender: MGSwipeTableCell!) -> Bool in
 //            
@@ -200,7 +196,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
 //        
 //        //                cell.leftSwipeSettings.transition = MGSwipeTransition.Rotate3D
         
-        return cell!
+        return cell
         
     }
     
@@ -213,59 +209,66 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
         
-//        if editingStyle == .delete {
-//            
-////            managedContext.deleteObject(exame[indexPath.row])
-//            exame.removeAtIndex(indexPath.row)
-//            exameDia.removeAtIndex(indexPath.row)
-//            do {
-//                try managedContext.save()
-//            } catch {
-//                print("Não foi possível retirar do BD")
-//            }
-//            
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//        }
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
+        
+        if editingStyle == .delete {
+            
+            context.delete(exame[indexPath.row])
+            exame.remove(at: indexPath.row)
+            exameDia.remove(at: indexPath.row)
+            do {
+                try context.save()
+            } catch {
+                print("Não foi possível retirar do BD")
+            }
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 
     
     //MARK: Funções Auxiliares
     
-//    func mudaTipoExame(item: Exame){
-//        do{
-//            let request = NSFetchRequest(entityName: "Exame")
-//            let results = try managedContext.executeFetchRequest(request) as! [NSManagedObject]
-//            
-//            if(results.count > 0) {
-//                let horaItem = item.valueForKey("hora") as! NSDate
-//                let diaItem = item.valueForKey("data") as! NSDate
-//                let tipo = "atrasado"
-//                
-//                for coisa in results{
-//                    if (coisa.valueForKey("data") as! NSDate).isEqualToDate(diaItem){
-//                        if (coisa.valueForKey("hora") as! NSDate).isEqualToDate(horaItem){
-//                            coisa.setValue(tipo, forKey: "tipo")
-//                            print(coisa)
-//                        }
-//                    }
-//                }
-//            }
-//            else {
-//                print("Não há usuários")
-//            }
-//        } catch {
-//            print("Não foi possivel encontrar")
-//        }
-//        
-//        //salva mudanças
-//        
-//        do{
-//            try managedContext.save()
-//        }
-//        catch {
-//            print("error")
-//        }
-//    }
+    func mudaTipoExame(item: Exame){
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
+        
+        do{
+            let requests: NSFetchRequest<Exame> = Exame.fetchRequest()
+            let results = try context.fetch(requests) /*as! [NSManagedObject]*/
+            
+            if(results.count > 0) {
+                let horaItem = item.value(forKey: "hora") as! NSDate
+                let diaItem = item.value(forKey: "data") as! NSDate
+                let tipo = "atrasado"
+                
+                for coisa in results{
+                    if (coisa.value(forKey: "data") as! NSDate).isEqual(to: diaItem as Date){
+                        if (coisa.value(forKey: "hora") as! NSDate).isEqual(to: horaItem as Date){
+                            coisa.setValue(tipo, forKey: "tipo")
+                            print(coisa)
+                        }
+                    }
+                }
+            }
+            else {
+                print("Não há usuários")
+            }
+        } catch {
+            print("Não foi possivel encontrar")
+        }
+        
+        //salva mudanças
+        
+        do{
+            try context.save()
+        }
+        catch {
+            print("error")
+        }
+    }
     
     func checkAtrasados(){
         
@@ -281,28 +284,26 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         let diaNowDate = formatDia.date(from: diaNow)
         let horaNowDate = formatHora.date(from: horaNow)
         
-//        for item in exame{
-//            let horaExame = formatHora.stringFromDate(item.valueForKey("hora") as! NSDate)
-//            let diaExame = formatDia.stringFromDate(item.valueForKey("data") as! NSDate)
-//            let horaExameDate = formatHora.dateFromString(horaExame)
-//            let diaExameDate = formatDia.dateFromString(diaExame)
-//            
-//            if (item.valueForKey("tipo") as! String == "atual"){
-//                if (diaExameDate!.isEqualToDate(diaNowDate!) == true){
-//                    if(horaExameDate!.isEqualToDate(diaNowDate!) == false){
-//                        if(horaExameDate!.earlierDate(horaNowDate!) == horaExameDate){
-//                            print("Meu horario tá atrasado")
-//                            mudaTipoExame(item)
-//                        }
-//                    }
-//                } else if (diaExameDate!.earlierDate(diaNowDate!) == diaExameDate){
-//                    print("Meu dia tá atrasado")
-//                    mudaTipoExame(item)
-//                }
-//            }
-//            
-//        }
-        
+        for item in exame{
+            let horaExame = formatHora.string(from: (item.value(forKey: "hora") as! NSDate) as Date)
+            let diaExame = formatDia.string(from: (item.value(forKey: "data") as! NSDate) as Date)
+            let horaExameDate = formatHora.date(from: horaExame)
+            let diaExameDate = formatDia.date(from: diaExame)
+            
+            if (item.value(forKey: "tipo") as! String == "atual") {
+                if (diaExameDate! == diaNowDate!) == true {
+                    if (horaExameDate! == diaNowDate!) == false {
+                        if (horaExameDate! < horaNowDate!) == true {
+                            print("Meu horario tá atrasado")
+                            self.mudaTipoExame(item: item)
+                        }
+                    }
+                }
+            } else if (diaExameDate! < diaNowDate!) == true {
+                    print("Meu dia tá atrasado")
+                    self.mudaTipoExame(item: item)
+            }
+        }
     }
     
     func separaDia (diaDado: String){
@@ -310,58 +311,58 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         var diaExame = formatDia.date(from: diaDado)
         var tipo = ""
         
-//        ExamesDia.removeAll()
-//        for item in exame{
-//            diaExame = item.valueForKey("data") as? NSDate
-//            tipo = item.valueForKey("tipo") as! String
-//            if (tipo != "historico" && tipo != "preload"){
-//                if (diaExame!.isEqualToDate(dia)){
-//                    exameDia += [item]
-//                }
-//            }
-//        }
-//        print(exameDia.count)
-//        if(exameDia.count > 2){
-//            ordenaExame()
-//        }
-//
+        exameDia.removeAll()
+        for item in exame{
+            diaExame = item.value(forKey: "data") as? NSDate as Date?
+            tipo = item.value(forKey: "tipo") as! String
+            if tipo != "historico" && tipo != "preload"{
+                if diaExame! == dia as Date {
+                    exameDia += [item]
+                }
+            }
+        }
+        print(exameDia.count)
+        if(exameDia.count > 2){
+            ordenaExame()
+        }
+
     }
     
     
-//    func ordenaExame(){
-//        var fim = exameDia.endIndex - 1
-//        while fim > 0{
-//            var maior = 0
-//            for item in exameDia{
-//                let i1 = exameDia.indexOf(item)
-//                if(item != exameDia[0]){
-//                    if(i1 <= fim){
-//                        
-//                        let horaPrim = item.valueForKey("hora") as! NSDate
-//                        let horaSeg = exameDia[maior].valueForKey("hora") as! NSDate
-//                        
-//                        if(horaPrim.isEqualToDate(horaSeg) == false){
-//                            if(horaPrim.laterDate(horaSeg) == horaPrim){
-//                                maior = i1!
-//                                print("i1:\(i1), fim: \(fim), maior:\(maior)")
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//            
-//            if(fim != maior){
-//                let subtituido = exameDia[fim]
-//                let substituto = exameDia[maior]
-//                exameDia.insert(substituto, atIndex: fim)
-//                exameDia.removeAtIndex(fim+1)
-//                exameDia.insert(subtituido, atIndex: maior)
-//                exameDia.removeAtIndex(maior+1)
-//            }
-//            fim -= 1
-//        }
-//        
-//    }
+    func ordenaExame(){
+        var fim = exameDia.endIndex - 1
+        while fim > 0{
+            var maior = 0
+            for item in exameDia{
+                let i1 = exameDia.index(of: item)
+                if(item != exameDia[0]){
+                    if(i1! <= fim){
+                        
+                        let horaPrim = item.value(forKey: "hora") as! NSDate
+                        let horaSeg = exameDia[maior].value(forKey: "hora") as! NSDate
+                        
+                        if(horaPrim.isEqual(to: horaSeg as Date) == false){
+                            if(horaPrim.laterDate(horaSeg as Date) == horaPrim as Date){
+                                maior = i1!
+                                print("i1:\(i1), fim: \(fim), maior:\(maior)")
+                            }
+                        }
+                    }
+                }
+            }
+            
+            if(fim != maior){
+                let subtituido = exameDia[fim]
+                let substituto = exameDia[maior]
+                exameDia.insert(substituto, at: fim)
+                exameDia.remove(at: fim+1)
+                exameDia.insert(subtituido, at: maior)
+                exameDia.remove(at: maior+1)
+            }
+            fim -= 1
+        }
+        
+    }
     
 //    
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

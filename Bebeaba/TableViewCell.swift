@@ -10,6 +10,11 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
 
+    @IBOutlet weak var nome: UILabel!
+    @IBOutlet weak var local: UILabel!
+    @IBOutlet weak var data: UILabel!
+    @IBOutlet weak var horario: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

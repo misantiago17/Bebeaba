@@ -85,12 +85,12 @@
 		8A59182A1E4A0E4E00ED7D01 /* Bebeaba */ = {
 			isa = PBXGroup;
 			children = (
+				8A97DD5E1E4CA297007BF3CB /* Model */,
 				8A59182B1E4A0E4E00ED7D01 /* AppDelegate.swift */,
 				8A59182F1E4A0E4E00ED7D01 /* Main.storyboard */,
 				8A5918351E4A0E4E00ED7D01 /* Assets.xcassets */,
 				8A5918371E4A0E4E00ED7D01 /* LaunchScreen.storyboard */,
 				8A59183A1E4A0E4E00ED7D01 /* Info.plist */,
-				8A5918321E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld */,
 				56E18D9B1E4A438E0059432C /* Home.swift */,
 				56E18DA11E4A74EA0059432C /* NewExam.swift */,
 				8AA99CE61E4B4A1C00BA94F0 /* Entrada.swift */,
@@ -100,6 +100,14 @@
 				8AA99CEE1E4B54FF00BA94F0 /* TableViewCell.swift */,
 			);
 			path = Bebeaba;
+			sourceTree = "<group>";
+		};
+		8A97DD5E1E4CA297007BF3CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8A5918321E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		C5034972BEDD4C0236C3253A /* Pods */ = {

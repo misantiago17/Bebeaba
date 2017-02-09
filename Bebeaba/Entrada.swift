@@ -20,9 +20,9 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var semanaU = "30"
     
     //falta criar a classe Exame
-   // var arrayExameSemana = [Exame]()
+    var arrayExameSemana = [Exame]()
         
-    //var edit = false     precisa do swipe da célula
+    var edit = false
     var hora = NSDate()
     var dia = NSDate()
     
@@ -112,46 +112,50 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return arrayExameSemana.count
-        return 1
+        return arrayExameSemana.count
+        //return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") /*as! TableViewCell*/
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewCell
         
         //        if cell == nil
         //        {
         //            cell = MGSwipeTableCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         //        }
         
-       // let exam = arrayExameSemana[indexPath.row]
+        let exam = arrayExameSemana[indexPath.row]
         
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "HH:mm"
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "dd/MM/yyyy"
         
-//        let hora = exam.valueForKey("hora") as? NSDate
-//        let horario = timeFormatter.stringFromDate(hora!)
-//        let dia = exam.valueForKey("data") as? NSDate
-//        let data = dateFormater.stringFromDate(dia!)
-//        
-//        cell.nomeLabel.text = exam.valueForKey("nome") as? String
-//        cell.horarioLabel.text = horario
-//        cell.dataLabel.text = data
-//        //cell.dataLabel.text = data
-//        if(exam.valueForKey("local") as! String == ""){
-//            cell.localLabel.hidden = true
-//        }else{
-//            cell.localLabel.hidden = false
-//            cell.localLabel.text = exam.valueForKey("local") as? String
-//        }
-//        if(exam.valueForKey("tipo") as! String == "atrasado"){
+        
+        let hora = exam.value(forKey: "hora") as? NSDate
+        let horario = timeFormatter.string(from: hora! as Date)
+        let dia = exam.value(forKey: "data") as? NSDate
+        let data = dateFormater.string(from: dia! as Date)
+        
+        cell.nome.text = exam.value(forKey: "nome") as? String
+        cell.horario.text = horario
+        cell.data.text = data
+        //cell.dataLabel.text = data
+        if(exam.value(forKey: "local") as! String == ""){
+            cell.local.isHidden = true
+        }else{
+            cell.local.isHidden = false
+            cell.local.text = exam.value(forKey: "local") as? String
+        }
+        
+        //fazer a função que deixa o exame como atrasado
+//        if(exam.value(forKey: "tipo") as! String == "atrasado"){
 //            cell.atrasoLabel.hidden = false
-//        } else if (exam.valueForKey("tipo") as! String == "atual"){
+//        } else if (exam.value(forKey: "tipo") as! String == "atual"){
 //            cell.atrasoLabel.hidden = true
 //        }
-//        
+        
+        //PRECISA DO MGSWIPE
 //        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.redColor(), callback: {
 //            (sender: MGSwipeTableCell!) -> Bool in
 //            
@@ -213,7 +217,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
 //        
 //        //                cell.leftSwipeSettings.transition = MGSwipeTransition.Rotate3D
 //        
-        return cell!
+        return cell
         
     }
     
@@ -225,19 +229,22 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
-//        
-//        if editingStyle == .Delete {
-//            
-//            managedContext.deleteObject(exameSemana[indexPath.row])
-//            exameSemana.removeAtIndex(indexPath.row)
-//            do {
-//                try managedContext.save()
-//            } catch {
-//                print("Não foi possível retirar do BD")
-//            }
-//            
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//        }
+        
+        if editingStyle == .delete {
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
+            
+            context.delete(arrayExameSemana[indexPath.row])
+            arrayExameSemana.remove(at: indexPath.row)
+            do {
+                try context.save()
+            } catch {
+                print("Não foi possível retirar do BD")
+            }
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
     
     //MARK: Funções Auxiliares
@@ -252,156 +259,158 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func isDate (date : NSDate, inRange fromDate : NSDate, toDate : NSDate, inclusive : Bool) -> Bool { if inclusive { return !(date.compare (fromDate as Date) == .orderedAscending) && !(date.compare (toDate as Date) == .orderedDescending) } else { return date.compare (fromDate as Date) == .orderedDescending && date.compare (toDate as Date) == .orderedAscending } }
     
-
-    //MARK: Preenche o array de exames da semana
     
     override func viewWillAppear(_ animated: Bool) {
         
         
-        //        if (exameSemana.count == 0){
-        //            self.labelexame.text = "Não há exames essa semana."
-        //            self.SemanaTableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        //        }
-        //        else {
-        //            labelexame.text = "Exames da Semana"
-        //            self.SemanaTableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-        //        }
+//        if (arrayExameSemana.count == 0){
+//            self.labelexame.text = "Não há exames essa semana."
+//            self.ExamesSemana.separatorStyle = UITableViewCellSeparatorStyle.none
+//        }
+//        else {
+//            labelexame.text = "Exames da Semana"
+//            self.SemanaTableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+//        }
         
-       // edit = false - precisa do swipe
+        edit = false
         
         //COREDATA
         
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Exame")
-//        
-//        do{
-//            let results = try managedContext.executeFetchRequest(fetchRequest)
-//            let exame = results as! [Exame]
-//            
-//            let format = DateFormatter()
-//            let data = NSDate()
-//            let sem = getDayOfWeek(today: data)
-//            
-//            var dataInicio = NSDate()
-//            var dataFinal = NSDate()
-//            let components = NSDateComponents()
-//            let calendario = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
-//            let ano = calendario.components(.year, from: data as Date)
-//            let mes = calendario.components(.month, from: data as Date)
-//            let dia = calendario.components(.day, from: data as Date)
-//            
-//            switch sem! {
-//            case 1:
-//                components.year = ano.year!
-//                components.month = mes.month!
-//                components.day = dia.day!
-//                
-//                dataInicio = calendario.date(from: components as DateComponents)! as NSDate
-//            case 2:
-//                components.year = ano.year!
-//                components.month = mes.month!
-//                components.day = dia.day! - 1
-//                
-//                dataInicio = calendario.date(from: components as DateComponents)! as NSDate
-//            case 3:
-//                components.year = ano.year!
-//                components.month = mes.month!
-//                components.day = dia.day! - 2
-//                
-//                dataInicio = calendario.date(from: components as DateComponents)! as NSDate
-//            case 4:
-//                components.year = ano.year!
-//                components.month = mes.month!
-//                components.day = dia.day! - 3
-//                
-//                dataInicio = calendario.date(from: components as DateComponents)! as NSDate
-//            case 5:
-//                components.year = ano.year!
-//                components.month = mes.month!
-//                components.day = dia.day! - 4
-//                
-//                dataInicio = calendario.date(from: components as DateComponents)! as NSDate
-//            case 6:
-//                components.year = ano.year!
-//                components.month = mes.month!
-//                components.day = dia.day! - 5
-//                
-//                dataInicio = calendario.date(from: components as DateComponents)! as NSDate
-//            default:
-//                components.year = ano.year!
-//                components.month = mes.month!
-//                components.day = dia.day! - 6
-//                
-//                dataInicio = calendario.date(from: components as DateComponents)! as NSDate
-//            }
-//            
-//            let componentsFinal = NSDateComponents()
-//            
-//            switch sem! {
-//            case 1:
-//                componentsFinal.year = ano.year!
-//                componentsFinal.month = mes.month!
-//                componentsFinal.day = dia.day! + 6
-//                
-//                dataFinal = calendario.date(from: componentsFinal as DateComponents)! as NSDate
-//            case 2:
-//                componentsFinal.year = ano.year!
-//                componentsFinal.month = mes.month!
-//                componentsFinal.day = dia.day! + 5
-//                
-//                dataFinal = calendario.date(from: componentsFinal as DateComponents)! as NSDate
-//            case 3:
-//                componentsFinal.year = ano.year!
-//                componentsFinal.month = mes.month!
-//                componentsFinal.day = dia.day! + 4
-//                
-//                dataFinal = calendario.date(from: componentsFinal as DateComponents)! as NSDate
-//            case 4:
-//                componentsFinal.year = ano.year!
-//                componentsFinal.month = mes.month!
-//                componentsFinal.day = dia.day! + 3
-//                
-//                dataFinal = calendario.date(from: componentsFinal as DateComponents)! as NSDate
-//            case 5:
-//                componentsFinal.year = ano.year!
-//                componentsFinal.month = mes.month!
-//                componentsFinal.day = dia.day! + 2
-//                
-//                dataFinal = calendario.date(from: componentsFinal as DateComponents)! as NSDate
-//            case 6:
-//                componentsFinal.year = ano.year!
-//                componentsFinal.month = mes.month!
-//                componentsFinal.day = dia.day! + 1
-//                
-//                dataFinal = calendario.date(from: componentsFinal as DateComponents)! as NSDate
-//            default:
-//                componentsFinal.year = ano.year!
-//                componentsFinal.month = mes.month!
-//                componentsFinal.day = dia.day!
-//                
-//                dataFinal = calendario.date(from: componentsFinal as DateComponents)! as NSDate
-//            }
-//            
-//            //arrayExameSemana.removeAll()
-//            for item in exame{
-//                let dataI = item.valueForKey("data") as! NSDate
-//                let tipo = item.valueForKey("tipo") as! String
-//                if isDate(dataI, inRange: dataInicio, toDate: dataFinal, inclusive: true) == true{
-//                    if (tipo != "historico" && tipo != "preload"){
-//                        arrayExameSemana += [item]
-//                    }
-//                }
-//            }
-//            
-//            if results.count>0{
-//                print(arrayExameSemana)
-//            }else{
-//                print("Não há itens no BD")
-//            }
-//        } catch {
-//            print("Não foi possivel resgatar dados")
-//        }
-//        
-//        ExamesSemana.reloadData()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
+        
+        let fetchRequest: NSFetchRequest<Exame> = Exame.fetchRequest()
+        
+        do{
+            let results = try context.fetch(fetchRequest)
+            let exame = results
+            
+            let format = DateFormatter()
+            let data = NSDate()
+            let sem = getDayOfWeek(today: data)
+            
+            var dataInicio = NSDate()
+            var dataFinal = NSDate()
+            let components = NSDateComponents()
+            let calendario = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+            let ano = calendario.components(.year, from: data as Date)
+            let mes = calendario.components(.month, from: data as Date)
+            let dia = calendario.components(.day, from: data as Date)
+            
+            switch sem! {
+            case 1:
+                components.year = ano.year!
+                components.month = mes.month!
+                components.day = dia.day!
+                
+                dataInicio = calendario.date(from: components as DateComponents)! as NSDate
+            case 2:
+                components.year = ano.year!
+                components.month = mes.month!
+                components.day = dia.day! - 1
+                
+                dataInicio = calendario.date(from: components as DateComponents)! as NSDate
+            case 3:
+                components.year = ano.year!
+                components.month = mes.month!
+                components.day = dia.day! - 2
+                
+                dataInicio = calendario.date(from: components as DateComponents)! as NSDate
+            case 4:
+                components.year = ano.year!
+                components.month = mes.month!
+                components.day = dia.day! - 3
+                
+                dataInicio = calendario.date(from: components as DateComponents)! as NSDate
+            case 5:
+                components.year = ano.year!
+                components.month = mes.month!
+                components.day = dia.day! - 4
+                
+                dataInicio = calendario.date(from: components as DateComponents)! as NSDate
+            case 6:
+                components.year = ano.year!
+                components.month = mes.month!
+                components.day = dia.day! - 5
+                
+                dataInicio = calendario.date(from: components as DateComponents)! as NSDate
+            default:
+                components.year = ano.year!
+                components.month = mes.month!
+                components.day = dia.day! - 6
+                
+                dataInicio = calendario.date(from: components as DateComponents)! as NSDate
+            }
+            
+            let componentsFinal = NSDateComponents()
+            
+            switch sem! {
+            case 1:
+                componentsFinal.year = ano.year!
+                componentsFinal.month = mes.month!
+                componentsFinal.day = dia.day! + 6
+                
+                dataFinal = calendario.date(from: componentsFinal as DateComponents)! as NSDate
+            case 2:
+                componentsFinal.year = ano.year!
+                componentsFinal.month = mes.month!
+                componentsFinal.day = dia.day! + 5
+                
+                dataFinal = calendario.date(from: componentsFinal as DateComponents)! as NSDate
+            case 3:
+                componentsFinal.year = ano.year!
+                componentsFinal.month = mes.month!
+                componentsFinal.day = dia.day! + 4
+                
+                dataFinal = calendario.date(from: componentsFinal as DateComponents)! as NSDate
+            case 4:
+                componentsFinal.year = ano.year!
+                componentsFinal.month = mes.month!
+                componentsFinal.day = dia.day! + 3
+                
+                dataFinal = calendario.date(from: componentsFinal as DateComponents)! as NSDate
+            case 5:
+                componentsFinal.year = ano.year!
+                componentsFinal.month = mes.month!
+                componentsFinal.day = dia.day! + 2
+                
+                dataFinal = calendario.date(from: componentsFinal as DateComponents)! as NSDate
+            case 6:
+                componentsFinal.year = ano.year!
+                componentsFinal.month = mes.month!
+                componentsFinal.day = dia.day! + 1
+                
+                dataFinal = calendario.date(from: componentsFinal as DateComponents)! as NSDate
+            default:
+                componentsFinal.year = ano.year!
+                componentsFinal.month = mes.month!
+                componentsFinal.day = dia.day!
+                
+                dataFinal = calendario.date(from: componentsFinal as DateComponents)! as NSDate
+            }
+            
+            arrayExameSemana.removeAll()
+            
+            for item in exame{
+                let dataI = item.value(forKey: "data") as! NSDate
+                let tipo = item.value(forKey: "tipo") as! String
+                if isDate(date: dataI, inRange: dataInicio, toDate: dataFinal, inclusive: true) == true{
+                    if (tipo != "historico" && tipo != "preload"){
+                        arrayExameSemana += [item]
+                    }
+                }
+            }
+            
+            if results.count>0{
+                print(arrayExameSemana)
+            }else{
+                print("Não há itens no BD")
+            }
+        } catch {
+            print("Não foi possivel resgatar dados")
+        }
+        
+        ExamesSemana.reloadData()
     }
     
     
@@ -428,12 +437,6 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
 //        //            let vc = segue.destinationViewController as! MarcarConsulta
 //        //        }
 //    }
-
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 
     /*

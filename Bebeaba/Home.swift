@@ -44,7 +44,7 @@ class Home: UIViewController, UITextFieldDelegate {
             
         else if(semana!.characters.count > 2) {
             
-            let semanaLim = UIAlertController(title: "Alert", message: "A semana da gravidez deve ter 2 dígitos.", preferredStyle: UIAlertControllerStyle.alert)
+            let semanaLim = UIAlertController(title: "Alert", message: "A semana da gravidez deve ter no máximo 2 dígitos.", preferredStyle: UIAlertControllerStyle.alert)
             semanaLim.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(semanaLim, animated: true, completion: nil)
             alerta = true
@@ -53,67 +53,55 @@ class Home: UIViewController, UITextFieldDelegate {
         }
             
         else if(Double(semana!)! > 50) {
+            
             let tempoLongo = UIAlertController(title: "Alert", message: "Seu bebê já deveria ter nascido. Procure um médico.", preferredStyle: UIAlertControllerStyle.alert)
             tempoLongo.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(tempoLongo, animated: true, completion: nil)
             alerta = true
             
-            name.text = ""
             pregnancyWeek.text = ""
         }
-        
 
-        //PARTE DO CORE DATA
+        //MARK: CoreData
         
-//        let context = (UIApplication.sharedApplication.delegate as! AppDelegate).managedObjectContext
-//        
-//        if(alerta == false){
-//            let newUser = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: context) as NSManagedObject
-//            
-//            
-//            newUser.setValue(nomeTxt.text, forKey: "nome")
-//            newUser.setValue(SemanaTxt.text, forKey: "semana")
-//            
-//            
-//            //salva usuário
-//            
-//            do {
-//                try context.save()
-//            } catch {
-//                print("error")
-//            }
-//            
-//            print("4")
-//            performSegueWithIdentifier("gohome", sender: self)
-//            
-//            
-//        }
-//        alerta = false
-//        print("alerta")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
+        
+        if(alerta == false){
+            let newUser = NSEntityDescription.insertNewObject(forEntityName: "User", into: context) as NSManagedObject
+            
+            newUser.setValue(name.text, forKey: "nome")
+            newUser.setValue(pregnancyWeek.text, forKey: "semana")
+            
+            //salva usuário
+            
+            do {
+                try context.save()
+            } catch {
+                print("error")
+            }
+            
+            performSegue(withIdentifier: "goHome", sender: self)
+            
+            
+        }
+        alerta = false
     }
     
     
     //ver se esse prepareForSegue ainda é necessário
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        print("Caracaaaaaaaaa")
-//        
-//        if segue.identifier == "gohome" {
-//            
-//            let tabBar: UITabBarController = segue.destinationViewController as! UITabBarController
-//            let desView: Perfil = tabBar.viewControllers?.first as! Perfil
-//            
-//            print(SemanaTxt.text)
-//            desView.semanaU = SemanaTxt.text!
-//            
-//            
-//        }
-//        
-//    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+        if segue.identifier == "gohome" {
+            
+            let tabBar: UITabBarController = segue.destination as! UITabBarController
+            let desView: Entrada = tabBar.viewControllers?.first as! Entrada
+            
+            desView.semanaU = pregnancyWeek.text!
+            
+        }
+        
     }
 
     func dissmissKeyboard(){

@@ -13,16 +13,12 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
 
     @IBOutlet weak var ExamesFeitos: UITableView!
     
-    //precisa criar as classes
-//    var exame = [Exame]()
-//    var exameHistorico = [Exame]()
+    var exame = [Exame]()
+    var exameHistorico = [Exame]()
 //    var exameTotal = [[Exame()],[Exame()],[Exame()]]
 //    var exameAtraso = [Exame]()
 //    var exameFuturo = [Exame]()
 //    var SectionName = ["exames atrasados", "exames futuros", "exames feitos"]
-    
-//    let managedContext = (UIApplication.sharedApplication.delegate as! AppDelegate).managedObjectContext
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,101 +33,107 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     override func viewWillAppear(_ animated: Bool) {
         
-//        let fetchRequest = NSFetchRequest(entityName: "Exame")
-//        
-//        do{
-//            let results = try managedContext.executeFetchRequest(fetchRequest)
-//            exame = results as! [Exame]
-//            
-//            if results.count>0{
-//                print("esses foram os resultados encontrados no BD: \(results.count)")
-//            }else{
-//                print("Não há itens no BD")
-//            }
-//        } catch {
-//            print("Não foi possivel resgatar dados")
-//        }
-//        
-//        //        exameTotal[0].removeAll()
-//        //        exameTotal[1].removeAll()
-//        //        exameTotal[3].removeAll()
-//        ExamesFeitos.removeAll()
-//        for item in exame{
-//            if (item.valueForKey("tipo") as! String == "historico"){
-//                // exameTotal[0] += [item]
-//                exameHistorico += [item]
-//            }
-//            //            } else if (item.valueForKey("tipo") as! String == "futuro"){
-//            //                exameTotal[1] += [item]
-//            //            } else if (item.valueForKey("tipo") as! String == "atrasado"){
-//            //                exameTotal[2] += [item]
-//            //            }
-//        }
-//        
-//        //        for item in exame{
-//        //            if (item.valueForKey("tipo") as! String == "historico"){
-//        //                exameHistorico += [item]
-//        //            }
-//        //            if (item.valueForKey("tipo") as! String == "atrasados"){
-//        //                exameAtraso += [item]
-//        //            }
-//        //            if (item.valueForKey("tipo") as! String == "atual"){
-//        //                exameFuturo += [item]
-//        //            }
-//        //        }
-//        //
-//        //        ordenaExame(exameHistorico)
-//        //        ordenaExame(exameAtraso)
-//        //        ordenaExame(exameFuturo)
-//        //        if(exameTotal.count>0){
-//        //            exameTotal[0].removeAll()
-//        //            exameTotal[1].removeAll()
-//        //            exameTotal[2].removeAll()
-//        //        }
-//        
-//        //        exameTotal[0] = exameAtraso
-//        //        exameTotal[1] = exameFuturo
-//        //        exameTotal[2] = exameHistorico
-//        
-//        ExamesFeitos.reloadData()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
+        
+        
+        let fetchRequest: NSFetchRequest<Exame> = Exame.fetchRequest()
+
+        do{
+            let results = try context.fetch(fetchRequest)
+            exame = results
+            
+            if results.count>0{
+                print("esses foram os resultados encontrados no BD: \(results.count)")
+            }else{
+                print("Não há itens no BD")
+            }
+        } catch {
+            print("Não foi possivel resgatar dados")
+        }
+        
+        //        exameTotal[0].removeAll()
+        //        exameTotal[1].removeAll()
+        //        exameTotal[3].removeAll()
+        exameHistorico.removeAll()
+        for item in exame{
+            if (item.value(forKey: "tipo") as! String == "historico"){
+                // exameTotal[0] += [item]
+                exameHistorico += [item]
+            }
+            //            } else if (item.valueForKey("tipo") as! String == "futuro"){
+            //                exameTotal[1] += [item]
+            //            } else if (item.valueForKey("tipo") as! String == "atrasado"){
+            //                exameTotal[2] += [item]
+            //            }
+        }
+        
+        //        for item in exame{
+        //            if (item.valueForKey("tipo") as! String == "historico"){
+        //                exameHistorico += [item]
+        //            }
+        //            if (item.valueForKey("tipo") as! String == "atrasados"){
+        //                exameAtraso += [item]
+        //            }
+        //            if (item.valueForKey("tipo") as! String == "atual"){
+        //                exameFuturo += [item]
+        //            }
+        //        }
+        //
+        //        ordenaExame(exameHistorico)
+        //        ordenaExame(exameAtraso)
+        //        ordenaExame(exameFuturo)
+        //        if(exameTotal.count>0){
+        //            exameTotal[0].removeAll()
+        //            exameTotal[1].removeAll()
+        //            exameTotal[2].removeAll()
+        //        }
+        
+        //        exameTotal[0] = exameAtraso
+        //        exameTotal[1] = exameFuturo
+        //        exameTotal[2] = exameHistorico
+        
+        ExamesFeitos.reloadData()
     }
     
     //MARK: Funções auxiliares
     
-//    func ordenaExame(var exame: [Exame]){
-//        var fim = exame.endIndex - 1
-//        while fim > 0{
-//            var maior = 0
-//            for item in exame{
-//                let i1 = exame.indexOf(item)
-//                if(item != exame[0]){
-//                    if(i1 <= fim){
-//                        
-//                        let horaPrim = item.valueForKey("hora") as! NSDate
-//                        let horaSeg = exame[maior].valueForKey("hora") as! NSDate
-//                        
-//                        if(horaPrim.isEqualToDate(horaSeg) == false){
-//                            if(horaPrim.laterDate(horaSeg) == horaPrim){
-//                                maior = i1!
-//                                print("i1:\(i1), fim: \(fim), maior:\(maior)")
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//            
-//            if(fim != maior){
-//                let subtituido = exame[fim]
-//                let substituto = exame[maior]
-//                exame.insert(substituto, atIndex: fim)
-//                exame.removeAtIndex(fim+1)
-//                exame.insert(subtituido, atIndex: maior)
-//                exame.removeAtIndex(maior+1)
-//            }
-//            fim -= 1
-//        }
-//        
-//    }
+    func ordenaExame( exame: [Exame]){
+        var exame = exame
+        var fim = exame.endIndex - 1
+        while fim > 0{
+            var maior = 0
+            for item in exame{
+                let i1 = exame.index(of: item)
+                if(item != exame[0]){
+             
+                    if(i1! <= fim){
+                        
+                        let horaPrim = item.value(forKey: "hora") as! NSDate
+                        let horaSeg = exame[maior].value(forKey: "hora") as! NSDate
+                        
+                        if(horaPrim.isEqual(to: horaSeg as Date) == false){
+                            if(horaPrim.laterDate(horaSeg as Date) == horaPrim as Date){
+                                maior = i1!
+                                print("i1:\(i1), fim: \(fim), maior:\(maior)")
+                            }
+                        }
+                    }
+                }
+            }
+            
+            if(fim != maior){
+                let subtituido = exame[fim]
+                let substituto = exame[maior]
+                exame.insert(substituto, at: fim)
+                exame.remove(at: fim+1)
+                exame.insert(subtituido, at: maior)
+                exame.remove(at: maior+1)
+            }
+            fim -= 1
+        }
+        
+    }
     
     //MARK: TableView
     
@@ -151,7 +153,7 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
         //            rowCount = exameTotal[2].count
         //        }
         //        return rowCount
-        //return exameHistorico.count
+        return exameHistorico.count
         return 1
     }
     
@@ -160,30 +162,30 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
     //    }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") /* as! TableViewCell*/
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewCell
         //let exam = exameTotal[indexPath.section][indexPath.row]
-        //let exam = exameHistorico[indexPath.row]
+        let exam = exameHistorico[indexPath.row]
         
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "HH:mm"
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "dd/MM/yyyy"
         
-//        let hora = exam.valueForKey("hora") as? NSDate
-//        let horario = timeFormatter.stringFromDate(hora!)
-//        let dia = exam.valueForKey("data") as? NSDate
-//        let data = dateFormater.stringFromDate(dia!)
-//        
-//        cell.nomeLabel.text = exam.valueForKey("nome") as? String
-//        cell.horarioLabel.text = horario
-//        cell.dataLabel.text = data
-//        if(exam.valueForKey("local") as! String == ""){
-//            cell.localLabel.hidden = true
-//        }else{
-//            cell.localLabel.text = exam.valueForKey("local") as? String
-//        }
+        let hora = exam.value(forKey: "hora") as? NSDate
+        let horario = timeFormatter.string(from: hora! as Date)
+        let dia = exam.value(forKey: "data") as? NSDate
+        let data = dateFormater.string(from: dia! as Date)
         
-        return cell!
+        cell.nome.text = exam.value(forKey: "nome") as? String
+        cell.horario.text = horario
+        cell.data.text = data
+        if(exam.value(forKey: "local") as! String == ""){
+            cell.local.isHidden = true
+        }else{
+            cell.local.text = exam.value(forKey: "local") as? String
+        }
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

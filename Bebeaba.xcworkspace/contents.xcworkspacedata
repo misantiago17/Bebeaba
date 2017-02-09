@@ -2,6 +2,18 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Bebeaba/User+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Bebeaba/User+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Exame+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Exame+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:Bebeaba.xcodeproj">
    </FileRef>
    <FileRef
