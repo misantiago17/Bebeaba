@@ -18,7 +18,6 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
   
     @IBOutlet weak var ExamesDia: UITableView!
     
-    let emoji = UIImage(named: "bebe")
     
 //    var exame = [Exame]()
 //    var exameDia = [Exame]()
@@ -29,22 +28,19 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
   //  let managedContext = (UIApplication.sharedApplication.delegate as! AppDelegate).managedObjectContext
 
   
+  
     
-    
-    // tipo de formato de data
+    // Formato de data
     fileprivate let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         return formatter
     }()
     
-    // tipo de calendario
+    
+    // Tipo de calendario
     fileprivate let gregorian: NSCalendar! = NSCalendar(calendarIdentifier:NSCalendar.Identifier.gregorian)
-    
-    
-    //datas em que aparecem o emoji do bebe
-    fileprivate let datesWithBaby = ["2015/05/05","2015/06/05","2015/07/05","2015/08/05","2015/09/05","2015/10/05","2015/11/05","2015/12/05","2016/01/06",
-                                    "2016/02/06","2016/03/06","2016/04/06","2016/05/06","2016/06/06","2016/07/06"]
+
     
   
     
@@ -52,8 +48,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.calendar.appearance.caseOptions = [.headerUsesUpperCase,.weekdayUsesUpperCase]
-        self.calendar.select(self.formatter.date(from: "2017/08/10")!)
+       
         
         
         ExamesDia.delegate = self
@@ -100,42 +95,42 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     
     
-    
-
     // MARK:- FSCalendarDataSource
     
     
-    //coloca titulo no dia atual
-   /* func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
-        return self.gregorian.isDateInToday(date) ? "coloque titulo aqui" : nil
+    
+    //Coloca título no dia
+    
+  /*  func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
+        return self.gregorian.isDateInToday(date) ? "今天" : nil
     }*/
     
-    // data limite do calendario
+    
+    // Data limite do calendario
+    
     func maximumDate(for calendar: FSCalendar) -> Date {
-        return self.formatter.date(from: "2130/10/30")!
+        return self.formatter.date(from: "2017/10/30")!
     }
     
-    // numero de eventos por dia
-    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+    // Coloca bolinha de evento na data
+    
+  /*  func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let day: Int! = self.gregorian.component(.day, from: date)
-        
-        //return 0
         return day % 5 == 0 ? day/5 : 0;
-    }
+    }*/
     
-    // imagens nos dias
-
+    
+    //Coloca imagem na data
+    
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         
-        let day: Int! = self.gregorian.component(.day, from: date)
+         let day: Int! = self.gregorian.component(.day, from: date)
+         let month: Int! = self.gregorian.component(.month, from: date)
+        let year: Int! = self.gregorian.component(.year, from: date)
         
-         return [13,24].contains(day) ? UIImage(named: "bebe") : nil
+        return [7].contains(day) && [6].contains(month) && [2017].contains(year) ? UIImage(named: "bebe") : nil
+
     }
-    
-     
-    
-    
-    
     
     // MARK:- FSCalendarDelegate
     
@@ -150,6 +145,8 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         }
     }
     
+   
+
     
     
     

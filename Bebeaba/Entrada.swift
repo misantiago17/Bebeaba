@@ -21,10 +21,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //falta criar a classe Exame
    // var arrayExameSemana = [Exame]()
-    
-    //print("sopa")
-    
-    var semanaU = ""
+        
     //var edit = false     precisa do swipe da célula
     var hora = NSDate()
     var dia = NSDate()
