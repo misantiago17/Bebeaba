@@ -112,10 +112,23 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     // Coloca bolinha de evento na data
     
-  /*  func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let day: Int! = self.gregorian.component(.day, from: date)
-        return day % 5 == 0 ? day/5 : 0;
-    }*/
+    
+    let evento = ["05/09/2017","20/10/2017","10/02/2017", "27/03/2017"]
+    
+   func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+    
+    let day = formatter.string(from: date)
+    
+    var i = 0
+    
+    while i < evento.count {
+        if day == evento[i] {
+            return 1
+        }
+        i += 1
+    }
+    return 0
+}
     
     
     //Coloca imagem na data
