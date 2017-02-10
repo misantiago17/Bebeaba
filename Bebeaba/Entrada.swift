@@ -280,10 +280,14 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
         
         let fetchRequest: NSFetchRequest<Exame> = Exame.fetchRequest()
+        let requestUser: NSFetchRequest<User> = User.fetchRequest()
+
         
         do{
+            let resultsUser = try context.fetch(requestUser)
             let results = try context.fetch(fetchRequest)
             let exame = results
+            let user = resultsUser
             
             let format = DateFormatter()
             let data = NSDate()
@@ -390,6 +394,14 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
             
             arrayExameSemana.removeAll()
+            
+            for item in user{
+                let nome = item.value(forKey: "nome") as! String
+                let semana = item.value(forKey: "semana") as! String
+                
+                semanaU = semana
+                print("semana de gravidez \(semanaU)")
+            }
             
             for item in exame{
                 let dataI = item.value(forKey: "data") as! NSDate

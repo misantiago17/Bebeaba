@@ -21,9 +21,10 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         
     var exame = [Exame]()
     var exameDia = [Exame]()
-    var dia = NSDate()
+    var dia = Date()
     var edit = false
     var hora = NSDate()
+    var diaSelecionado = NSDate()
   
     
     // Formato de data
@@ -43,9 +44,6 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
-        
         
         ExamesDia.delegate = self
         ExamesDia.dataSource = self
@@ -80,11 +78,10 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         
         checkAtrasados()
         
-        let format = DateFormatter()
-        let diaString = format.string(from: dia as Date)
-        separaDia(diaDado: diaString, diaNormal: dia as Date)
+        separaDia(diaDado: dia)
         
         ExamesDia.reloadData()
+        calendar.select(Date())
         
     }
     
@@ -150,17 +147,10 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        diaSelecionado = date as NSDate
         
-        dia = date as NSDate
-        
-        let formatDia = DateFormatter()
-        formatDia.dateFormat = "dd/MM/yyyy"
-        //let dataConvertida = form
-        let dataConvertidaString = formatDia.string(from: date)
-        
-        print("calendar did select date \(dataConvertidaString)")
-        
-        separaDia(diaDado: dataConvertidaString, diaNormal: date)
+        separaDia(diaDado: date)
+        ExamesDia.reloadData()
         
         if monthPosition == .previous || monthPosition == .next {
             calendar.setCurrentPage(date, animated: true)
@@ -394,36 +384,40 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         }
     }
     
-    func separaDia (diaDado: String, diaNormal: Date){
-        //let formatDia = DateFormatter()
-        //var diaExame = DateFormatter().date(from: diaDado)
-        //var diaExame = formatDia.date(from: diaDado)
-        //var diaExame = formatDia.date(from: diaDado)
-        var diaExame = diaNormal
+    func separaDia (diaDado: Date){
+        var diaExame = NSDate()
         var tipo = ""
-        
-        print("dia de hj\(dia)")
-        print("dia recebido \(diaDado)")
-        print("dia clicado\(diaExame)")
         
         exameDia.removeAll()
         for item in exame{
-            diaExame = (item.value(forKey: "data") as? Date)!
+            diaExame = (item.value(forKey: "data") as? NSDate)!
             tipo = item.value(forKey: "tipo") as! String
+            
             if tipo != "historico" && tipo != "preload"{
-                if diaExame == dia as Date {
-                    print("kd")
+                if compareDate(dateInitial: diaExame as Date, dateFinal: diaDado) == true {
                     exameDia += [item]
                 }
             }
         }
+        
+        print("exames totais \(exame.count)")
         print("exames do dia \(exameDia.count)")
+        
         if(exameDia.count > 2){
             ordenaExame()
         }
 
     }
     
+    func compareDate(dateInitial:Date, dateFinal:Date) -> Bool {
+        let order = Calendar.current.compare(dateInitial, to: dateFinal, toGranularity: .day)
+        switch order {
+        case .orderedSame:
+            return true
+        default:
+            return false
+        }
+    }
     
     func ordenaExame(){
         var fim = exameDia.endIndex - 1
@@ -460,29 +454,41 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         
     }
     
-//    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if(segue.identifier == "MarcarExame") {
-//            let vc = segue.destinationViewController as! MarcarConsulta
-//            vc.data = dia
-//            vc.edit = edit
-//            if edit == true{
-//                vc.horaI = hora
-//            }
-//        }else if(segue.identifier == "detalhes"){
-//            let indexPaths = examesTableView.indexPathForSelectedRow
-//            let indexPath = indexPaths! as NSIndexPath
-//            let exam = exameDia[indexPath.row]
-//            let vc = segue.destinationViewController as! ExameViewController
-//            vc.diaI = exam.valueForKey("data") as! NSDate
-//            vc.horaI = exam.valueForKey("hora") as! NSDate
-//            vc.tipoDoExame = exam.valueForKey("tipo") as! String
-//        }
-//        //        else if(segue.identifier == "editar"){
-//        //            let vc = segue.destinationViewController as! MarcarConsulta
-//        //        }
+//    @IBAction func marcarExame(_ sender: Any) {
+//        
+//        performSegue(withIdentifier: "MarcarExame", sender: self)
+//        
 //    }
-//    
+//    @IBAction func marcar(_ sender: UIButton) {
+//        performSegue(withIdentifier: "MarcarExame", sender: self)
+//
+//    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "MarcarExame") {
+            let vc = segue.destination as! NewExam
+            print(diaSelecionado)
+            print("relogio")
+            vc.data = diaSelecionado
+            vc.edit = edit
+            if edit == true{
+                vc.horaI = hora
+            }
+        }
+        
+        /*else if(segue.identifier == "detalhes"){
+         ////            let indexPaths = examesTableView.indexPathForSelectedRow
+         ////            let indexPath = indexPaths! as NSIndexPath
+         ////            let exam = exameDia[indexPath.row]
+         ////            let vc = segue.destinationViewController as! ExameViewController
+         ////            vc.diaI = exam.valueForKey("data") as! NSDate
+         ////            vc.horaI = exam.valueForKey("hora") as! NSDate
+         ////            vc.tipoDoExame = exam.valueForKey("tipo") as! String
+         ////        }*/
+    }
+    
+    
 
     /*
     // MARK: - Navigation

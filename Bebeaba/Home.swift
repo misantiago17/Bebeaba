@@ -89,20 +89,18 @@ class Home: UIViewController, UITextFieldDelegate {
     }
     
     
-    //ver se esse prepareForSegue ainda é necessário
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        if segue.identifier == "goHome" {
+//            
+//            let tabBar: UITabBarController = segue.destination as! UITabBarController
+//            let desView: Entrada = tabBar.viewControllers?.first as! Entrada
+//            
+//            desView.semanaU = pregnancyWeek.text!
+//            
+//        }
+//    }
     
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
-        if segue.identifier == "gohome" {
-            
-            let tabBar: UITabBarController = segue.destination as! UITabBarController
-            let desView: Entrada = tabBar.viewControllers?.first as! Entrada
-            
-            desView.semanaU = pregnancyWeek.text!
-            
-        }
-        
-    }
 
     func dissmissKeyboard(){
         view.endEditing(true)
