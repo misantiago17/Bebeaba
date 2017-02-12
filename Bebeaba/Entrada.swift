@@ -17,7 +17,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var tempototal = 30.0*9.0/7.0
     var ang = Double(20)
     var porc = Int(20)
-    var semanaU = "30"
+    var semanaU = ""
     
     //falta criar a classe Exame
     var arrayExameSemana = [Exame]()
@@ -31,6 +31,33 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         ExamesSemana.delegate = self
         ExamesSemana.dataSource = self
+        
+        //pega valores da ultima semana colocada
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
+        
+        let requestUser: NSFetchRequest<User> = User.fetchRequest()
+        
+        do {
+            
+            let resultsUser = try context.fetch(requestUser)
+            let user = resultsUser
+            
+            for item in user{
+                let nome = item.value(forKey: "nome") as! String
+                let semana = item.value(forKey: "semana") as! String
+                
+                semanaU = semana
+                print("semana de gravidez \(semanaU)")
+            }
+            
+        } catch {
+            print("Não foi possivel resgatar dados")
+        }
+        
+
+        
         
         // Animação programática
         progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/2, height: self.view.frame.width/2))
@@ -49,6 +76,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         progress.set(colors: UIColor.cyan ,UIColor.white, UIColor.magenta, UIColor.white, UIColor.orange)
         progress.center = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/4)
         
+        print("semana de gestação \(semanaU)")
         ang = Double(Double(semanaU)!*360.0/tempototal)
         
         if(ang > 360.0){
@@ -280,14 +308,10 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
         
         let fetchRequest: NSFetchRequest<Exame> = Exame.fetchRequest()
-        let requestUser: NSFetchRequest<User> = User.fetchRequest()
-
         
         do{
-            let resultsUser = try context.fetch(requestUser)
             let results = try context.fetch(fetchRequest)
             let exame = results
-            let user = resultsUser
             
             let format = DateFormatter()
             let data = NSDate()
@@ -394,14 +418,6 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
             
             arrayExameSemana.removeAll()
-            
-            for item in user{
-                let nome = item.value(forKey: "nome") as! String
-                let semana = item.value(forKey: "semana") as! String
-                
-                semanaU = semana
-                print("semana de gravidez \(semanaU)")
-            }
             
             for item in exame{
                 let dataI = item.value(forKey: "data") as! NSDate

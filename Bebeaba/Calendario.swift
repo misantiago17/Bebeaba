@@ -25,6 +25,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     var edit = false
     var hora = NSDate()
     var diaSelecionado = NSDate()
+    var marcou = false
   
     
     // Formato de data
@@ -78,10 +79,15 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         
         checkAtrasados()
         
-        separaDia(diaDado: dia)
+        if marcou == false{
+            separaDia(diaDado: dia)
+        } else {
+            separaDia(diaDado: diaSelecionado as Date)
+            marcou = false
+        }
         
         ExamesDia.reloadData()
-        calendar.select(Date())
+        //calendar.select(Date())    
         
     }
     
@@ -468,8 +474,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         
         if(segue.identifier == "MarcarExame") {
             let vc = segue.destination as! NewExam
-            print(diaSelecionado)
-            print("relogio")
+            marcou = true
             vc.data = diaSelecionado
             vc.edit = edit
             if edit == true{
