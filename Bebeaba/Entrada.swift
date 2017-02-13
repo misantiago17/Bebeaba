@@ -73,7 +73,8 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 let nome = item.value(forKey: "nome") as! String
                 let semana = item.value(forKey: "semana") as! String
                 
-                semanaU = separaData(data: semana)
+               // semanaU = separaData(data: semana)
+                semanaU = "12"
                 
                 print("dias desde a gravidez \(semanaU)")
             }
