@@ -81,27 +81,11 @@ class Home: UIViewController, UITextFieldDelegate {
                 print("error")
             }
             
-            performSegue(withIdentifier: "goHome", sender: self)
-            
-            
         }
         alerta = false
     }
     
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        
-//        if segue.identifier == "goHome" {
-//            
-//            let tabBar: UITabBarController = segue.destination as! UITabBarController
-//            let desView: Entrada = tabBar.viewControllers?.first as! Entrada
-//            
-//            desView.semanaU = pregnancyWeek.text!
-//            
-//        }
-//    }
-    
-
     func dissmissKeyboard(){
         view.endEditing(true)
     }
