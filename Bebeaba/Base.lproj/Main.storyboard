@@ -103,6 +103,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="high_importance" translatesAutoresizingMaskIntoConstraints="NO" id="abl-jX-Y6l">
+                                                    <rect key="frame" x="268" y="1" width="20" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Dxp-Hv-AuT" firstAttribute="leading" secondItem="V2B-Vn-c0g" secondAttribute="leading" id="4ch-th-mmJ"/>
@@ -119,6 +123,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="atraso" destination="abl-jX-Y6l" id="mzD-qg-jCt"/>
                                             <outlet property="data" destination="Dxp-Hv-AuT" id="nMg-Ie-1wi"/>
                                             <outlet property="horario" destination="V2B-Vn-c0g" id="ynk-cJ-b4G"/>
                                             <outlet property="local" destination="9Qo-6I-fxH" id="19B-17-Dh9"/>
@@ -621,6 +626,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="high_importance" translatesAutoresizingMaskIntoConstraints="NO" id="J31-Vf-rFg">
+                                                    <rect key="frame" x="248" y="0.0" width="20" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="6Og-Bg-RJt" firstAttribute="leading" secondItem="Ske-Y5-Me5" secondAttribute="leadingMargin" id="4Xy-7i-38b"/>
@@ -637,6 +646,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="atraso" destination="J31-Vf-rFg" id="Wjk-tk-xsX"/>
                                             <outlet property="data" destination="ePS-GU-nli" id="3SI-r9-z84"/>
                                             <outlet property="horario" destination="buE-Ia-kev" id="Zbj-1c-0dQ"/>
                                             <outlet property="local" destination="ol8-kZ-4yr" id="1DL-Ug-vwY"/>
@@ -684,4 +694,7 @@
             <point key="canvasLocation" x="7" y="139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="high_importance" width="512" height="512"/>
+    </resources>
 </document>

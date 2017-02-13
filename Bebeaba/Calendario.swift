@@ -156,6 +156,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         diaSelecionado = date as NSDate
         
         separaDia(diaDado: date)
+        checkAtrasados()
         ExamesDia.reloadData()
         
         if monthPosition == .previous || monthPosition == .next {
@@ -212,11 +213,11 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
             cell.local.isHidden = false
             cell.local.text = exam.value(forKey: "local") as? String
         }
-//        if(exam.value(forKey: "tipo") as! String == "atrasado"){
-//            cell.atrasoLabel.hidden = false
-//        } else if (exam.valueForKey("tipo") as! String == "atual"){
-//            cell.atrasoLabel.hidden = true
-//        }
+        if(exam.value(forKey: "tipo") as! String == "atrasado"){
+            cell.atraso.isHidden = false
+        } else if (exam.value(forKey: "tipo") as! String == "atual"){
+            cell.atraso.isHidden = true
+        }
 //
 //        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.redColor(), callback: {
 //            (sender: MGSwipeTableCell!) -> Bool in
@@ -460,15 +461,6 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         
     }
     
-//    @IBAction func marcarExame(_ sender: Any) {
-//        
-//        performSegue(withIdentifier: "MarcarExame", sender: self)
-//        
-//    }
-//    @IBAction func marcar(_ sender: UIButton) {
-//        performSegue(withIdentifier: "MarcarExame", sender: self)
-//
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -507,14 +499,4 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
 
 
-}
-
-
-//extension Date {
-//    func toString() -> String {
-//        let formataData = DateFormatter()
-//        formataData.dateFormat = "MMMM dd yyyy"
-//        return formataData.string(from: self)
-//    }
-//}
-//    
+} 

@@ -106,7 +106,6 @@
 		8A97DD5E1E4CA297007BF3CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8A5918321E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";

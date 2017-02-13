@@ -141,7 +141,6 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayExameSemana.count
-        //return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -176,12 +175,12 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             cell.local.text = exam.value(forKey: "local") as? String
         }
         
-        //fazer a função que deixa o exame como atrasado
-//        if(exam.value(forKey: "tipo") as! String == "atrasado"){
-//            cell.atrasoLabel.hidden = false
-//        } else if (exam.value(forKey: "tipo") as! String == "atual"){
-//            cell.atrasoLabel.hidden = true
-//        }
+        if(exam.value(forKey: "tipo") as! String == "atrasado"){
+            cell.atraso.isHidden = false
+        } else if (exam.value(forKey: "tipo") as! String == "atual"){
+            cell.atraso.isHidden = true
+        }
+        
         
         //PRECISA DO MGSWIPE
 //        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.redColor(), callback: {
