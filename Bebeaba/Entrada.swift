@@ -14,7 +14,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var ExamesSemana: UITableView!
     var progress: KDCircularProgress!
-    var tempototal = 30.0*9.0/7.0
+    var tempototal = 280.0
     var ang = Double(20)
     var porc = Int(20)
     var semanaU = ""
@@ -25,6 +25,31 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var edit = false
     var hora = NSDate()
     var dia = NSDate()
+    
+    func separaData(data: String) -> String {
+        let dataArray = data.components(separatedBy: "/")
+        
+        var dataSeparada = DateComponents()
+        dataSeparada.year = Int(dataArray[0])
+        dataSeparada.month = Int(dataArray[1])
+        dataSeparada.day = Int(dataArray[2])
+        
+        let semanas = implementaSemana(data: dataSeparada)
+        
+        return String(semanas)
+    }
+    
+    func implementaSemana(data: DateComponents) -> Int {
+        
+        let cal = Calendar.current
+        var components = cal.dateComponents([.era, .year, .month, .day], from: NSDate() as Date)
+        var today = cal.date(from: components)
+        let otherDate = cal.date(from: data)
+        
+        components = cal.dateComponents([Calendar.Component.day], from: (today! as Date), to: otherDate!)
+        
+        return -components.day!
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +73,9 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 let nome = item.value(forKey: "nome") as! String
                 let semana = item.value(forKey: "semana") as! String
                 
-                semanaU = semana
-                print("semana de gravidez \(semanaU)")
+                semanaU = separaData(data: semana)
+                
+                print("dias desde a gravidez \(semanaU)")
             }
             
         } catch {
@@ -76,7 +102,6 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         progress.set(colors: UIColor.cyan ,UIColor.white, UIColor.magenta, UIColor.white, UIColor.orange)
         progress.center = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/4)
         
-        print("semana de gestação \(semanaU)")
         ang = Double(Double(semanaU)!*360.0/tempototal)
         
         if(ang > 360.0){
