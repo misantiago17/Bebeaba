@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E154a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a3C-ue-f9J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a3C-ue-f9J">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -41,7 +41,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="pagingEnabled" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="scrollEnabled" value="YES"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
-                                        <color key="value" red="0.98197665059732564" green="0.87023620388640677" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.98197665059999995" green="0.8702362039" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
                                         <color key="value" red="1" green="0.0" blue="1" alpha="0.59511451198630139" colorSpace="calibratedRGB"/>
@@ -54,6 +54,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
                                         <color key="value" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="headerMinimumDissolvedAlpha">
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -155,7 +158,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="mkw-TE-p6q" secondAttribute="trailing" constant="149" id="xqv-3Z-X1P"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="LmT-ao-lCt"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="calendario" selectedImage="calendario" id="LmT-ao-lCt"/>
                     <connections>
                         <outlet property="ExamesDia" destination="eiZ-hG-MgV" id="9Ls-LF-3wO"/>
                         <outlet property="calendar" destination="U7V-AM-sWE" id="rjW-fi-aug"/>
@@ -177,13 +180,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T8l-hQ-wmo" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="27" y="95" width="320" height="50"/>
-                                <color key="tintColor" red="0.93585526320000001" green="0.73630839650000002" blue="0.96558902140000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="EEW-GE-TcZ"/>
-                                    <constraint firstAttribute="height" constant="50" id="SZa-fm-wxO"/>
-                                </constraints>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T8l-hQ-wmo" customClass="AkiraTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="28" y="200" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="1" green="0.69019607839999997" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -199,13 +199,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Semana de gravidez" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kwe-Ps-YRS" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="27" y="175" width="320" height="50"/>
-                                <color key="tintColor" red="0.93585526320000001" green="0.73630839650000002" blue="0.96558902140000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="BSG-Lo-GxL"/>
-                                    <constraint firstAttribute="height" constant="50" id="fpO-P5-Gd5"/>
-                                </constraints>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Semana de gravidez" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kwe-Ps-YRS" customClass="AkiraTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="28" y="265" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="1" green="0.69019607839999997" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -221,15 +218,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bebeaba" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjg-o5-eCF">
-                                <rect key="frame" x="153" y="28" width="68" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXI-h0-cWj">
-                                <rect key="frame" x="310" y="263" width="37" height="30"/>
-                                <state key="normal" title="Entre">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXI-h0-cWj">
+                                <rect key="frame" x="137" y="365" width="100" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Bem-vinda">
                                     <color key="titleColor" red="0.93585526320000001" green="0.73630839650000002" blue="0.96558902140000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -239,18 +232,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="kwe-Ps-YRS" firstAttribute="top" secondItem="T8l-hQ-wmo" secondAttribute="bottom" constant="30" id="0qQ-Ee-pOv"/>
-                            <constraint firstItem="kjg-o5-eCF" firstAttribute="centerX" secondItem="Bi9-HQ-aoC" secondAttribute="centerX" id="2HU-OK-d2E"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="T8l-hQ-wmo" secondAttribute="trailing" constant="12" id="7DZ-qE-uWN"/>
-                            <constraint firstItem="LXI-h0-cWj" firstAttribute="top" secondItem="kwe-Ps-YRS" secondAttribute="bottom" constant="38" id="K6m-CS-5EI"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="LXI-h0-cWj" secondAttribute="trailing" constant="12" id="SRU-2w-3gH"/>
-                            <constraint firstItem="kwe-Ps-YRS" firstAttribute="leading" secondItem="Bi9-HQ-aoC" secondAttribute="leadingMargin" constant="11" id="cV6-Nt-Y9s"/>
-                            <constraint firstItem="T8l-hQ-wmo" firstAttribute="top" secondItem="kjg-o5-eCF" secondAttribute="bottom" constant="46" id="roI-aq-gBY"/>
-                            <constraint firstItem="kjg-o5-eCF" firstAttribute="top" secondItem="J4Y-8m-35Z" secondAttribute="bottom" constant="8" id="tFF-de-0uE"/>
-                            <constraint firstItem="T8l-hQ-wmo" firstAttribute="leading" secondItem="Bi9-HQ-aoC" secondAttribute="leadingMargin" constant="11" id="tTh-fT-YWb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kwe-Ps-YRS" secondAttribute="trailing" constant="12" id="xbz-tp-dDY"/>
-                        </constraints>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="kwe-Ps-YRS"/>
@@ -409,7 +390,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K6M-rb-WLI" id="d7z-u5-GF1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nF6-Iv-dAa">
@@ -472,7 +453,7 @@
                             <constraint firstAttribute="trailing" secondItem="1GS-nZ-Qis" secondAttribute="trailing" id="g0J-Aa-cbA"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="FHs-cD-SDt"/>
+                    <tabBarItem key="tabBarItem" title="Item 2" image="examesfeitos" selectedImage="examesfeitos" id="FHs-cD-SDt"/>
                     <connections>
                         <outlet property="ExamesFeitos" destination="1GS-nZ-Qis" id="m7m-5d-jbK"/>
                     </connections>
@@ -501,7 +482,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="arU-c3-hY5" id="JQx-kg-luW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMs-GU-Toh">
@@ -596,7 +577,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gYR-Id-4Cp" id="Ske-Y5-Me5">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Og-Bg-RJt">
@@ -664,7 +645,7 @@
                             <constraint firstItem="hsd-n7-Rmr" firstAttribute="leading" secondItem="Fb1-fn-pdl" secondAttribute="leadingMargin" constant="-16" id="xfe-av-tsk"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="agU-uI-3bd"/>
+                    <tabBarItem key="tabBarItem" title="Item 1" image="home" selectedImage="home" id="agU-uI-3bd"/>
                     <connections>
                         <outlet property="ExamesSemana" destination="hsd-n7-Rmr" id="FMJ-bH-U7n"/>
                     </connections>
@@ -673,10 +654,10 @@
             </objects>
             <point key="canvasLocation" x="-810.39999999999998" y="903.59820089955031"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab BarVC-->
         <scene sceneID="tkF-Pv-pTA">
             <objects>
-                <tabBarController id="8br-ch-nH8" sceneMemberID="viewController">
+                <tabBarController id="8br-ch-nH8" customClass="TabBarVC" customModule="Bebeaba" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="3wf-zc-Nd0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -695,6 +676,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendario" width="16" height="16"/>
+        <image name="examesfeitos" width="16" height="16"/>
         <image name="high_importance" width="512" height="512"/>
+        <image name="home" width="16" height="16"/>
     </resources>
 </document>

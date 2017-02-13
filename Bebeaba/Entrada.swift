@@ -74,7 +74,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 let semana = item.value(forKey: "semana") as! String
                 
                // semanaU = separaData(data: semana)
-                semanaU = "12"
+                semanaU = "180"
                 
                 print("dias desde a gravidez \(semanaU)")
             }
@@ -85,22 +85,34 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
 
         
+        // Circle 1
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: self.view.frame.width/2,y: self.view.frame.height/4), radius: CGFloat(self.view.frame.width*0.35/3), startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = circlePath.cgPath
+        
+        //change the fill color
+        shapeLayer.fillColor = UIColor(red: 255/255, green: 176/255, blue: 215/255, alpha: 1.0).cgColor
+        //you can change the stroke color
+        shapeLayer.strokeColor = UIColor(red: 255/255, green: 176/255, blue: 215/255, alpha: 1.0).cgColor
+        //you can change the line width
+        shapeLayer.lineWidth = 5.0
+        
+        view.layer.addSublayer(shapeLayer)
+        
         
         // Animação programática
-        progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/2, height: self.view.frame.width/2))
+        progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: self.view.frame.width*0.35, height: self.view.frame.width*0.35))
         progress.startAngle = -90
-        
-        
-        /*progress.progressThickness = 0.2
+        progress.trackColor = UIColor(red: 255/255, green: 176/255, blue: 215/255, alpha: 1.0)
+        progress.progressThickness = 0.2
         progress.trackThickness = 0.6
         progress.clockwise = true
         progress.gradientRotateSpeed = 2
         progress.roundedCorners = false
         progress.glowMode = .forward
-        progress.glowAmount = 0.9*/
-        
-
-        progress.set(colors: UIColor.cyan ,UIColor.white, UIColor.magenta, UIColor.white, UIColor.orange)
+        progress.glowAmount = 0.9
+        progress.set(colors: UIColor.white)
         progress.center = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/4)
         
         ang = Double(Double(semanaU)!*360.0/tempototal)
@@ -131,33 +143,37 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         view.addSubview(progress)
         
         
-        //Ícone do centro da animação
-        var bgImage: UIImageView!
-        let image : UIImage = UIImage(named:"homeicone.png")!
-        bgImage = UIImageView(image: image)
-        bgImage.frame = CGRect(x: self.view.frame.width/4 + 5, y: self.view.frame.width/4 - 15, width: self.view.frame.width/2 - 10, height: self.view.frame.width/2 - 10)
-        view.addSubview(bgImage)
-        
         
         // Label programática semanas
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
-        label.center = CGPoint(x: progress.center.x, y: progress.center.y - self.view.frame.width/4 - 10)
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+        //label.backgroundColor = UIColor.black
+        label.center = CGPoint(x: progress.center.x, y: progress.center.y)
         label.textAlignment = NSTextAlignment.center
-        label.text = "\(porc)% da Gravidez"
-        label.font = UIFont(name: "Avenir-Light", size: 18.0)
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.text = "\(porc)%"
+        label.font = UIFont(name: "Avenir-Light", size: 50.0)
+        label.font = UIFont.boldSystemFont(ofSize: 25)
         label.textColor = UIColor(red: 115/255.0, green: 53/255.0, blue: 121/255.0, alpha: 1.0)
         self.view.addSubview(label)
         
+        // Image
+        var bgImage: UIImageView!
+        let image : UIImage = UIImage(named:"babyfeet.png")!
+        bgImage = UIImageView(image: image)
+        bgImage.frame = CGRect(x: self.view.frame.width/2 - 38, y: self.view.frame.width/4 + 82, width: self.view.frame.width/16, height: self.view.frame.width/16)
+        //bgImage.backgroundColor = UIColor.black
+        self.view.addSubview(bgImage)
+        
+        
         
         // Label do exame
-        let labelexame = UILabel(frame: CGRect(x: 0, y: 300, width: self.view.frame.width, height: 65))
+        let labelexame = UILabel(frame: CGRect(x: 0, y: 240, width: self.view.frame.width, height: 65))
         labelexame.textAlignment = NSTextAlignment.center
         labelexame.text = "Exames da Semana"
         labelexame.font = UIFont(name: "Avenir-Light", size: 16.0)
         labelexame.font = UIFont.boldSystemFont(ofSize: 14)
         labelexame.textColor = UIColor(red: 115/255.0, green: 53/255.0, blue: 121/255.0, alpha: 1.0)
         self.view.addSubview(labelexame)
+
 
     }
     
