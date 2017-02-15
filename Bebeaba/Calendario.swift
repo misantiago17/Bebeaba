@@ -25,7 +25,8 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     var edit = false
     var hora = NSDate()
     var diaSelecionado = NSDate()
-  
+    var todasDatas = [NSDate]()
+    
     
     // Formato de data
     fileprivate let formatter: DateFormatter = {
@@ -47,6 +48,10 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         
         ExamesDia.delegate = self
         ExamesDia.dataSource = self
+        
+        
+        
+        
 
     }
 
@@ -79,9 +84,11 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         checkAtrasados()
         
         separaDia(diaDado: dia)
+        print("Core Data: \(todasDatas.count)")
         
         ExamesDia.reloadData()
         calendar.select(Date())
+        calendar.reloadData()
         
     }
     
@@ -109,21 +116,21 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     // Coloca bolinha de evento na data
     
-    
-    let evento = ["05/09/2017","20/10/2017","10/02/2017", "27/03/2017"]
-    
    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
     
-    let day = formatter.string(from: date)
+    let day = date
     
-    var i = 0
-    
-    while i < evento.count {
-        if day == evento[i] {
+    print("todas as datas: \(todasDatas)")
+    print("count todas as datas : \(todasDatas.count)")
+ 
+    for item in todasDatas{
+        
+       if day == item as Date {
+        
             return 1
         }
-        i += 1
     }
+  
     return 0
 }
     
@@ -143,6 +150,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     // MARK:- FSCalendarDelegate
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        
         print("change page to \(self.formatter.string(from: calendar.currentPage))")
     }
     
@@ -150,6 +158,8 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         diaSelecionado = date as NSDate
         
         separaDia(diaDado: date)
+        
+        print(" did select : \(todasDatas.count)")
         ExamesDia.reloadData()
         
         if monthPosition == .previous || monthPosition == .next {
@@ -157,22 +167,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         }
     }
     
-   
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 
     //MARK: TableView
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -301,7 +296,13 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                 print("Não foi possível retirar do BD")
             }
             
+            calendar.reloadData()
+            
+            separaDia(diaDado: diaSelecionado as Date)
+            
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
         }
     }
 
@@ -389,16 +390,26 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         var tipo = ""
         
         exameDia.removeAll()
+        todasDatas.removeAll()
+        
         for item in exame{
             diaExame = (item.value(forKey: "data") as? NSDate)!
             tipo = item.value(forKey: "tipo") as! String
+            
+            todasDatas.append(diaExame)
             
             if tipo != "historico" && tipo != "preload"{
                 if compareDate(dateInitial: diaExame as Date, dateFinal: diaDado) == true {
                     exameDia += [item]
                 }
             }
+            
+           
         }
+        
+        
+    
+        
         
         print("exames totais \(exame.count)")
         print("exames do dia \(exameDia.count)")
