@@ -108,7 +108,7 @@ class Home: UIViewController, UITextFieldDelegate {
             alerta = true
             
             pregnancyWeek.text = ""
-        }*/
+        }
 
         //MARK: CoreData
         

@@ -153,14 +153,14 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         label.textColor = UIColor(red: 115/255.0, green: 53/255.0, blue: 121/255.0, alpha: 1.0)
         self.view.addSubview(label)
         
-        // Image
-        var bgImage: UIImageView!
-        let image : UIImage = UIImage(named:"babyfeet.png")!
-        bgImage = UIImageView(image: image)
-        bgImage.frame = CGRect(x: self.view.frame.width/2 - 38, y: self.view.frame.width/4 + 82, width: self.view.frame.width/16, height: self.view.frame.width/16)
-        //bgImage.backgroundColor = UIColor.black
-        self.view.addSubview(bgImage)
-        
+//        // Image
+//        var bgImage: UIImageView!
+//        //let image : UIImage = UIImage(named:"babyfeet.png")!
+//       // bgImage = UIImageView(image: image)
+//        bgImage.frame = CGRect(x: self.view.frame.width/2 - 38, y: self.view.frame.width/4 + 82, width: self.view.frame.width/16, height: self.view.frame.width/16)
+//        //bgImage.backgroundColor = UIColor.black
+//        self.view.addSubview(bgImage)
+//        
         
         
         // Label do exame
