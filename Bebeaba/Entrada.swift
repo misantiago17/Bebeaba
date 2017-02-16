@@ -30,9 +30,9 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let dataArray = data.components(separatedBy: "/")
         
         var dataSeparada = DateComponents()
-        dataSeparada.year = Int(dataArray[0])
+        dataSeparada.day = Int(dataArray[0])
         dataSeparada.month = Int(dataArray[1])
-        dataSeparada.day = Int(dataArray[2])
+        dataSeparada.year = Int(dataArray[2])
         
         let semanas = implementaSemana(data: dataSeparada)
         
@@ -42,13 +42,13 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func implementaSemana(data: DateComponents) -> Int {
         
         let cal = Calendar.current
-        var components = cal.dateComponents([.era, .year, .month, .day], from: NSDate() as Date)
+        var components = cal.dateComponents([.year, .month, .day], from: NSDate() as Date)
         var today = cal.date(from: components)
         let otherDate = cal.date(from: data)
         
-        components = cal.dateComponents([Calendar.Component.day], from: (today! as Date), to: otherDate!)
+        components = cal.dateComponents([Calendar.Component.day], from: otherDate!, to: (today! as Date))
         
-        return -components.day!
+        return components.day!
     }
     
     override func viewDidLoad() {
@@ -70,13 +70,11 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             let user = resultsUser
             
             for item in user{
+                
                 let nome = item.value(forKey: "nome") as! String
                 let semana = item.value(forKey: "semana") as! String
                 
-               // semanaU = separaData(data: semana)
-                semanaU = "12"
-                
-                print("dias desde a gravidez \(semanaU)")
+                semanaU = separaData(data: semana)
             }
             
         } catch {
