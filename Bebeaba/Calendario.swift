@@ -25,7 +25,10 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     var edit = false
     var hora = NSDate()
     var diaSelecionado = NSDate()
+    var marcou = false
+    
     var todasDatas = [NSDate]()
+  
     
     
     // Formato de data
@@ -83,8 +86,12 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         
         checkAtrasados()
         
-        separaDia(diaDado: dia)
-        print("Core Data: \(todasDatas.count)")
+        if marcou == false{
+            separaDia(diaDado: dia)
+        } else {
+            separaDia(diaDado: diaSelecionado as Date)
+            marcou = false
+        }
         
         ExamesDia.reloadData()
         calendar.select(Date())
@@ -158,8 +165,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         diaSelecionado = date as NSDate
         
         separaDia(diaDado: date)
-        
-        print(" did select : \(todasDatas.count)")
+        checkAtrasados()
         ExamesDia.reloadData()
         
         if monthPosition == .previous || monthPosition == .next {
