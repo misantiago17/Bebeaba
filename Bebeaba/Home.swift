@@ -39,10 +39,27 @@ class Home: UIViewController, UITextFieldDelegate {
 
         
     }
+    
 
     @IBAction func cadastrarUsuario(_ sender: Any) {
         let nome = name.text
         let semana = pregnancyWeek.text
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        var semanaDate = dateFormatter.date(from: pregnancyWeek.text!)
+        let today = Date()
+                
+        var diaValido = Date()
+        
+        if semanaDate != nil {
+            
+            var dateComponent = NSDateComponents()
+            dateComponent.day = 280
+            var calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier(rawValue: NSGregorianCalendar))
+            
+            diaValido = (calendar?.date(byAdding: dateComponent as DateComponents , to: semanaDate!, options: .matchLast))!
+        }
         
         if( nome!.isEmpty || semana!.isEmpty) {
             
@@ -53,19 +70,39 @@ class Home: UIViewController, UITextFieldDelegate {
             alerta = true
         }
             
-        else if(semana!.characters.count > 2) {
+        else if(semana!.characters.count < 10) {
             
-            let semanaLim = UIAlertController(title: "Alert", message: "A semana da gravidez deve ter no máximo 2 dígitos.", preferredStyle: UIAlertControllerStyle.alert)
+            let semanaLim = UIAlertController(title: "Alert", message: "A data do ultimo dia da menstruação deve estar completa.", preferredStyle: UIAlertControllerStyle.alert)
             semanaLim.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(semanaLim, animated: true, completion: nil)
             alerta = true
             
             pregnancyWeek.text = ""
         }
+
+        else if semanaDate == nil {
             
-        /*else if(Double(semana!)! > 50) {
+            let tempoLongo = UIAlertController(title: "Alert", message: "Coloque uma data válida.", preferredStyle: UIAlertControllerStyle.alert)
+            tempoLongo.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(tempoLongo, animated: true, completion: nil)
+            alerta = true
             
-            let tempoLongo = UIAlertController(title: "Alert", message: "Seu bebê já deveria ter nascido. Procure um médico.", preferredStyle: UIAlertControllerStyle.alert)
+            pregnancyWeek.text = ""
+        }
+            
+        else if semanaDate! > today {
+            
+            let tempoLongo = UIAlertController(title: "Alert", message: "Coloque uma data menor que a atual.", preferredStyle: UIAlertControllerStyle.alert)
+            tempoLongo.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(tempoLongo, animated: true, completion: nil)
+            alerta = true
+            
+            pregnancyWeek.text = ""
+        }
+        
+        else if diaValido < today {
+            
+            let tempoLongo = UIAlertController(title: "Alert", message: "Seu bebê já deveria ter nascido.", preferredStyle: UIAlertControllerStyle.alert)
             tempoLongo.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(tempoLongo, animated: true, completion: nil)
             alerta = true
@@ -96,6 +133,35 @@ class Home: UIViewController, UITextFieldDelegate {
         alerta = false
     }
     
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+        if textField == pregnancyWeek {
+            //Range.Lenth will greater than 0 if user is deleting text - Allow it to replce
+            if range.length > 0
+            {
+                return true
+            }
+            
+            //Check for max length including the spacers we added
+            if range.location >= 10
+            {
+                return false
+            }
+            
+            var originalText = pregnancyWeek.text
+            
+            //Put / space after 2 digit
+            if range.location == 2 || range.location == 5 {
+                
+                originalText?.append("/")
+                pregnancyWeek.text = originalText
+            }
+
+        }
+        
+        return true
+    }
     
     func dissmissKeyboard(){
         view.endEditing(true)
