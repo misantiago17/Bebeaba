@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		126A62C26F309BA4A1E0AD85 /* Pods_Bebeaba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7F3ACA9D7B41F59E1F0557 /* Pods_Bebeaba.framework */; };
+		568B70A11E52675000942ABC /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568B70A01E52675000942ABC /* TabBarVC.swift */; };
 		56E18D9C1E4A438E0059432C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E18D9B1E4A438E0059432C /* Home.swift */; };
 		56E18DA21E4A74EA0059432C /* NewExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E18DA11E4A74EA0059432C /* NewExam.swift */; };
 		8A59182C1E4A0E4E00ED7D01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59182B1E4A0E4E00ED7D01 /* AppDelegate.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		211F67DCFBA58C4DDFBCA48D /* Pods-Bebeaba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bebeaba.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba.release.xcconfig"; sourceTree = "<group>"; };
 		4D6F3D13474A33A67C3F90DF /* Pods-Bebeaba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bebeaba.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bebeaba/Pods-Bebeaba.debug.xcconfig"; sourceTree = "<group>"; };
+		568B70A01E52675000942ABC /* TabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		56E18D9B1E4A438E0059432C /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		56E18DA11E4A74EA0059432C /* NewExam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewExam.swift; sourceTree = "<group>"; };
 		8A5918281E4A0E4E00ED7D01 /* Bebeaba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bebeaba.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,7 @@
 				8AA99CEA1E4B4AA400BA94F0 /* ExamesFeitos.swift */,
 				8AA99CEC1E4B4ACB00BA94F0 /* Recomendados.swift */,
 				8AA99CEE1E4B54FF00BA94F0 /* TableViewCell.swift */,
+				568B70A01E52675000942ABC /* TabBarVC.swift */,
 			);
 			path = Bebeaba;
 			sourceTree = "<group>";
@@ -106,7 +109,6 @@
 		8A97DD5E1E4CA297007BF3CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8A5918321E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -246,6 +248,7 @@
 			files = (
 				56E18DA21E4A74EA0059432C /* NewExam.swift in Sources */,
 				8AA99CED1E4B4ACB00BA94F0 /* Recomendados.swift in Sources */,
+				568B70A11E52675000942ABC /* TabBarVC.swift in Sources */,
 				8A5918341E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld in Sources */,
 				8AA99CEF1E4B54FF00BA94F0 /* TableViewCell.swift in Sources */,
 				8AA99CE71E4B4A1C00BA94F0 /* Entrada.swift in Sources */,

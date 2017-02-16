@@ -14,6 +14,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var local: UILabel!
     @IBOutlet weak var data: UILabel!
     @IBOutlet weak var horario: UILabel!
+    @IBOutlet weak var atraso: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

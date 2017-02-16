@@ -27,6 +27,17 @@ class Home: UIViewController, UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(Home.dissmissKeyboard))
         view.addGestureRecognizer(tap)
         
+        // Logo Image
+        let logoImage = UIImageView(image: UIImage(named:"logo.png"))
+        logoImage.frame = CGRect(x: self.view.frame.width/3, y: 60, width: self.view.frame.width/3, height: self.view.frame.width/3)
+        self.view.addSubview(logoImage)
+        
+        // Button Image
+        let homeIcone = UIImageView(image: UIImage(named:"chocalho.png"))
+        homeIcone.frame = CGRect(x: 110, y: 365, width: 30, height: 30)
+        self.view.addSubview(homeIcone)
+
+        
     }
 
     @IBAction func cadastrarUsuario(_ sender: Any) {
@@ -52,7 +63,7 @@ class Home: UIViewController, UITextFieldDelegate {
             pregnancyWeek.text = ""
         }
             
-        else if(Double(semana!)! > 50) {
+        /*else if(Double(semana!)! > 50) {
             
             let tempoLongo = UIAlertController(title: "Alert", message: "Seu bebê já deveria ter nascido. Procure um médico.", preferredStyle: UIAlertControllerStyle.alert)
             tempoLongo.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
@@ -60,7 +71,7 @@ class Home: UIViewController, UITextFieldDelegate {
             alerta = true
             
             pregnancyWeek.text = ""
-        }
+        }*/
 
         //MARK: CoreData
         
@@ -81,27 +92,11 @@ class Home: UIViewController, UITextFieldDelegate {
                 print("error")
             }
             
-            performSegue(withIdentifier: "goHome", sender: self)
-            
-            
         }
         alerta = false
     }
     
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        
-//        if segue.identifier == "goHome" {
-//            
-//            let tabBar: UITabBarController = segue.destination as! UITabBarController
-//            let desView: Entrada = tabBar.viewControllers?.first as! Entrada
-//            
-//            desView.semanaU = pregnancyWeek.text!
-//            
-//        }
-//    }
-    
-
     func dissmissKeyboard(){
         view.endEditing(true)
     }
