@@ -27,6 +27,17 @@ class Home: UIViewController, UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(Home.dissmissKeyboard))
         view.addGestureRecognizer(tap)
         
+        // Logo Image
+        let logoImage = UIImageView(image: UIImage(named:"logo.png"))
+        logoImage.frame = CGRect(x: self.view.frame.width/3, y: 60, width: self.view.frame.width/3, height: self.view.frame.width/3)
+        self.view.addSubview(logoImage)
+        
+        // Button Image
+        let homeIcone = UIImageView(image: UIImage(named:"chocalho.png"))
+        homeIcone.frame = CGRect(x: 110, y: 365, width: 30, height: 30)
+        self.view.addSubview(homeIcone)
+
+        
     }
     
 
@@ -97,7 +108,7 @@ class Home: UIViewController, UITextFieldDelegate {
             alerta = true
             
             pregnancyWeek.text = ""
-        }
+        }*/
 
         //MARK: CoreData
         
