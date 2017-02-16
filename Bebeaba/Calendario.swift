@@ -86,15 +86,17 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         
         checkAtrasados()
         
-        if marcou == false{
-            separaDia(diaDado: dia)
-        } else {
-            separaDia(diaDado: diaSelecionado as Date)
-            marcou = false
-        }
+//        if marcou == false{
+//            separaDia(diaDado: dia)
+//        } else {
+//            separaDia(diaDado: diaSelecionado as Date)
+//            marcou = false
+//        }
         
+        separaDia(diaDado: diaSelecionado as Date)
+        //calendar.select(diaSelecionado)
+        //calendar.select(Date())
         ExamesDia.reloadData()
-        calendar.select(Date())
         calendar.reloadData()
         
     }
@@ -302,9 +304,9 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                 print("Não foi possível retirar do BD")
             }
             
-            calendar.reloadData()
-            
             separaDia(diaDado: diaSelecionado as Date)
+
+            calendar.reloadData()
             
             
             tableView.deleteRows(at: [indexPath], with: .fade)
