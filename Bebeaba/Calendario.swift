@@ -9,7 +9,7 @@
 import UIKit
 import FSCalendar
 import CoreData
-
+import MGSwipeTableCell
 
 class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDelegate, UITableViewDataSource {
 
@@ -214,74 +214,83 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         } else if (exam.value(forKey: "tipo") as! String == "atual"){
             cell.atraso.isHidden = true
         }
-//
-//        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.redColor(), callback: {
-//            (sender: MGSwipeTableCell!) -> Bool in
-//            
-//            self.managedContext.deleteObject(self.exameDia[indexPath.row])
-//            self.exameDia.removeAtIndex(indexPath.row)
-//            self.exame.removeAtIndex(indexPath.row)
-//            
-//            do {
-//                try self.managedContext.save()
-//            } catch {
-//                print("Não foi possível retirar do BD")
-//            }
-//            
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//            
-//            return true
-//        })]
-//        
-//        //                cell.rightSwipeSettings.transition = MGSwipeTransition.Rotate3D
-//        //        cell.rightExpansion.buttonIndex = 0
-//        //        cell.leftExpansion.buttonIndex = 0
-//        
-//        
-//        cell.leftButtons = [MGSwipeButton(title: "Check", icon: UIImage(named:"check.png"), backgroundColor: UIColor.greenColor(), callback: {
-//            (sender: MGSwipeTableCell!) -> Bool in
-//            
-//            let exam = self.exameDia[indexPath.row]
-//            
-//            exam.setValue("historico", forKey: "tipo")
-//            
-//            print(exam)
-//            
-//            //salva mudanças
-//            
-//            do{
-//                try self.managedContext.save()
-//            }
-//            catch {
-//                print("error")
-//            }
-//            
-//            self.exameDia.removeAtIndex(indexPath.row)
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//            
-//            return true
-//        })
-//            ,MGSwipeButton(title: "Edit", icon: UIImage(named:"fav.png"), backgroundColor: UIColor.blueColor(),callback: {
-//                (sender: MGSwipeTableCell!) -> Bool in
-//                
-//                print("eu")
-//                let exam = self.exameDia[indexPath.row]
-//                
-//                self.edit = true
-//                self.hora = exam.valueForKey("hora") as! NSDate
-//                self.performSegueWithIdentifier("MarcarExame", sender: nil)
-//                
-//                return true
-//            })
-//        ]
-//        
-//        //                cell.leftSwipeSettings.transition = MGSwipeTransition.Rotate3D
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
+
+
+        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.red, callback: {
+            (sender: MGSwipeTableCell!) -> Bool in
+            
+            context.delete(self.exameDia[indexPath.row])
+            self.exameDia.remove(at: indexPath.row)
+            self.exame.remove(at: indexPath.row)
+            
+            do {
+                try context.save()
+            } catch {
+                print("Não foi possível retirar do BD")
+            }
+            
+            //self.separaDia(diaDado: self.diaSelecionado as Date)
+            //self.calendar.reloadData()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+           // let diaSelect = self.calendar.selectedDate
+//            self.separaDia(diaDado: diaSelect as Date)
+           // self.calendar.reloadData()
+            
+            return true
+        })]
+        
+        //                cell.rightSwipeSettings.transition = MGSwipeTransition.Rotate3D
+        //        cell.rightExpansion.buttonIndex = 0
+        //        cell.leftExpansion.buttonIndex = 0
+        
+        
+        cell.leftButtons = [MGSwipeButton(title: "Check", icon: UIImage(named:"check.png"), backgroundColor: UIColor.green, callback: {
+            (sender: MGSwipeTableCell!) -> Bool in
+            
+            let exam = self.exameDia[indexPath.row]
+            
+            exam.setValue("historico", forKey: "tipo")
+            
+            print(exam)
+            
+            //salva mudanças
+            
+            do{
+                try context.save()
+            }
+            catch {
+                print("error")
+            }
+            
+            self.exameDia.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            return true
+        })
+            ,MGSwipeButton(title: "Edit", icon: UIImage(named:"fav.png"), backgroundColor: UIColor.blue,callback: {
+                (sender: MGSwipeTableCell!) -> Bool in
+                
+                let exam = self.exameDia[indexPath.row]
+                
+                self.edit = true
+                self.hora = exam.value(forKey: "hora") as! NSDate
+                self.performSegue(withIdentifier: "MarcarExame", sender: nil)
+                
+                return true
+            })
+        ]
+        
+        //                cell.leftSwipeSettings.transition = MGSwipeTransition.Rotate3D
         
         return cell
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        ExamesDia.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -289,29 +298,29 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
-        
-        if editingStyle == .delete {
-            
-            context.delete(exame[indexPath.row])
-            exame.remove(at: indexPath.row)
-            exameDia.remove(at: indexPath.row)
-            do {
-                try context.save()
-            } catch {
-                print("Não foi possível retirar do BD")
-            }
-            
-            separaDia(diaDado: diaSelecionado as Date)
-
-            calendar.reloadData()
-            
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-        }
+//        
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
+//        
+//        if editingStyle == .delete {
+//            
+//            context.delete(exame[indexPath.row])
+//            exame.remove(at: indexPath.row)
+//            exameDia.remove(at: indexPath.row)
+//            do {
+//                try context.save()
+//            } catch {
+//                print("Não foi possível retirar do BD")
+//            }
+//            
+//            separaDia(diaDado: diaSelecionado as Date)
+//
+//            calendar.reloadData()
+//            
+//            
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//            
+//        }
     }
 
     

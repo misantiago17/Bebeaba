@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import KDCircularProgress
+import MGSwipeTableCell
 
 class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -184,12 +185,11 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewCell
         
-        //        if cell == nil
-        //        {
-        //            cell = MGSwipeTableCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
-        //        }
+//        if cell == nil {
+//            cell = MGSwipeTableCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
+//        }
         
         let exam = arrayExameSemana[indexPath.row]
         
@@ -221,89 +221,16 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             cell.atraso.isHidden = true
         }
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
         
         //PRECISA DO MGSWIPE
-//        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.redColor(), callback: {
-//            (sender: MGSwipeTableCell!) -> Bool in
-//            
-//            self.managedContext.deleteObject(self.exameSemana[indexPath.row])
-//            self.exameSemana.removeAtIndex(indexPath.row)
-//            do {
-//                try self.managedContext.save()
-//            } catch {
-//                print("Não foi possível retirar do BD")
-//            }
-//            
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//            
-//            return true
-//        })]
-//        
-//        //                cell.rightSwipeSettings.transition = MGSwipeTransition.Rotate3D
-//        //        cell.rightExpansion.buttonIndex = 0
-//        //        cell.leftExpansion.buttonIndex = 0
-//        
-//        
-//        cell.leftButtons = [MGSwipeButton(title: "Check", icon: UIImage(named:"check.png"), backgroundColor: UIColor.greenColor(), callback: {
-//            (sender: MGSwipeTableCell!) -> Bool in
-//            
-//            let exam = self.exameSemana[indexPath.row]
-//            
-//            exam.setValue("historico", forKey: "tipo")
-//            
-//            print(exam)
-//            
-//            //salva mudanças
-//            
-//            do{
-//                try self.managedContext.save()
-//            }
-//            catch {
-//                print("error")
-//            }
-//            
-//            self.exameSemana.removeAtIndex(indexPath.row)
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//            
-//            return true
-//        })
-//            ,MGSwipeButton(title: "Edit", icon: UIImage(named:"fav.png"), backgroundColor: UIColor.blueColor(),callback: {
-//                (sender: MGSwipeTableCell!) -> Bool in
-//                
-//                print("eu")
-//                let exam = self.exameSemana[indexPath.row]
-//                
-//                self.edit = true
-//                self.dia = exam.valueForKey("data") as! NSDate
-//                self.hora = exam.valueForKey("hora") as! NSDate
-//                self.performSegueWithIdentifier("MarcarExame", sender: nil)
-//                
-//                return true
-//            })
-//        ]
-//        
-//        //                cell.leftSwipeSettings.transition = MGSwipeTransition.Rotate3D
-//        
-        return cell
-        
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
-        
-        if editingStyle == .delete {
+        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.red, callback: {
+            (sender: MGSwipeTableCell!) -> Bool in
             
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
+            context.delete(self.arrayExameSemana[indexPath.row])
+            self.arrayExameSemana.remove(at: indexPath.row)
             
-            context.delete(arrayExameSemana[indexPath.row])
-            arrayExameSemana.remove(at: indexPath.row)
             do {
                 try context.save()
             } catch {
@@ -311,7 +238,84 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
             
             tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+            
+            return true
+        })]
+        
+        //                cell.rightSwipeSettings.transition = MGSwipeTransition.Rotate3D
+        //        cell.rightExpansion.buttonIndex = 0
+        //        cell.leftExpansion.buttonIndex = 0
+        
+        
+        cell.leftButtons = [MGSwipeButton(title: "Check", icon: UIImage(named:"check.png"), backgroundColor: UIColor.green, callback: {
+            (sender: MGSwipeTableCell!) -> Bool in
+            
+            let exam = self.arrayExameSemana[indexPath.row]
+            
+            exam.setValue("historico", forKey: "tipo")
+            
+            print(exam)
+            
+            //salva mudanças
+            
+            do{
+                try context.save()
+            }
+            catch {
+                print("error")
+            }
+            
+            self.arrayExameSemana.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            return true
+        })
+            ,MGSwipeButton(title: "Edit", icon: UIImage(named:"fav.png"), backgroundColor: UIColor.blue,callback: {
+                (sender: MGSwipeTableCell!) -> Bool in
+                
+                
+                let exam = self.arrayExameSemana[indexPath.row]
+                
+                self.edit = true
+                self.dia = exam.value(forKey: "data") as! NSDate
+                self.hora = exam.value(forKey: "hora") as! NSDate
+                self.performSegue(withIdentifier: "MarcarExame", sender: nil)
+                
+                return true
+            })
+        ]
+        
+        //                cell.leftSwipeSettings.transition = MGSwipeTransition.Rotate3D
+        
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        ExamesSemana.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
+//        
+//        if editingStyle == .delete {
+//            
+//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//            let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
+//            
+//            context.delete(arrayExameSemana[indexPath.row])
+//            arrayExameSemana.remove(at: indexPath.row)
+//            do {
+//                try context.save()
+//            } catch {
+//                print("Não foi possível retirar do BD")
+//            }
+//            
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
     }
     
     //MARK: Funções Auxiliares
