@@ -166,8 +166,8 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         diaSelecionado = date as NSDate
         
-        separaDia(diaDado: date)
         checkAtrasados()
+        separaDia(diaDado: date)
         ExamesDia.reloadData()
         
         if monthPosition == .previous || monthPosition == .next {
@@ -222,9 +222,29 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.red, callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             
+            let exameExcluido = self.exameDia[indexPath.row]
+            
+            var count:Int = 0
+            
+            for item in self.todasDatas {
+                if item == exameExcluido.data {
+                    self.todasDatas.remove(at: count)
+                }
+                count += 1
+            }
+            
+            count = 0
+            
+            for item in self.exame {
+                if item == exameExcluido {
+                    self.exame.remove(at: count)
+                }
+                count += 1
+            }
+            
+            //self.exame.remove(at: indexPath.row)
             context.delete(self.exameDia[indexPath.row])
             self.exameDia.remove(at: indexPath.row)
-            self.exame.remove(at: indexPath.row)
             
             do {
                 try context.save()
@@ -234,6 +254,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
             
             //self.separaDia(diaDado: self.diaSelecionado as Date)
             //self.calendar.reloadData()
+            self.calendar.reloadData()
             tableView.deleteRows(at: [indexPath], with: .fade)
            // let diaSelect = self.calendar.selectedDate
 //            self.separaDia(diaDado: diaSelect as Date)
@@ -298,29 +319,6 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
-//        
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
-//        
-//        if editingStyle == .delete {
-//            
-//            context.delete(exame[indexPath.row])
-//            exame.remove(at: indexPath.row)
-//            exameDia.remove(at: indexPath.row)
-//            do {
-//                try context.save()
-//            } catch {
-//                print("Não foi possível retirar do BD")
-//            }
-//            
-//            separaDia(diaDado: diaSelecionado as Date)
-//
-//            calendar.reloadData()
-//            
-//            
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//            
-//        }
     }
 
     
@@ -409,13 +407,13 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         exameDia.removeAll()
         todasDatas.removeAll()
         
-        for item in exame{
+        for item in exame {
+            print("coisa", item)
             diaExame = (item.value(forKey: "data") as? NSDate)!
             tipo = item.value(forKey: "tipo") as! String
             
-            todasDatas.append(diaExame)
-            
             if tipo != "historico" && tipo != "preload"{
+                todasDatas.append(diaExame)
                 if compareDate(dateInitial: diaExame as Date, dateFinal: diaDado) == true {
                     exameDia += [item]
                 }
