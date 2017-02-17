@@ -94,8 +94,6 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
 //        }
         
         separaDia(diaDado: diaSelecionado as Date)
-        //calendar.select(diaSelecionado)
-        //calendar.select(Date())
         ExamesDia.reloadData()
         calendar.reloadData()
         
@@ -129,9 +127,6 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     let day = date
     
-    print("todas as datas: \(todasDatas)")
-    print("count todas as datas : \(todasDatas.count)")
- 
     for item in todasDatas{
         
        if day == item as Date {
@@ -286,8 +281,21 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                 print("error")
             }
             
+            let exameExcluido = self.exameDia[indexPath.row]
+            
+            var count:Int = 0
+            
+            for item in self.todasDatas {
+                if item == exameExcluido.data {
+                    self.todasDatas.remove(at: count)
+                }
+                count += 1
+            }
+            
             self.exameDia.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+    
+            self.calendar.reloadData()
             
             return true
         })
