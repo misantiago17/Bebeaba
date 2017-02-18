@@ -159,7 +159,6 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
         //        }
         //        return rowCount
         return exameHistorico.count
-        return 1
     }
     
     //    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?{

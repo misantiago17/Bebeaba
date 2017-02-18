@@ -14,6 +14,8 @@ import MGSwipeTableCell
 class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var ExamesSemana: UITableView!
+    @IBOutlet weak var NomeMulher: UILabel!
+    
     var progress: KDCircularProgress!
     var tempototal = 280.0
     var ang = Double(20)
@@ -26,6 +28,8 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var edit = false
     var hora = NSDate()
     var dia = NSDate()
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     func separaData(data: String) -> String {
         let dataArray = data.components(separatedBy: "/")
@@ -44,7 +48,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let cal = Calendar.current
         var components = cal.dateComponents([.year, .month, .day], from: NSDate() as Date)
-        var today = cal.date(from: components)
+        let today = cal.date(from: components)
         let otherDate = cal.date(from: data)
         
         components = cal.dateComponents([Calendar.Component.day], from: otherDate!, to: (today! as Date))
@@ -52,15 +56,8 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return components.day!
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func getUser() {
         
-        ExamesSemana.delegate = self
-        ExamesSemana.dataSource = self
-        
-        //pega valores da ultima semana colocada
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
         
         let requestUser: NSFetchRequest<User> = User.fetchRequest()
@@ -70,19 +67,31 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             let resultsUser = try context.fetch(requestUser)
             let user = resultsUser
             
+            print(user.count)
+            
             for item in user{
                 
                 let nome = item.value(forKey: "nome") as! String
                 let semana = item.value(forKey: "semana") as! String
                 
+                NomeMulher.text = "Olá, \(nome)"
                 semanaU = separaData(data: semana)
+                
             }
             
         } catch {
             print("Não foi possivel resgatar dados")
         }
         
-
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        ExamesSemana.delegate = self
+        ExamesSemana.dataSource = self
+        
+        getUser()
         
         // Circle 1
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: self.view.frame.width/2,y: self.view.frame.height/4), radius: CGFloat(self.view.frame.width*0.35/3), startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
@@ -185,7 +194,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewCell
         
 //        if cell == nil {
 //            cell = MGSwipeTableCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
@@ -333,7 +342,6 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        
 //        if (arrayExameSemana.count == 0){
 //            self.labelexame.text = "Não há exames essa semana."
 //            self.ExamesSemana.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -343,11 +351,12 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
 //            self.SemanaTableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
 //        }
         
+        getUser()
+        
         edit = false
         
         //COREDATA
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
         
         let fetchRequest: NSFetchRequest<Exame> = Exame.fetchRequest()

@@ -11,6 +11,7 @@
 		568B70A11E52675000942ABC /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568B70A01E52675000942ABC /* TabBarVC.swift */; };
 		56E18D9C1E4A438E0059432C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E18D9B1E4A438E0059432C /* Home.swift */; };
 		56E18DA21E4A74EA0059432C /* NewExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E18DA11E4A74EA0059432C /* NewExam.swift */; };
+		8A17C8EB1E58690300AD2BAA /* ConfiguracoesUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A17C8EA1E58690300AD2BAA /* ConfiguracoesUsuario.swift */; };
 		8A59182C1E4A0E4E00ED7D01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59182B1E4A0E4E00ED7D01 /* AppDelegate.swift */; };
 		8A5918311E4A0E4E00ED7D01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A59182F1E4A0E4E00ED7D01 /* Main.storyboard */; };
 		8A5918341E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A5918321E4A0E4E00ED7D01 /* Bebeaba.xcdatamodeld */; };
@@ -29,6 +30,7 @@
 		568B70A01E52675000942ABC /* TabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		56E18D9B1E4A438E0059432C /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		56E18DA11E4A74EA0059432C /* NewExam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewExam.swift; sourceTree = "<group>"; };
+		8A17C8EA1E58690300AD2BAA /* ConfiguracoesUsuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfiguracoesUsuario.swift; sourceTree = "<group>"; };
 		8A5918281E4A0E4E00ED7D01 /* Bebeaba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bebeaba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A59182B1E4A0E4E00ED7D01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A5918301E4A0E4E00ED7D01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				8AA99CEC1E4B4ACB00BA94F0 /* Recomendados.swift */,
 				8AA99CEE1E4B54FF00BA94F0 /* TableViewCell.swift */,
 				568B70A01E52675000942ABC /* TabBarVC.swift */,
+				8A17C8EA1E58690300AD2BAA /* ConfiguracoesUsuario.swift */,
 			);
 			path = Bebeaba;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				8AA99CE91E4B4A4100BA94F0 /* Calendario.swift in Sources */,
 				8AA99CEB1E4B4AA400BA94F0 /* ExamesFeitos.swift in Sources */,
 				8A59182C1E4A0E4E00ED7D01 /* AppDelegate.swift in Sources */,
+				8A17C8EB1E58690300AD2BAA /* ConfiguracoesUsuario.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
