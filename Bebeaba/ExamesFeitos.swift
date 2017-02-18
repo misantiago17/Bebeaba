@@ -141,6 +141,11 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
         return /*SectionName.count*/ 1
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Exames Feitos"
+    }
+
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //        var rowCount = 0
         //        if section == 0 {

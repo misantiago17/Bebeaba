@@ -403,27 +403,27 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nF6-Iv-dAa">
-                                                    <rect key="frame" x="8" y="1" width="280" height="21"/>
+                                                    <rect key="frame" x="8" y="1" width="254" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Local" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oje-i3-pjw">
-                                                    <rect key="frame" x="8" y="22" width="268" height="21"/>
+                                                    <rect key="frame" x="8" y="22" width="254" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Horario" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZb-xr-Ogp">
-                                                    <rect key="frame" x="284" y="22" width="83" height="21"/>
+                                                    <rect key="frame" x="270" y="22" width="97" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erf-OQ-3wJ">
-                                                    <rect key="frame" x="284" y="1" width="83" height="21"/>
+                                                    <rect key="frame" x="270" y="1" width="97" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="83" id="Lws-Ei-OtL"/>
+                                                        <constraint firstAttribute="width" constant="97" id="Lws-Ei-OtL"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -435,7 +435,7 @@
                                                 <constraint firstItem="xZb-xr-Ogp" firstAttribute="leading" secondItem="oje-i3-pjw" secondAttribute="trailing" constant="8" symbolic="YES" id="R5u-UO-t9G"/>
                                                 <constraint firstItem="oje-i3-pjw" firstAttribute="baseline" secondItem="xZb-xr-Ogp" secondAttribute="baseline" id="V8z-pl-zvf"/>
                                                 <constraint firstAttribute="bottom" secondItem="oje-i3-pjw" secondAttribute="bottom" id="Xs8-pq-Nx2"/>
-                                                <constraint firstItem="erf-OQ-3wJ" firstAttribute="leading" secondItem="nF6-Iv-dAa" secondAttribute="trailing" constant="-4" id="ZTg-gD-2vX"/>
+                                                <constraint firstItem="erf-OQ-3wJ" firstAttribute="leading" secondItem="nF6-Iv-dAa" secondAttribute="trailing" constant="8" id="ZTg-gD-2vX"/>
                                                 <constraint firstItem="erf-OQ-3wJ" firstAttribute="trailing" secondItem="d7z-u5-GF1" secondAttribute="trailingMargin" id="fGt-aR-3PM"/>
                                                 <constraint firstItem="nF6-Iv-dAa" firstAttribute="leading" secondItem="d7z-u5-GF1" secondAttribute="leadingMargin" id="iCA-cj-j1X"/>
                                                 <constraint firstItem="erf-OQ-3wJ" firstAttribute="trailing" secondItem="xZb-xr-Ogp" secondAttribute="trailing" id="ihY-jT-tx8"/>

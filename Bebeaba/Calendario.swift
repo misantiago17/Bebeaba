@@ -263,7 +263,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         //        cell.leftExpansion.buttonIndex = 0
         
         
-        cell.leftButtons = [MGSwipeButton(title: "Check", icon: UIImage(named:"check.png"), backgroundColor: UIColor.green, callback: {
+        cell.rightButtons = [MGSwipeButton(title: "Check", icon: UIImage(named:"check.png"), backgroundColor: UIColor.green, callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             
             let exam = self.exameDia[indexPath.row]
