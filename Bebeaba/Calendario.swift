@@ -488,8 +488,20 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         
     }
     
+    func verificaDia() {
+        if ((diaSelecionado as Date) < Date()) == true {
+            
+            let tempoLongo = UIAlertController(title: "Alert", message: "A data selecionada é anterior a data atual.", preferredStyle: UIAlertControllerStyle.alert)
+            tempoLongo.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(tempoLongo, animated: true, completion: nil)
+            
+        }
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        verificaDia()
         
         if(segue.identifier == "MarcarExame") {
             let vc = segue.destination as! NewExam
