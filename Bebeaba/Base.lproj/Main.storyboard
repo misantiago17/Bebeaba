@@ -131,6 +131,7 @@
                                             <outlet property="horario" destination="V2B-Vn-c0g" id="ynk-cJ-b4G"/>
                                             <outlet property="local" destination="9Qo-6I-fxH" id="19B-17-Dh9"/>
                                             <outlet property="nome" destination="Lad-Ka-Ogi" id="WnS-CX-uea"/>
+                                            <segue destination="7gV-to-HVM" kind="show" identifier="detalhes" id="9Vl-G3-SFE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -368,7 +369,106 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRs-Az-ijh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6" y="1618"/>
+            <point key="canvasLocation" x="6" y="1665"/>
+        </scene>
+        <!--Detalhes-->
+        <scene sceneID="hiE-6B-UwM">
+            <objects>
+                <viewController id="7gV-to-HVM" customClass="Detalhes" customModule="Bebeaba" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iyP-fk-hMb"/>
+                        <viewControllerLayoutGuide type="bottom" id="cNl-M4-CcJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rf3-M9-MoL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1k-hL-AAL">
+                                <rect key="frame" x="16" y="20" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Detalhes" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juY-b4-lJT">
+                                <rect key="frame" x="16" y="60" width="343" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Local" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RD-Bu-6mC">
+                                <rect key="frame" x="16" y="122" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99j-4t-BfN">
+                                <rect key="frame" x="16" y="178" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="hora" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRB-EN-MNw">
+                                <rect key="frame" x="16" y="207" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Id-nn-HDs">
+                                <rect key="frame" x="24" y="20" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="X"/>
+                                <connections>
+                                    <action selector="Voltar:" destination="7gV-to-HVM" eventType="touchUpInside" id="ehG-uI-T6t"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="high_importance" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-JA-g7Q">
+                                <rect key="frame" x="16" y="252" width="29" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Atrasado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tS7-j6-fbq">
+                                <rect key="frame" x="53" y="256" width="69" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Kyp-WR-sxH">
+                                <rect key="frame" x="16" y="318" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="trocaTipo:" destination="7gV-to-HVM" eventType="valueChanged" id="oeq-dC-5bN"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Exame Feito" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chd-NU-JSQ">
+                                <rect key="frame" x="72" y="323" width="94" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="atrasoImg" destination="bbE-JA-g7Q" id="hcw-jt-5D4"/>
+                        <outlet property="atrasoLabel" destination="tS7-j6-fbq" id="gTU-dU-CH0"/>
+                        <outlet property="data" destination="99j-4t-BfN" id="Q6J-me-MGr"/>
+                        <outlet property="detalhes" destination="juY-b4-lJT" id="rAm-DW-GCW"/>
+                        <outlet property="exameFeitoLabel" destination="chd-NU-JSQ" id="WMu-5X-8g9"/>
+                        <outlet property="exameFeitoSwitch" destination="Kyp-WR-sxH" id="FMD-E1-c9r"/>
+                        <outlet property="hora" destination="oRB-EN-MNw" id="rGD-H4-7ie"/>
+                        <outlet property="local" destination="2RD-Bu-6mC" id="P3e-jL-4zd"/>
+                        <outlet property="nome" destination="i1k-hL-AAL" id="AWr-ZN-Yst"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p6u-i5-Kcn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="752.79999999999995" y="1664.617691154423"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="iGf-va-cQQ">
@@ -440,6 +540,7 @@
                                             <outlet property="horario" destination="xZb-xr-Ogp" id="Y2O-ho-bJ3"/>
                                             <outlet property="local" destination="oje-i3-pjw" id="58A-mG-0od"/>
                                             <outlet property="nome" destination="nF6-Iv-dAa" id="8PO-OX-YqW"/>
+                                            <segue destination="7gV-to-HVM" kind="show" identifier="detalhes" id="y1K-5S-cZO"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -626,7 +727,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pbi-QR-wu6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-810" y="1618"/>
+            <point key="canvasLocation" x="-847" y="1665"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="tQN-M6-d5H">
@@ -706,6 +807,7 @@
                                             <outlet property="horario" destination="buE-Ia-kev" id="Zbj-1c-0dQ"/>
                                             <outlet property="local" destination="ol8-kZ-4yr" id="1DL-Ug-vwY"/>
                                             <outlet property="nome" destination="6Og-Bg-RJt" id="0dq-js-JnJ"/>
+                                            <segue destination="7gV-to-HVM" kind="show" identifier="detalhes" id="YJr-rL-caB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -771,4 +873,7 @@
         <image name="high_importance" width="512" height="512"/>
         <image name="home" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="y1K-5S-cZO"/>
+    </inferredMetricsTieBreakers>
 </document>

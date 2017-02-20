@@ -193,26 +193,26 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ExamesFeitos.deselectRow(at: indexPath, animated: true)
+        //ExamesFeitos.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "detalhes"){
+            print("ltra kd")
+            let indexPaths = ExamesFeitos.indexPathForSelectedRow
+            let indexPath = indexPaths! as NSIndexPath
+            let exam = exameHistorico[indexPath.row]
+            let vc = segue.destination as! Detalhes
+            
+            vc.exame = exam
+            //vc.historico = true
+        }
+    }
 
-
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if(segue.identifier == "detalhe"){
-//            let indexPaths = HistoricoTableView.indexPathForSelectedRow
-//            let indexPath = indexPaths! as NSIndexPath
-//            let exam = exameHistorico[indexPath.row]
-//            let vc = segue.destinationViewController as! ExameViewController
-//            vc.diaI = exam.valueForKey("data") as! NSDate
-//            vc.horaI = exam.valueForKey("hora") as! NSDate
-//            vc.tipoDoExame = exam.valueForKey("tipo") as! String
-//            vc.historico = true
-//        }
-//    }
 
     /*
     // MARK: - Navigation

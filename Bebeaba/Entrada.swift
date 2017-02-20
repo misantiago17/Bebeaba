@@ -301,7 +301,8 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ExamesSemana.deselectRow(at: indexPath, animated: true)
+        //ExamesSemana.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "detalhes", sender: self)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -494,7 +495,17 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     
-    //PRECISA DE CRIAR DETAIS PARA OS EXAMES
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "detalhes"){
+            print("kd")
+            let indexPaths = ExamesSemana.indexPathForSelectedRow
+            let indexPath = indexPaths! as NSIndexPath
+            let exam = arrayExameSemana[indexPath.row]
+            let vc = segue.destination as! Detalhes
+            vc.exame = exam
+        }
+    }
+    
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 //        
 //        if(segue.identifier == "MarcarExame") {
@@ -513,10 +524,10 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
 //            vc.horaI = exam.valueForKey("hora") as! NSDate
 //            vc.tipoDoExame = exam.valueForKey("tipo") as! String
 //        }
-//        //        else if(segue.identifier == "editar"){
-//        //            let vc = segue.destinationViewController as! MarcarConsulta
-//        //        }
-//    }
+        //        else if(segue.identifier == "editar"){
+        //            let vc = segue.destinationViewController as! MarcarConsulta
+        //        }
+    }
     
 
     /*
@@ -529,4 +540,4 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     */
 
-}
+

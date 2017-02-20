@@ -319,7 +319,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ExamesDia.deselectRow(at: indexPath, animated: true)
+        //ExamesDia.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -501,15 +501,13 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
             }
         }
         
-        /*else if(segue.identifier == "detalhes"){
-         ////            let indexPaths = examesTableView.indexPathForSelectedRow
-         ////            let indexPath = indexPaths! as NSIndexPath
-         ////            let exam = exameDia[indexPath.row]
-         ////            let vc = segue.destinationViewController as! ExameViewController
-         ////            vc.diaI = exam.valueForKey("data") as! NSDate
-         ////            vc.horaI = exam.valueForKey("hora") as! NSDate
-         ////            vc.tipoDoExame = exam.valueForKey("tipo") as! String
-         ////        }*/
+        else if(segue.identifier == "detalhes"){
+            let indexPaths = ExamesDia.indexPathForSelectedRow
+            let indexPath = indexPaths! as NSIndexPath
+            let exam = exameDia[indexPath.row]
+            let vc = segue.destination as! Detalhes
+            vc.exame = exam
+        }
     }
     
     
