@@ -38,17 +38,20 @@ class Recomendados: UIViewController , UITableViewDelegate, UITableViewDataSourc
         return cell
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+    
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return objectsArray.count
     }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return objectsArray[section].sectionObjects.count
     }
     
-    
+   
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return objectsArray[section].sectionName
     }
