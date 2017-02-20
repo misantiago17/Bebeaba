@@ -39,7 +39,7 @@ class TabBarVC: UITabBarController {
         if let items = tabBar.items {
             for item in items {
                 item.title = ""
-                item.imageInsets = UIEdgeInsets(top: 14, left: 8, bottom: 2, right: 8)
+                //item.imageInsets = UIEdgeInsets(top: 14, left: 8, bottom: 2, right: 8)
             }
         }
     }

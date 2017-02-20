@@ -1,56 +1,69 @@
-
 //
-//  Home.swift
+//  ConfiguracoesUsuario.swift
 //  Bebeaba
 //
-//  Created by Alline Pedreira on 07/02/17.
+//  Created by Michelle Beadle on 18/02/17.
 //  Copyright © 2017 Michelle Beadle. All rights reserved.
 //
 
 import UIKit
-import TextFieldEffects
 import CoreData
+import TextFieldEffects
 
-class Home: UIViewController, UITextFieldDelegate {
+class ConfiguracoesUsuario: UIViewController, UITextFieldDelegate {
+
+    @IBOutlet weak var nome: AkiraTextField!
+    @IBOutlet weak var ultimaData: AkiraTextField!
     
-    
-    @IBOutlet weak var name: AkiraTextField!
-    @IBOutlet weak var pregnancyWeek: AkiraTextField!
-    
-     var alerta = false
+    var alerta = false
+    var nomeOrig = ""
+    var semOrig = ""
+    var usuario = User()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        name.delegate = self
-        pregnancyWeek.delegate = self
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(Home.dissmissKeyboard))
-        view.addGestureRecognizer(tap)
-        
-        // Logo Image
-        let logoImage = UIImageView(image: UIImage(named:"logo.png"))
-        logoImage.frame = CGRect(x: self.view.frame.width/3, y: 60, width: self.view.frame.width/3, height: self.view.frame.width/3)
-        self.view.addSubview(logoImage)
-        
-        // Button Image
-        let homeIcone = UIImageView(image: UIImage(named:"chocalho.png"))
-        homeIcone.frame = CGRect(x: 110, y: 365, width: 30, height: 30)
-        self.view.addSubview(homeIcone)
+        nome.delegate = self
+        ultimaData.delegate = self
 
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
         
+        let requestUser: NSFetchRequest<User> = User.fetchRequest()
+        
+        do {
+            
+            let resultsUser = try context.fetch(requestUser)
+            let user = resultsUser
+            
+            for item in user {
+                
+                let nomeM = item.value(forKey: "nome") as! String
+                let semana = item.value(forKey: "semana") as! String
+                
+                nomeOrig = nomeM
+                semOrig = semana
+                
+                nome.text = nomeM
+                ultimaData.text = semana
+                
+                usuario = item
+            }
+            
+        } catch {
+            print("Não foi possivel resgatar dados")
+        }
     }
-    
 
-    @IBAction func cadastrarUsuario(_ sender: Any) {
-        let nome = name.text
-        let semana = pregnancyWeek.text
+    @IBAction func salvar(_ sender: Any) {
+        let newName = nome.text
+        let newDate = ultimaData.text
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        let semanaDate = dateFormatter.date(from: pregnancyWeek.text!)
+        let semanaDate = dateFormatter.date(from: ultimaData.text!)
         let today = Date()
-                
+        
         var diaValido = Date()
         
         if semanaDate != nil {
@@ -62,7 +75,10 @@ class Home: UIViewController, UITextFieldDelegate {
             diaValido = (calendar?.date(byAdding: dateComponent as DateComponents , to: semanaDate!, options: .matchLast))!
         }
         
-        if( nome!.isEmpty || semana!.isEmpty) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
+        
+        if( newName!.isEmpty || newDate!.isEmpty) {
             
             let nada = UIAlertController(title: "Alert", message: "Há campos não preenchidos", preferredStyle: UIAlertControllerStyle.alert)
             nada.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
@@ -71,16 +87,16 @@ class Home: UIViewController, UITextFieldDelegate {
             alerta = true
         }
             
-        else if(semana!.characters.count < 10) {
+        else if(newDate!.characters.count < 10) {
             
             let semanaLim = UIAlertController(title: "Alert", message: "A data do ultimo dia da menstruação deve estar completa.", preferredStyle: UIAlertControllerStyle.alert)
             semanaLim.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(semanaLim, animated: true, completion: nil)
             alerta = true
             
-            pregnancyWeek.text = ""
+            ultimaData.text = ""
         }
-
+            
         else if semanaDate == nil {
             
             let tempoLongo = UIAlertController(title: "Alert", message: "Coloque uma data válida.", preferredStyle: UIAlertControllerStyle.alert)
@@ -88,7 +104,7 @@ class Home: UIViewController, UITextFieldDelegate {
             self.present(tempoLongo, animated: true, completion: nil)
             alerta = true
             
-            pregnancyWeek.text = ""
+            ultimaData.text = ""
         }
             
         else if semanaDate! > today {
@@ -98,9 +114,9 @@ class Home: UIViewController, UITextFieldDelegate {
             self.present(tempoLongo, animated: true, completion: nil)
             alerta = true
             
-            pregnancyWeek.text = ""
+            ultimaData.text = ""
         }
-        
+            
         else if diaValido < today {
             
             let tempoLongo = UIAlertController(title: "Alert", message: "Seu bebê já deveria ter nascido.", preferredStyle: UIAlertControllerStyle.alert)
@@ -108,20 +124,14 @@ class Home: UIViewController, UITextFieldDelegate {
             self.present(tempoLongo, animated: true, completion: nil)
             alerta = true
             
-            pregnancyWeek.text = ""
+            ultimaData.text = ""
         }
-
-        //MARK: CoreData
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
-        
-        if(alerta == false){
-            let newUser = NSEntityDescription.insertNewObject(forEntityName: "User", into: context) as NSManagedObject
+        if(alerta == false) {
             
-            newUser.setValue(name.text, forKey: "nome")
-            newUser.setValue(pregnancyWeek.text, forKey: "semana")
-            
+            usuario.setValue(nome.text, forKey: "nome")
+            usuario.setValue(ultimaData.text, forKey: "semana")
+                        
             //salva usuário
             
             do {
@@ -130,14 +140,21 @@ class Home: UIViewController, UITextFieldDelegate {
                 print("error")
             }
             
-        }
         alerta = false
+        
+        if alerta == false {
+            dismiss(animated: true, completion: nil)
+        }
+
     }
     
+    func dissmissKeyboard(){
+        view.endEditing(true)
+    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
-        if textField == pregnancyWeek {
+        if textField == ultimaData {
             //Range.Lenth will greater than 0 if user is deleting text - Allow it to replce
             if range.length > 0
             {
@@ -150,27 +167,35 @@ class Home: UIViewController, UITextFieldDelegate {
                 return false
             }
             
-            var originalText = pregnancyWeek.text
+            var originalText = ultimaData.text
             
             //Put / space after 2 digit
             if range.location == 2 || range.location == 5 {
                 
                 originalText?.append("/")
-                pregnancyWeek.text = originalText
+                ultimaData.text = originalText
             }
-
+            
         }
         
         return true
     }
-    
-    func dissmissKeyboard(){
-        view.endEditing(true)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }

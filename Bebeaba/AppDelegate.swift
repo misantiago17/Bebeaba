@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        login()
         return true
     }
 
@@ -42,6 +43,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+    
+
+    func login() {
+            
+        // Verifica em qual view o app inicializa
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
+        
+        let requestUser: NSFetchRequest<User> = User.fetchRequest()
+        
+        do {
+            
+            let resultsUser = try context.fetch(requestUser)
+            let user = resultsUser
+            
+            for item in user{
+                
+                let nome = item.value(forKey: "nome") as! String
+                
+                
+                
+                if nome.isEmpty == false {
+                    print("TAB BAR")
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let tabVC = storyboard.instantiateViewController(withIdentifier: "tabVC") as! TabBarVC
+                    window?.rootViewController = tabVC
+                }
+                
+            }
+            
+        } catch {
+            print("Não foi possivel resgatar dados")
+        }
+    
+        
+        
     }
 
     // MARK: - Core Data stack
