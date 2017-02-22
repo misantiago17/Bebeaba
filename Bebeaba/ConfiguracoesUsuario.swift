@@ -23,6 +23,11 @@ class ConfiguracoesUsuario: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "Rectangle 3")
+        self.view.insertSubview(backgroundImage, at: 0)
+
+        
         nome.delegate = self
         ultimaData.delegate = self
 

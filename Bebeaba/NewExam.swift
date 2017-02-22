@@ -33,6 +33,11 @@ class NewExam: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "Rectangle 3")
+        self.view.insertSubview(backgroundImage, at: 0)
+
+        
         name.delegate = self
         details.delegate = self
         local.delegate = self

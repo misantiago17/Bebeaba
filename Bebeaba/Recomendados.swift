@@ -25,6 +25,11 @@ class Recomendados: UIViewController , UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "Rectangle 3")
+        self.view.insertSubview(backgroundImage, at: 0)
+
+        
         ExamesRecomendados.delegate = self
         ExamesRecomendados.dataSource = self
 

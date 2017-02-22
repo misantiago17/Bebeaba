@@ -39,6 +39,11 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
     //MARK: Preenche os arrays de exames
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "Rectangle 3")
+        self.view.insertSubview(backgroundImage, at: 0)
+
        
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

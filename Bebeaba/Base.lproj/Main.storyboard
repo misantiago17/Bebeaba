@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a3C-ue-f9J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E154a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8br-ch-nH8">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -66,7 +66,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eiZ-hG-MgV">
                                 <rect key="frame" x="0.0" y="231" width="320" height="288"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eiZ-hG-MgV" secondAttribute="height" multiplier="75:56" id="Cq0-et-NeQ"/>
                                     <constraint firstAttribute="height" constant="280" id="ckg-Kk-MmV"/>
@@ -182,10 +182,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 3" translatesAutoresizingMaskIntoConstraints="NO" id="1iv-Kz-2vs">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T8l-hQ-wmo" customClass="AkiraTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T8l-hQ-wmo" customClass="AkiraTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="16" y="182" width="288" height="50"/>
                                 <color key="tintColor" red="1" green="0.69019607839999997" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -206,7 +203,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ultima data da menstruação" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kwe-Ps-YRS" customClass="AkiraTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ultima data da menstruação" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kwe-Ps-YRS" customClass="AkiraTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="16" y="240" width="288" height="50"/>
                                 <color key="tintColor" red="0.93585526320000001" green="0.73630839650000002" blue="0.96558902140000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -227,7 +224,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Agrupar 1" translatesAutoresizingMaskIntoConstraints="NO" id="7ek-Af-CnU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Agrupar 1" translatesAutoresizingMaskIntoConstraints="NO" id="7ek-Af-CnU">
                                 <rect key="frame" x="110" y="28" width="93" height="132"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="93" id="39F-Nc-YLB"/>
@@ -235,7 +232,7 @@
                                     <constraint firstAttribute="height" constant="132" id="TCL-R9-8tW"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXI-h0-cWj">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXI-h0-cWj">
                                 <rect key="frame" x="106" y="298" width="100" height="71"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Bem-vinda">
@@ -249,18 +246,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="72L-XP-dr6" firstAttribute="top" secondItem="1iv-Kz-2vs" secondAttribute="bottom" id="DZd-dk-928"/>
                             <constraint firstItem="T8l-hQ-wmo" firstAttribute="top" secondItem="7ek-Af-CnU" secondAttribute="bottom" constant="22" id="Jcb-2y-9Bj"/>
-                            <constraint firstItem="1iv-Kz-2vs" firstAttribute="leading" secondItem="Bi9-HQ-aoC" secondAttribute="leading" id="KXb-fK-MUD"/>
                             <constraint firstItem="LXI-h0-cWj" firstAttribute="top" secondItem="kwe-Ps-YRS" secondAttribute="bottom" constant="8" id="LHA-HK-Z3w"/>
-                            <constraint firstItem="1iv-Kz-2vs" firstAttribute="leading" secondItem="LXI-h0-cWj" secondAttribute="trailing" constant="-206" id="NMM-7t-pu4"/>
-                            <constraint firstItem="1iv-Kz-2vs" firstAttribute="top" secondItem="Bi9-HQ-aoC" secondAttribute="top" id="YPr-QZ-IKp"/>
-                            <constraint firstItem="kwe-Ps-YRS" firstAttribute="leading" secondItem="1iv-Kz-2vs" secondAttribute="trailing" constant="-304" id="lGt-IY-Js0"/>
                             <constraint firstItem="kwe-Ps-YRS" firstAttribute="top" secondItem="T8l-hQ-wmo" secondAttribute="bottom" constant="8" id="puA-at-PHH"/>
-                            <constraint firstItem="T8l-hQ-wmo" firstAttribute="leading" secondItem="1iv-Kz-2vs" secondAttribute="trailing" constant="-304" id="sP9-Dc-6ep"/>
-                            <constraint firstItem="1iv-Kz-2vs" firstAttribute="top" secondItem="7ek-Af-CnU" secondAttribute="bottom" constant="-160" id="wfb-Mg-a1F"/>
-                            <constraint firstAttribute="trailing" secondItem="1iv-Kz-2vs" secondAttribute="trailing" id="yqj-yd-rJi"/>
-                            <constraint firstItem="1iv-Kz-2vs" firstAttribute="leading" secondItem="7ek-Af-CnU" secondAttribute="trailing" constant="-203" id="zj3-p0-dXt"/>
                         </constraints>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
@@ -778,10 +766,11 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hsd-n7-Rmr">
                                 <rect key="frame" x="0.0" y="241" width="320" height="278"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="278" id="Kna-7S-iiE"/>
                                 </constraints>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="gYR-Id-4Cp" customClass="TableViewCell" customModule="Bebeaba" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -836,6 +825,7 @@
                                                 <constraint firstItem="6Og-Bg-RJt" firstAttribute="top" secondItem="Ske-Y5-Me5" secondAttribute="top" id="zXL-yR-68R"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                         <connections>
                                             <outlet property="atraso" destination="J31-Vf-rFg" id="Wjk-tk-xsX"/>
                                             <outlet property="data" destination="ePS-GU-nli" id="3SI-r9-z84"/>
@@ -907,7 +897,6 @@
     <resources>
         <image name="Agrupar 1" width="272" height="380"/>
         <image name="Camada 0" width="75" height="75"/>
-        <image name="Rectangle 3" width="320" height="568"/>
         <image name="Settings-500" width="86" height="86"/>
         <image name="calendario" width="90" height="93"/>
         <image name="cancel" width="67" height="67"/>
@@ -917,6 +906,6 @@
         <image name="note" width="104" height="104"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YJr-rL-caB"/>
+        <segue reference="y1K-5S-cZO"/>
     </inferredMetricsTieBreakers>
 </document>
