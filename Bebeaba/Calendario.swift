@@ -27,6 +27,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     var hora = NSDate()
     var diaSelecionado = NSDate()
     var marcou = false
+    var anterior = false
     
     var todasDatas = [NSDate]()
     
@@ -155,6 +156,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        
         diaSelecionado = date as NSDate
         
         checkAtrasados()
@@ -494,13 +496,20 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     }
     
     func verificaDia() {
-        if ((diaSelecionado as Date) < Date()) == true {
-            
-            let tempoLongo = UIAlertController(title: "Alert", message: "A data selecionada é anterior a data atual.", preferredStyle: UIAlertControllerStyle.alert)
-            tempoLongo.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self.present(tempoLongo, animated: true, completion: nil)
-            
+        
+        let calendario = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+        
+        let diaAnterior = calendario.isDateInToday(diaSelecionado as Date)
+        
+        if diaAnterior == false {
+            if (diaSelecionado as Date) < Date() {
+                let tempoLongo = UIAlertController(title: "Alert", message: "A data selecionada é anterior a data atual.", preferredStyle: UIAlertControllerStyle.alert)
+                tempoLongo.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(tempoLongo, animated: true, completion: nil)
+
+            }
         }
+        
     }
     
     

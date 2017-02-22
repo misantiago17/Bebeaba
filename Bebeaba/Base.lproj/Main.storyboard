@@ -247,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8SA-xG-ExA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-767" y="139"/>
+            <point key="canvasLocation" x="-767.20000000000005" y="138.98050974512745"/>
         </scene>
         <!--New Exam-->
         <scene sceneID="26B-VE-6g2">
@@ -880,6 +880,6 @@
         <image name="home" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y1K-5S-cZO"/>
+        <segue reference="9Vl-G3-SFE"/>
     </inferredMetricsTieBreakers>
 </document>
