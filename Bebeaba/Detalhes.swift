@@ -20,6 +20,7 @@ class Detalhes: UIViewController {
     @IBOutlet weak var exameFeitoLabel: UILabel!
     @IBOutlet weak var atrasoImg: UIImageView!
     @IBOutlet weak var atrasoLabel: UILabel!
+    @IBOutlet var viewDetalhes: UIView!
     
     var exame = Exame()
     
@@ -33,6 +34,9 @@ class Detalhes: UIViewController {
             exameFeitoSwitch.isHidden = true
             exameFeitoLabel.isHidden = true
         }
+        
+        
+         viewDetalhes.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
 
     }
     

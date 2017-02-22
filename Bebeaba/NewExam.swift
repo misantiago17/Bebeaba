@@ -18,6 +18,12 @@ class NewExam: UIViewController, UITextFieldDelegate{
 
     @IBOutlet weak var hora: UIDatePicker!
     
+    
+    
+    
+    
+    
+    
     var data = NSDate()
     var edit = false
     var exame = [Exame]()
