@@ -74,9 +74,10 @@ class Detalhes: UIViewController {
         
     }
     
-    @IBAction func Voltar(_ sender: Any) {
+    @IBAction func Retornar(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
 
     @IBAction func trocaTipo(_ sender: Any) {
         if exameFeitoSwitch.isOn == true{
