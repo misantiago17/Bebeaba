@@ -13,6 +13,11 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
 
     @IBOutlet weak var ExamesFeitos: UITableView!
     
+    
+    @IBOutlet var viewExamesFeitos: UIView!
+    
+   
+    
     var exame = [Exame]()
     var exameHistorico = [Exame]()
 //    var exameTotal = [[Exame()],[Exame()],[Exame()]]
@@ -26,12 +31,15 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
         ExamesFeitos.delegate = self
         ExamesFeitos.dataSource = self
         
+        viewExamesFeitos.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
+        
     }
     
     
     //MARK: Preenche os arrays de exames
     
     override func viewWillAppear(_ animated: Bool) {
+       
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
@@ -137,6 +145,31 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     //MARK: TableView
     
+    
+    // Fundo levemente branco da celula
+ 
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        
+    }
+    
+//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: IndexPath) {
+//        cell.backgroundColor = .clear
+//    }
+    
+    
+    // Muda a cor do texto da sessão
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view:UIView, forSection: Int) {
+        if let headerTitle = view as? UITableViewHeaderFooterView {
+            headerTitle.textLabel?.textColor = UIColor(red: 231/255.0, green: 144/255.0, blue: 179/255.0, alpha: 1.0)
+
+      
+            
+        }
+    }
+ 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return /*SectionName.count*/ 1
     }

@@ -12,6 +12,9 @@ class Recomendados: UIViewController , UITableViewDelegate, UITableViewDataSourc
     
     @IBOutlet weak var ExamesRecomendados: UITableView!
     
+    @IBOutlet var viewExamesRecomendados: UIView!
+    
+    
     struct Objects {
         var sectionName: String!
         var sectionObjects: [String]!
@@ -25,9 +28,36 @@ class Recomendados: UIViewController , UITableViewDelegate, UITableViewDataSourc
         ExamesRecomendados.delegate = self
         ExamesRecomendados.dataSource = self
 
-        objectsArray = [Objects(sectionName: "Semana 2", sectionObjects: ["Primeira Consulta","Ultrassonografia", "Exame de Sangue", "Preveção do colo de útero"]), Objects(sectionName: "Semana 9", sectionObjects: ["Consulta pré-natal","Agendar ultrasom translucência nucal"]), Objects(sectionName: "Semana 13", sectionObjects: ["Avaliação odontológica"]), Objects(sectionName: "Semana 24", sectionObjects: ["Teste de tolerância a glicose", "Hemograma Completo", "Agendar ultrassom"])]
+        objectsArray = [Objects(sectionName: "1 Trimestre", sectionObjects: ["Pressão arterial","Altura uterina ", "Hemograma completo", "Tipo sanguíneo e fator Rh","VDRL", "HIV", "Hepatite B e C", "Tireóide", "Glicose", "Toxoplasmose", "Rubéola", "Citomegalovírus (ou CMV)","Ultrassom", "Urina", "Exame Ginecológico"]), Objects(sectionName: "2 Trimestre", sectionObjects: ["Pressão arterial","Altura uterina", "Ultrassom morfológico", "Urina e urocultura", "Fibronectina fetal", "Hemograma", "Glicose", "VDRL", "Toxoplasmose" ]), Objects(sectionName: "3 Trimestre", sectionObjects: ["Aferição da pressão arterial", "Medição da altura da barriga", "Ultrassom obstétrico", "Urina e urocultura", "Cardiotocografia", "Pesquisa da bactéria estreptococo B", "Perfil biofísico fetal"])]
+        
+        viewExamesRecomendados.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
+
         
     }
+ 
+    
+    // Muda a cor do texto da sessão
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view:UIView, forSection: Int) {
+        if let headerTitle = view as? UITableViewHeaderFooterView {
+            headerTitle.textLabel?.textColor = UIColor(red: 226/255.0, green: 108/255.0, blue: 132/255.0, alpha: 1.0)
+     
+          //  headerTitle.backgroundColor = UIColor.black
+        
+        }
+    }
+ 
+    
+    // Fundo levemente branco da celula
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        
+    }
+    
+    
+    
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -35,11 +65,13 @@ class Recomendados: UIViewController , UITableViewDelegate, UITableViewDataSourc
         
         cell.textLabel?.text = objectsArray[indexPath.section].sectionObjects[indexPath.row]
         
+        // Muda  a cor do conteudo da celula
+        cell.textLabel?.textColor = UIColor(red: 131/255.0, green: 129/255.0, blue: 134/255.0, alpha: 1.0)
+   
         return cell
     }
     
-    
-    
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return objectsArray.count
@@ -47,12 +79,13 @@ class Recomendados: UIViewController , UITableViewDelegate, UITableViewDataSourc
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+       
         return objectsArray[section].sectionObjects.count
     }
     
    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
         return objectsArray[section].sectionName
     }
     

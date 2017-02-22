@@ -18,6 +18,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
   
     @IBOutlet weak var ExamesDia: UITableView!
     
+    @IBOutlet var viewCalendario: UIView!
         
     var exame = [Exame]()
     var exameDia = [Exame]()
@@ -28,7 +29,6 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     var marcou = false
     
     var todasDatas = [NSDate]()
-  
     
     
     // Formato de data
@@ -42,20 +42,16 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     // Tipo de calendario
     fileprivate let gregorian: NSCalendar! = NSCalendar(calendarIdentifier:NSCalendar.Identifier.gregorian)
 
-    
   
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         ExamesDia.delegate = self
         ExamesDia.dataSource = self
-        
-        
-        
-        
+     
+       viewCalendario.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
 
+        
     }
 
     
@@ -172,6 +168,15 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
  
     //MARK: TableView
+    
+    // Fundo levemente branco da celula
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        
+    }
+    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
