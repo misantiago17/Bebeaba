@@ -13,37 +13,74 @@ import CoreData
 
 class Home: UIViewController, UITextFieldDelegate {
     
+    //Devices
+    let modelName = UIDevice.current.modelName
+    let widhtSE: CGFloat = 320
+    let heightSE: CGFloat = 568
+    var screenSize = UIScreen.main.bounds
     
-    @IBOutlet weak var name: AkiraTextField!
-    @IBOutlet weak var pregnancyWeek: AkiraTextField!
+    var name : UITextField!
+    var pregnancyWeek: UITextField!
     
      var alerta = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "Rectangle 3")
-        self.view.insertSubview(backgroundImage, at: 0)
+        let factorX = screenSize.width/widhtSE
+        let factorY = screenSize.height/heightSE
+        
+        // Logo Image
+        let logoImage = UIImageView(image: UIImage(named:"logo"))
+        logoImage.frame = CGRect(x: 124*factorX, y: 44*factorY, width: 72*factorX, height: 100*factorY)
+        self.view.addSubview(logoImage)
+        
+        // Name textField
+        let placeholder = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.gray])
+        name = UITextField(frame: CGRect(x: 36*factorX, y: 211*factorY, width: 249*factorX, height: 16*factorY))
+        name.attributedPlaceholder = placeholder
+        name.font = UIFont(name: "System", size: 13)
+        self.view.addSubview(name)
+        
+        // PregnancyWeek textField
+        let placeholderweek = NSAttributedString(string: "Última data da menstruação", attributes: [NSForegroundColorAttributeName : UIColor.gray])
+        pregnancyWeek = UITextField(frame: CGRect(x: 36*factorX, y: 266*factorY, width: 249*factorX, height: 16*factorY))
+        pregnancyWeek.attributedPlaceholder = placeholderweek
+        pregnancyWeek.font = UIFont(name: "System", size: 13)
+        pregnancyWeek.keyboardType = .asciiCapableNumberPad
+        self.view.addSubview(pregnancyWeek)
         
         
+        //textField delegate
         name.delegate = self
         pregnancyWeek.delegate = self
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(Home.dissmissKeyboard))
         view.addGestureRecognizer(tap)
         
-        // Logo Image
-//        let logoImage = UIImageView(image: UIImage(named:"logo.png"))
-//        logoImage.frame = CGRect(x: self.view.frame.width/3, y: 60, width: self.view.frame.width/3, height: self.view.frame.width/3)
-//        self.view.addSubview(logoImage)
-//        
-//        // Button Image
-//        let homeIcone = UIImageView(image: UIImage(named:"chocalho.png"))
-//        homeIcone.frame = CGRect(x: 110, y: 365, width: 30, height: 30)
-//        self.view.addSubview(homeIcone)
-//
-//        
+        // Add Line 1
+        let lineView = UIView(frame: CGRect(x: 35*factorX, y: 233.5*factorY, width: 250*factorX, height: 1*factorY))
+        lineView.layer.borderWidth = 1.0*factorY
+        lineView.layer.borderColor = UIColor(red: 255/255, green: 145/255, blue: 164/255, alpha: 1).cgColor
+        self.view.addSubview(lineView)
+        
+        // Add Line 2
+        let lineView2 = UIView(frame: CGRect(x: 35*factorX, y: 289.5*factorY, width: 250*factorX, height: 1*factorY))
+        lineView2.layer.borderWidth = 1.0*factorY
+        lineView2.layer.borderColor = UIColor(red: 255/255, green: 145/255, blue: 164/255, alpha: 1).cgColor
+        self.view.addSubview(lineView2)
+        
+        // Button
+        let button = UIButton(type: .system) // let preferred over var here
+        button.frame = CGRect(x: 114*factorX, y: 345*factorY, width: 92*factorX, height: 38*factorY)
+        button.backgroundColor = UIColor(red: 255/255, green: 145/255, blue: 164/255, alpha: 1)
+        button.setTitle("Bem-vinda", for: UIControlState.normal)
+        button.setTitleColor(UIColor.white, for: UIControlState.normal)
+        button.addTarget(self, action: #selector(Home.cadastrarUsuario(_:)), for: UIControlEvents.touchUpInside)
+        button.layer.cornerRadius = 10
+        self.view.addSubview(button)
+        
+
     }
     
 
@@ -122,6 +159,8 @@ class Home: UIViewController, UITextFieldDelegate {
         let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
         
         if(alerta == false){
+            
+            performSegue(withIdentifier: "nextView", sender: self)
             let newUser = NSEntityDescription.insertNewObject(forEntityName: "User", into: context) as NSManagedObject
             
             newUser.setValue(name.text, forKey: "nome")

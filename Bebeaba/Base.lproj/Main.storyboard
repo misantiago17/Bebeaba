@@ -172,84 +172,10 @@
                     <view key="view" contentMode="scaleToFill" id="Bi9-HQ-aoC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T8l-hQ-wmo" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="182" width="288" height="50"/>
-                                <color key="tintColor" red="1" green="0.69019607839999997" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="T8l-hQ-wmo" secondAttribute="height" multiplier="144:25" id="4Zd-MS-gOG"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.60390913486480713" green="0.59972631931304932" blue="0.61620074510574341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" red="0.60390913486480713" green="0.59972631931304932" blue="0.61620074510574341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ultima data da menstruação" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kwe-Ps-YRS" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="240" width="288" height="50"/>
-                                <color key="tintColor" red="0.93585526320000001" green="0.73630839650000002" blue="0.96558902140000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="kwe-Ps-YRS" secondAttribute="height" multiplier="144:25" id="de3-gd-USO"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.63910764455795288" green="0.63903540372848511" blue="0.6513792872428894" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" red="0.63910764455795288" green="0.63903540372848511" blue="0.6513792872428894" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Agrupar 1" translatesAutoresizingMaskIntoConstraints="NO" id="7ek-Af-CnU">
-                                <rect key="frame" x="110" y="28" width="93" height="132"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="93" id="39F-Nc-YLB"/>
-                                    <constraint firstAttribute="width" secondItem="7ek-Af-CnU" secondAttribute="height" multiplier="31:44" id="Q5e-2o-zya"/>
-                                    <constraint firstAttribute="height" constant="132" id="TCL-R9-8tW"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXI-h0-cWj">
-                                <rect key="frame" x="106" y="298" width="100" height="71"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Bem-vinda">
-                                    <color key="titleColor" red="1" green="0.56852483749389648" blue="0.64344412088394165" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="cadastrarUsuario:" destination="a3C-ue-f9J" eventType="touchUpInside" id="wbF-a5-Wde"/>
-                                    <segue destination="8br-ch-nH8" kind="show" identifier="" id="7V6-5Z-npL"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="T8l-hQ-wmo" firstAttribute="top" secondItem="7ek-Af-CnU" secondAttribute="bottom" constant="22" id="Jcb-2y-9Bj"/>
-                            <constraint firstItem="LXI-h0-cWj" firstAttribute="top" secondItem="kwe-Ps-YRS" secondAttribute="bottom" constant="8" id="LHA-HK-Z3w"/>
-                            <constraint firstItem="kwe-Ps-YRS" firstAttribute="top" secondItem="T8l-hQ-wmo" secondAttribute="bottom" constant="8" id="puA-at-PHH"/>
-                        </constraints>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="kwe-Ps-YRS"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
-                        <outlet property="name" destination="T8l-hQ-wmo" id="Bhn-jt-5rb"/>
-                        <outlet property="pregnancyWeek" destination="kwe-Ps-YRS" id="PBm-fa-ClT"/>
+                        <segue destination="8br-ch-nH8" kind="show" identifier="nextView" id="tg2-fS-qtg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8SA-xG-ExA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1012,7 +938,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Agrupar 1" width="272" height="380"/>
         <image name="Camada 0" width="75" height="75"/>
         <image name="Settings-500" width="86" height="86"/>
         <image name="calendario" width="25" height="25"/>
@@ -1024,7 +949,7 @@
         <image name="retanguloArre" width="754" height="590"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JiH-jc-IcV"/>
-        <segue reference="YJr-rL-caB"/>
+        <segue reference="9Vl-G3-SFE"/>
+        <segue reference="gx5-c7-r9Q"/>
     </inferredMetricsTieBreakers>
 </document>
