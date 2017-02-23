@@ -507,6 +507,8 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                 let tempoLongo = UIAlertController(title: "Alert", message: "A data selecionada é anterior a data atual.", preferredStyle: UIAlertControllerStyle.alert)
                 tempoLongo.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(tempoLongo, animated: true, completion: nil)
+                
+                anterior = true
 
             }
         }
@@ -518,13 +520,15 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         
         verificaDia()
         
-        if(segue.identifier == "MarcarExame") {
-            let vc = segue.destination as! NewExam
-            marcou = true
-            vc.data = diaSelecionado
-            vc.edit = edit
-            if edit == true{
-                vc.horaI = hora
+        if anterior == true {
+            if(segue.identifier == "MarcarExame") {
+                let vc = segue.destination as! NewExam
+                marcou = true
+                vc.data = diaSelecionado
+                vc.edit = edit
+                if edit == true{
+                    vc.horaI = hora
+                }
             }
         }
         

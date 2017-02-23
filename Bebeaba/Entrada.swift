@@ -184,7 +184,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         labelexame.text = "Exames da Semana"
         labelexame.font = UIFont(name: "Avenir-Light", size: 16.0)
         labelexame.font = UIFont.boldSystemFont(ofSize: 14)
-        labelexame.textColor = UIColor(red: 115/255.0, green: 53/255.0, blue: 121/255.0, alpha: 1.0)
+        labelexame.textColor = UIColor(red: 226/255.0, green: 108/255.0, blue: 132/255.0, alpha: 1.0)
         self.view.addSubview(labelexame)
 
 
