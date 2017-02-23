@@ -542,7 +542,6 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
         
         if(segue.identifier == "detalhes"){
-            print("kd")
             let indexPaths = ExamesSemana.indexPathForSelectedRow
             let indexPath = indexPaths! as NSIndexPath
             let exam = arrayExameSemana[indexPath.row]

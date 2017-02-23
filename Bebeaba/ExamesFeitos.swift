@@ -242,7 +242,6 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "detalhes"){
-            print("ltra kd")
             let indexPaths = ExamesFeitos.indexPathForSelectedRow
             let indexPath = indexPaths! as NSIndexPath
             let exam = exameHistorico[indexPath.row]
