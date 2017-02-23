@@ -179,28 +179,31 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         
         // Label do exame
-        let labelexame = UILabel(frame: CGRect(x: 0, y: 240, width: self.view.frame.width, height: 65))
-        labelexame.textAlignment = NSTextAlignment.center
-        labelexame.text = "Exames da Semana"
-        labelexame.font = UIFont(name: "Avenir-Light", size: 16.0)
-        labelexame.font = UIFont.boldSystemFont(ofSize: 14)
-        labelexame.textColor = UIColor(red: 226/255.0, green: 108/255.0, blue: 132/255.0, alpha: 1.0)
-        self.view.addSubview(labelexame)
+//        let labelexame = UILabel(frame: CGRect(x: 0, y: 240, width: self.view.frame.width, height: 65))
+//        labelexame.textAlignment = NSTextAlignment.center
+//        labelexame.text = "Exames da Semana"
+//        labelexame.font = UIFont(name: "Avenir-Light", size: 16.0)
+//        labelexame.font = UIFont.boldSystemFont(ofSize: 14)
+//        labelexame.textColor = UIColor(red: 226/255.0, green: 108/255.0, blue: 132/255.0, alpha: 1.0)
+//        self.view.addSubview(labelexame)
 
 
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view:UIView, forSection: Int) {
+        if let headerTitle = view as? UITableViewHeaderFooterView {
+            headerTitle.tintColor = UIColor.white
+            headerTitle.textLabel?.textColor = UIColor(red: 226/255.0, green: 108/255.0, blue: 132/255.0, alpha: 1.0)
+            headerTitle.textLabel?.textAlignment = .center
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view:UIView, forSection: Int) {
-        if let headerTitle = view as? UITableViewHeaderFooterView {
-            headerTitle.textLabel?.textColor = UIColor(red: 226/255.0, green: 108/255.0, blue: 132/255.0, alpha: 1.0)
-            
-            //  headerTitle.backgroundColor = UIColor.black
-            
-        }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Exames da Semana"
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
