@@ -314,6 +314,8 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 
+                tableView.reloadData()
+                
                 return true
             })
         ]

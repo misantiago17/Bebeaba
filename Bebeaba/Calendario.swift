@@ -348,12 +348,15 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
             if(results.count > 0) {
                 let horaItem = item.value(forKey: "hora") as! NSDate
                 let diaItem = item.value(forKey: "data") as! NSDate
+                let nome = item.value(forKey: "nome") as! String
                 
                 for coisa in results{
                     if (coisa.value(forKey: "data") as! NSDate).isEqual(to: diaItem as Date){
                         if (coisa.value(forKey: "hora") as! NSDate).isEqual(to: horaItem as Date){
-                            coisa.setValue(tipo, forKey: "tipo")
-                            print(coisa)
+                            if (coisa.value(forKey: "nome") as! String) == nome{
+                                coisa.setValue(tipo, forKey: "tipo")
+                                print(coisa)
+                            }
                         }
                     }
                 }
