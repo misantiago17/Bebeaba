@@ -225,55 +225,6 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
 
-
-        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.red, callback: {
-            (sender: MGSwipeTableCell!) -> Bool in
-            
-            let exameExcluido = self.exameDia[indexPath.row]
-            
-            var count:Int = 0
-            
-            for item in self.todasDatas {
-                if item == exameExcluido.data {
-                    self.todasDatas.remove(at: count)
-                }
-                count += 1
-            }
-            
-            count = 0
-            
-            for item in self.exame {
-                if item == exameExcluido {
-                    self.exame.remove(at: count)
-                }
-                count += 1
-            }
-            
-            //self.exame.remove(at: indexPath.row)
-            context.delete(self.exameDia[indexPath.row])
-            self.exameDia.remove(at: indexPath.row)
-            
-            do {
-                try context.save()
-            } catch {
-                print("Não foi possível retirar do BD")
-            }
-            
-            //self.separaDia(diaDado: self.diaSelecionado as Date)
-            //self.calendar.reloadData()
-            self.calendar.reloadData()
-            tableView.deleteRows(at: [indexPath], with: .fade)
-           // let diaSelect = self.calendar.selectedDate
-//            self.separaDia(diaDado: diaSelect as Date)
-           // self.calendar.reloadData()
-            
-            return true
-        })]
-        
-        //                cell.rightSwipeSettings.transition = MGSwipeTransition.Rotate3D
-        //        cell.rightExpansion.buttonIndex = 0
-        //        cell.leftExpansion.buttonIndex = 0
-        
         
         cell.rightButtons = [MGSwipeButton(title: "Check", icon: UIImage(named:"check.png"), backgroundColor: UIColor.green, callback: {
             (sender: MGSwipeTableCell!) -> Bool in
@@ -311,7 +262,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
             
             return true
         })
-            ,MGSwipeButton(title: "Edit", icon: UIImage(named:"fav.png"), backgroundColor: UIColor.blue,callback: {
+            ,MGSwipeButton(title: "Edit", icon: UIImage(named:"Edit.png"), backgroundColor: UIColor.clear,callback: {
                 (sender: MGSwipeTableCell!) -> Bool in
                 
                 let exam = self.exameDia[indexPath.row]
@@ -322,6 +273,51 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                 
                 return true
             })
+            
+            ,MGSwipeButton(title: "Delete", icon: UIImage(named:"Delete.png"), backgroundColor: UIColor.clear,callback: {
+                (sender: MGSwipeTableCell!) -> Bool in
+                
+                let exameExcluido = self.exameDia[indexPath.row]
+                
+                var count:Int = 0
+                
+                for item in self.todasDatas {
+                    if item == exameExcluido.data {
+                    self.todasDatas.remove(at: count)
+                    }
+                    count += 1
+                }
+                
+                count = 0
+                
+                for item in self.exame {
+                   if item == exameExcluido {
+                   self.exame.remove(at: count)
+                    }
+                    count += 1
+                }
+                
+                //self.exame.remove(at: indexPath.row)
+                context.delete(self.exameDia[indexPath.row])
+                self.exameDia.remove(at: indexPath.row)
+                
+                do {
+                try context.save()
+                } catch {
+                    print("Não foi possível retirar do BD")
+                }
+                
+                //self.separaDia(diaDado: self.diaSelecionado as Date)
+                //self.calendar.reloadData()
+                self.calendar.reloadData()
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                // let diaSelect = self.calendar.selectedDate
+                //            self.separaDia(diaDado: diaSelect as Date)
+                // self.calendar.reloadData()
+                                
+                return true
+            })
+
         ]
         
         //                cell.leftSwipeSettings.transition = MGSwipeTransition.Rotate3D
