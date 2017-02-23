@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        login()
+        //login()
         return true
     }
 
@@ -62,8 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for item in user{
                 
                 let nome = item.value(forKey: "nome") as! String
-                
-                
                 
                 if nome.isEmpty == false {
                     print("TAB BAR")
