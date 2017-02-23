@@ -229,6 +229,8 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         cell.rightButtons = [MGSwipeButton(title: "", icon: UIImage(named:"Check.png"), backgroundColor: UIColor.clear, callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             
+            self.edit = true
+            
             let exam = self.exameDia[indexPath.row]
             
             exam.setValue("historico", forKey: "tipo")
@@ -248,11 +250,13 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
             
             var count:Int = 0
             
-            for item in self.todasDatas {
-                if item == exameExcluido.data {
-                    self.todasDatas.remove(at: count)
+            if exameExcluido.tipo != "atrasado" {
+                for item in self.todasDatas {
+                    if item == exameExcluido.data {
+                        self.todasDatas.remove(at: count)
+                    }
+                    count += 1
                 }
-                count += 1
             }
             
             self.exameDia.remove(at: indexPath.row)
@@ -264,6 +268,8 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         })
             ,MGSwipeButton(title: "", icon: UIImage(named:"Edit.png"), backgroundColor: UIColor.clear,callback: {
                 (sender: MGSwipeTableCell!) -> Bool in
+                
+                self.edit = true
                 
                 let exam = self.exameDia[indexPath.row]
                 
@@ -277,15 +283,19 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
             ,MGSwipeButton(title: "", icon: UIImage(named:"Delete.png"), backgroundColor: UIColor.clear,callback: {
                 (sender: MGSwipeTableCell!) -> Bool in
                 
+                self.edit = true
+                
                 let exameExcluido = self.exameDia[indexPath.row]
                 
                 var count:Int = 0
                 
-                for item in self.todasDatas {
-                    if item == exameExcluido.data {
-                    self.todasDatas.remove(at: count)
+                if exameExcluido.tipo != "atrasado" {
+                    for item in self.todasDatas {
+                        if item == exameExcluido.data {
+                            self.todasDatas.remove(at: count)
+                        }
+                        count += 1
                     }
-                    count += 1
                 }
                 
                 count = 0
@@ -518,7 +528,9 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        verificaDia()
+        if edit == true {
+            verificaDia()
+        }
         
         if anterior == true {
             if(segue.identifier == "MarcarExame") {
