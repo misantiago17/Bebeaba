@@ -277,9 +277,12 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                 
                 var count:Int = 0
                 
+                print("todasDatas", self.todasDatas)
                 for item in self.todasDatas {
                     if item == exameExcluido.data {
+                        print("numero",count)
                         self.todasDatas.remove(at: count)
+                        break
                     }
                     count += 1
                 }
@@ -326,13 +329,6 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         //ExamesDia.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
-    }
-
     
     //MARK: Funções Auxiliares
     
