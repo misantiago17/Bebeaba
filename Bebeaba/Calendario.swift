@@ -119,9 +119,9 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     // Data limite do calendario
     
-    func maximumDate(for calendar: FSCalendar) -> Date {
-        return self.formatter.date(from: "30/10/2017")!
-    }
+//    func maximumDate(for calendar: FSCalendar) -> Date {
+//        return self.formatter.date(from: "30/10/2017")!
+//    }
     
     // Coloca bolinha de evento na data
     
@@ -143,15 +143,15 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     //Coloca imagem na data
     
-    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        
-         let day: Int! = self.gregorian.component(.day, from: date)
-         let month: Int! = self.gregorian.component(.month, from: date)
-        let year: Int! = self.gregorian.component(.year, from: date)
-        
-        return [7].contains(day) && [6].contains(month) && [2017].contains(year) ? UIImage(named: "bebe") : nil
-
-    }
+//    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+//        
+//         let day: Int! = self.gregorian.component(.day, from: date)
+//         let month: Int! = self.gregorian.component(.month, from: date)
+//        let year: Int! = self.gregorian.component(.year, from: date)
+//        
+//        return [7].contains(day) && [6].contains(month) && [2017].contains(year) ? UIImage(named: "bebe") : nil
+//
+//    }
     
     // MARK:- FSCalendarDelegate
     
