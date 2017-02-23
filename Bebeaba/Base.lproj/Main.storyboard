@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E154a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a3C-ue-f9J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a3C-ue-f9J">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -911,9 +911,7 @@
                             <constraint firstItem="hsd-n7-Rmr" firstAttribute="leading" secondItem="Fb1-fn-pdl" secondAttribute="leadingMargin" constant="-16" id="xfe-av-tsk"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" image="home" selectedImage="home" id="agU-uI-3bd">
-                        <inset key="imageInsets" minX="50" minY="50" maxX="50" maxY="50"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Item 1" image="home" selectedImage="home" id="agU-uI-3bd"/>
                     <connections>
                         <outlet property="ExamesSemana" destination="hsd-n7-Rmr" id="FMJ-bH-U7n"/>
                         <outlet property="NomeMulher" destination="Kxs-Kn-2vV" id="edh-jX-KGj"/>
@@ -1034,12 +1032,12 @@
         <image name="Agrupar 1" width="272" height="380"/>
         <image name="Camada 0" width="75" height="75"/>
         <image name="Settings-500" width="86" height="86"/>
-        <image name="calendario" width="90" height="93"/>
+        <image name="calendario" width="25" height="25"/>
         <image name="cancel" width="67" height="67"/>
-        <image name="examesfeitos" width="84" height="83"/>
+        <image name="examesfeitos" width="20" height="20"/>
         <image name="high_importance" width="512" height="512"/>
-        <image name="home" width="72" height="78"/>
-        <image name="note" width="104" height="104"/>
+        <image name="home" width="25" height="25"/>
+        <image name="note" width="25" height="25"/>
         <image name="retanguloArre" width="754" height="590"/>
     </resources>
     <inferredMetricsTieBreakers>
