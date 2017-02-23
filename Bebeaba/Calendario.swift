@@ -226,7 +226,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
 
         
-        cell.rightButtons = [MGSwipeButton(title: "Check", icon: UIImage(named:"Check.png"), backgroundColor: UIColor.clear, callback: {
+        cell.rightButtons = [MGSwipeButton(title: "", icon: UIImage(named:"Check.png"), backgroundColor: UIColor.clear, callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             
             let exam = self.exameDia[indexPath.row]
@@ -262,7 +262,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
             
             return true
         })
-            ,MGSwipeButton(title: "Edit", icon: UIImage(named:"Edit.png"), backgroundColor: UIColor.clear,callback: {
+            ,MGSwipeButton(title: "", icon: UIImage(named:"Edit.png"), backgroundColor: UIColor.clear,callback: {
                 (sender: MGSwipeTableCell!) -> Bool in
                 
                 let exam = self.exameDia[indexPath.row]
@@ -274,7 +274,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                 return true
             })
             
-            ,MGSwipeButton(title: "Delete", icon: UIImage(named:"Delete.png"), backgroundColor: UIColor.clear,callback: {
+            ,MGSwipeButton(title: "", icon: UIImage(named:"Delete.png"), backgroundColor: UIColor.clear,callback: {
                 (sender: MGSwipeTableCell!) -> Bool in
                 
                 let exameExcluido = self.exameDia[indexPath.row]
