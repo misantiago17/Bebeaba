@@ -331,29 +331,6 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         performSegue(withIdentifier: "detalhes", sender: self)
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
-//        
-//        if editingStyle == .delete {
-//            
-//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//            let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
-//            
-//            context.delete(arrayExameSemana[indexPath.row])
-//            arrayExameSemana.remove(at: indexPath.row)
-//            do {
-//                try context.save()
-//            } catch {
-//                print("Não foi possível retirar do BD")
-//            }
-//            
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        }
-    }
-    
     //MARK: Funções Auxiliares
     
     func getDayOfWeek(today:NSDate)->Int? {
