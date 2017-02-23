@@ -78,7 +78,7 @@ class Home: UIViewController, UITextFieldDelegate {
             
         else if(semana!.characters.count < 10) {
             
-            let semanaLim = UIAlertController(title: "Alert", message: "A data do ultimo dia da menstruação deve estar completa.", preferredStyle: UIAlertControllerStyle.alert)
+            let semanaLim = UIAlertController(title: "Alert", message: "A data do ultimo dia da menstruação deve estar completa (dd/mm/aaaa)", preferredStyle: UIAlertControllerStyle.alert)
             semanaLim.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(semanaLim, animated: true, completion: nil)
             alerta = true
