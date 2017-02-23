@@ -112,7 +112,8 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         progress.roundedCorners = true
         progress.glowMode = .forward
         progress.glowAmount = 0.9
-        progress.set(colors: UIColor(red: 229/255, green: 82/255, blue: 152/255, alpha: 1.0))
+        //progress.set(colors: UIColor(red: 229/255, green: 82/255, blue: 152/255, alpha: 1.0))
+        progress.set(colors: UIColor(red: 63/255, green: 184/255, blue: 175/255, alpha: 1.0))
         progress.center = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/4)
         
         ang = Double(Double(semanaU)!*360.0/tempototal)
@@ -248,7 +249,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         //        cell.leftExpansion.buttonIndex = 0
         
         
-        cell.rightButtons = [MGSwipeButton(title: "Check", icon: UIImage(named:"check.png"), backgroundColor: UIColor.green, callback: {
+        cell.rightButtons = [MGSwipeButton(title: "", icon: UIImage(named:"Check.png"), backgroundColor: UIColor.clear, callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             
             let exam = self.arrayExameSemana[indexPath.row]
@@ -271,7 +272,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
             return true
         })
-            ,MGSwipeButton(title: "Edit", icon: UIImage(named:"fav.png"), backgroundColor: UIColor.blue,callback: {
+            ,MGSwipeButton(title: "", icon: UIImage(named:"Edit.png"), backgroundColor: UIColor.clear,callback: {
                 (sender: MGSwipeTableCell!) -> Bool in
                 
                 
@@ -285,7 +286,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 return true
             })
             
-            ,MGSwipeButton(title: "Delete", backgroundColor: UIColor.red, callback: {
+            ,MGSwipeButton(title: "",icon: UIImage(named:"Delete.png"), backgroundColor: UIColor.clear, callback: {
                 (sender: MGSwipeTableCell!) -> Bool in
                 
                 print(self.arrayExameSemana)
