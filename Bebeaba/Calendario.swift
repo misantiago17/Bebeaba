@@ -226,7 +226,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
 
         
-        cell.rightButtons = [MGSwipeButton(title: "Check", icon: UIImage(named:"check.png"), backgroundColor: UIColor.green, callback: {
+        cell.rightButtons = [MGSwipeButton(title: "Check", icon: UIImage(named:"Check.png"), backgroundColor: UIColor.clear, callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             
             let exam = self.exameDia[indexPath.row]
