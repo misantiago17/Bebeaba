@@ -231,22 +231,10 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
             
             self.edit = true
             
-            let exam = self.exameDia[indexPath.row]
-            
-            exam.setValue("historico", forKey: "tipo")
-            
-            print(exam)
-            
-            //salva mudanças
-            
-            do{
-                try context.save()
-            }
-            catch {
-                print("error")
-            }
-            
+            let exame = self.exameDia[indexPath.row]
             let exameExcluido = self.exameDia[indexPath.row]
+            
+            self.mudaTipoExame(item: exame, tipo: "historico")
             
             var count:Int = 0
             
@@ -289,13 +277,11 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                 
                 var count:Int = 0
                 
-                if exameExcluido.tipo != "atrasado" {
-                    for item in self.todasDatas {
-                        if item == exameExcluido.data {
-                            self.todasDatas.remove(at: count)
-                        }
-                        count += 1
+                for item in self.todasDatas {
+                    if item == exameExcluido.data {
+                        self.todasDatas.remove(at: count)
                     }
+                    count += 1
                 }
                 
                 count = 0
@@ -350,7 +336,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     //MARK: Funções Auxiliares
     
-    func mudaTipoExame(item: Exame){
+    func mudaTipoExame(item: Exame, tipo: String){
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
@@ -362,7 +348,6 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
             if(results.count > 0) {
                 let horaItem = item.value(forKey: "hora") as! NSDate
                 let diaItem = item.value(forKey: "data") as! NSDate
-                let tipo = "atrasado"
                 
                 for coisa in results{
                     if (coisa.value(forKey: "data") as! NSDate).isEqual(to: diaItem as Date){
@@ -415,13 +400,13 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                     if (horaExameDate! == diaNowDate!) == false {
                         if (horaExameDate! < horaNowDate!) == true {
                             print("Meu horario tá atrasado")
-                            self.mudaTipoExame(item: item)
+                            self.mudaTipoExame(item: item, tipo: "atrasado")
                         }
                     }
-                }
-            } else if (diaExameDate! < diaNowDate!) == true {
+                } else if (diaExameDate! < diaNowDate!) == true {
                     print("Meu dia tá atrasado")
-                    self.mudaTipoExame(item: item)
+                    self.mudaTipoExame(item: item, tipo: "atrasado")
+                }
             }
         }
     }
@@ -434,7 +419,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         todasDatas.removeAll()
         
         for item in exame {
-            print("coisa", item)
+            print("coisa", item.tipo)
             diaExame = (item.value(forKey: "data") as? NSDate)!
             tipo = item.value(forKey: "tipo") as! String
             
@@ -528,21 +513,16 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if edit == true {
-            verificaDia()
-        }
         
-        if anterior == true {
-            if(segue.identifier == "MarcarExame") {
-                let vc = segue.destination as! NewExam
-                marcou = true
-                vc.data = diaSelecionado
-                vc.edit = edit
-                if edit == true{
-                    vc.horaI = hora
-                }
-            }
+    if(segue.identifier == "MarcarExame") {
+        let vc = segue.destination as! NewExam
+        marcou = true
+        vc.data = diaSelecionado
+        vc.edit = edit
+        if edit == true{
+            vc.horaI = hora
         }
+    }
         
         else if(segue.identifier == "detalhes"){
             let indexPaths = ExamesDia.indexPathForSelectedRow

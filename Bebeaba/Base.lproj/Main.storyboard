@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8br-ch-nH8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E154a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a3C-ue-f9J">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -384,7 +384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRs-Az-ijh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5.625" y="1664.7887323943662"/>
+            <point key="canvasLocation" x="4" y="1664"/>
         </scene>
         <!--Detalhes-->
         <scene sceneID="hiE-6B-UwM">
@@ -909,6 +909,7 @@
                     <connections>
                         <outlet property="ExamesSemana" destination="hsd-n7-Rmr" id="FMJ-bH-U7n"/>
                         <outlet property="NomeMulher" destination="Kxs-Kn-2vV" id="edh-jX-KGj"/>
+                        <segue destination="gQd-wX-Jy2" kind="presentation" identifier="MarcarExame" id="JiH-jc-IcV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qMe-Ya-Sat" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1034,6 +1035,7 @@
         <image name="retanguloArre" width="754" height="590"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="JiH-jc-IcV"/>
         <segue reference="YJr-rL-caB"/>
     </inferredMetricsTieBreakers>
 </document>

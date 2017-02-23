@@ -253,30 +253,12 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
         
-        //PRECISA DO MGSWIPE
-        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.red, callback: {
-            (sender: MGSwipeTableCell!) -> Bool in
-            
-            context.delete(self.arrayExameSemana[indexPath.row])
-            self.arrayExameSemana.remove(at: indexPath.row)
-            
-            do {
-                try context.save()
-            } catch {
-                print("Não foi possível retirar do BD")
-            }
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            return true
-        })]
-        
         //                cell.rightSwipeSettings.transition = MGSwipeTransition.Rotate3D
         //        cell.rightExpansion.buttonIndex = 0
         //        cell.leftExpansion.buttonIndex = 0
         
         
-        cell.leftButtons = [MGSwipeButton(title: "Check", icon: UIImage(named:"check.png"), backgroundColor: UIColor.green, callback: {
+        cell.rightButtons = [MGSwipeButton(title: "Check", icon: UIImage(named:"check.png"), backgroundColor: UIColor.green, callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             
             let exam = self.arrayExameSemana[indexPath.row]
@@ -309,6 +291,28 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 self.dia = exam.value(forKey: "data") as! NSDate
                 self.hora = exam.value(forKey: "hora") as! NSDate
                 self.performSegue(withIdentifier: "MarcarExame", sender: nil)
+                
+                return true
+            })
+            
+            ,MGSwipeButton(title: "Delete", backgroundColor: UIColor.red, callback: {
+                (sender: MGSwipeTableCell!) -> Bool in
+                
+                print(self.arrayExameSemana)
+                print(self.arrayExameSemana[indexPath.row])
+                let exameExcluido = self.arrayExameSemana[indexPath.row]
+                
+                
+                context.delete(self.arrayExameSemana[indexPath.row])
+                self.arrayExameSemana.remove(at: indexPath.row)
+                
+                do {
+                    try context.save()
+                } catch {
+                    print("Não foi possível retirar do BD")
+                }
+                
+                tableView.deleteRows(at: [indexPath], with: .fade)
                 
                 return true
             })
@@ -511,11 +515,62 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             print("Não foi possivel resgatar dados")
         }
         
+        print("aqui",arrayExameSemana.count)
+        
+        if(arrayExameSemana.count > 2){
+           // ordenaExame()
+        }
+        
         ExamesSemana.reloadData()
+    }
+    
+    func ordenaExame(){
+        var fim = arrayExameSemana.endIndex - 1
+        while fim > 0{
+            var maior = 0
+            for item in arrayExameSemana{
+                let i1 = arrayExameSemana.index(of: item)
+                if(item != arrayExameSemana[0]){
+                    if(i1! <= fim){
+                        
+                        let horaPrim = item.value(forKey: "hora") as! NSDate
+                        let horaSeg = arrayExameSemana[maior].value(forKey: "hora") as! NSDate
+                        
+                        if(horaPrim.isEqual(to: horaSeg as Date) == false){
+                            if(horaPrim.laterDate(horaSeg as Date) == horaPrim as Date){
+                                maior = i1!
+                                print("i1:\(i1), fim: \(fim), maior:\(maior)")
+                            }
+                        }
+                    }
+                }
+            }
+            
+            if(fim != maior){
+                let subtituido = arrayExameSemana[fim]
+                let substituto = arrayExameSemana[maior]
+                arrayExameSemana.insert(substituto, at: fim)
+                arrayExameSemana.remove(at: fim+1)
+                arrayExameSemana.insert(subtituido, at: maior)
+                arrayExameSemana.remove(at: maior+1)
+            }
+            fim -= 1
+        }
+        
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "MarcarExame") {
+            let vc = segue.destination as! NewExam
+            vc.data = dia
+            vc.edit = edit
+            if edit == true{
+                vc.horaI = hora
+            }
+        }
+        
         if(segue.identifier == "detalhes"){
             print("kd")
             let indexPaths = ExamesSemana.indexPathForSelectedRow
