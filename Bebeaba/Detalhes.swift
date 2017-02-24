@@ -46,8 +46,6 @@ class Detalhes: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("qual foi")
-        
         nome.text = exame.nome
         
         let timeFormatter = DateFormatter()

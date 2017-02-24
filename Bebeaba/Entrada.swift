@@ -98,34 +98,22 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         getUser()
         
-        // Circle 1
-        let circlePath = UIBezierPath(arcCenter: CGPoint(x: self.view.frame.width/2,y: self.view.frame.height/4), radius: CGFloat(self.view.frame.width*0.35/3), startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
-        
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = circlePath.cgPath
-        
-        //change the fill color
-        shapeLayer.fillColor = UIColor(red: 255/255, green: 176/255, blue: 215/255, alpha: 1.0).cgColor
-        //you can change the stroke color
-        shapeLayer.strokeColor = UIColor(red: 255/255, green: 176/255, blue: 215/255, alpha: 1.0).cgColor
-        //you can change the line width
-        shapeLayer.lineWidth = 5.0
-        
-        view.layer.addSublayer(shapeLayer)
         
         
         // Animação programática
-        progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: self.view.frame.width*0.35, height: self.view.frame.width*0.35))
+        progress = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: self.view.frame.width*0.5, height: self.view.frame.width*0.5))
         progress.startAngle = -90
-        progress.trackColor = UIColor(red: 255/255, green: 176/255, blue: 215/255, alpha: 1.0)
-        progress.progressThickness = 0.2
-        progress.trackThickness = 0.6
+        progress.trackColor = UIColor(red: 161/255, green: 160/255, blue: 156/255, alpha: 0.2)
+        //progress.trackColor = UIColor.blue
+        progress.progressThickness = 0.5
+        progress.trackThickness = 0.4
         progress.clockwise = true
         progress.gradientRotateSpeed = 2
-        progress.roundedCorners = false
+        progress.roundedCorners = true
         progress.glowMode = .forward
         progress.glowAmount = 0.9
-        progress.set(colors: UIColor.white)
+        //progress.set(colors: UIColor(red: 229/255, green: 82/255, blue: 152/255, alpha: 1.0))
+        progress.set(colors: UIColor(red: 63/255, green: 184/255, blue: 175/255, alpha: 1.0))
         progress.center = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/4)
         
         ang = Double(Double(semanaU)!*360.0/tempototal)
@@ -165,7 +153,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         label.text = "\(porc)%"
         label.font = UIFont(name: "Avenir-Light", size: 50.0)
         label.font = UIFont.boldSystemFont(ofSize: 25)
-        label.textColor = UIColor(red: 115/255.0, green: 53/255.0, blue: 121/255.0, alpha: 1.0)
+        label.textColor = UIColor(red: 229/255, green: 82/255, blue: 152/255, alpha: 1.0)
         self.view.addSubview(label)
         
 //        // Image
@@ -179,28 +167,31 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         
         // Label do exame
-        let labelexame = UILabel(frame: CGRect(x: 0, y: 240, width: self.view.frame.width, height: 65))
-        labelexame.textAlignment = NSTextAlignment.center
-        labelexame.text = "Exames da Semana"
-        labelexame.font = UIFont(name: "Avenir-Light", size: 16.0)
-        labelexame.font = UIFont.boldSystemFont(ofSize: 14)
-        labelexame.textColor = UIColor(red: 115/255.0, green: 53/255.0, blue: 121/255.0, alpha: 1.0)
-        self.view.addSubview(labelexame)
+//        let labelexame = UILabel(frame: CGRect(x: 0, y: 240, width: self.view.frame.width, height: 65))
+//        labelexame.textAlignment = NSTextAlignment.center
+//        labelexame.text = "Exames da Semana"
+//        labelexame.font = UIFont(name: "Avenir-Light", size: 16.0)
+//        labelexame.font = UIFont.boldSystemFont(ofSize: 14)
+//        labelexame.textColor = UIColor(red: 226/255.0, green: 108/255.0, blue: 132/255.0, alpha: 1.0)
+//        self.view.addSubview(labelexame)
 
 
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view:UIView, forSection: Int) {
+        if let headerTitle = view as? UITableViewHeaderFooterView {
+            headerTitle.tintColor = UIColor.white
+            headerTitle.textLabel?.textColor = UIColor(red: 229/255, green: 82/255, blue: 152/255, alpha: 1.0)
+            headerTitle.textLabel?.textAlignment = .center
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view:UIView, forSection: Int) {
-        if let headerTitle = view as? UITableViewHeaderFooterView {
-            headerTitle.textLabel?.textColor = UIColor(red: 226/255.0, green: 108/255.0, blue: 132/255.0, alpha: 1.0)
-            
-            //  headerTitle.backgroundColor = UIColor.black
-            
-        }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Exames da Semana"
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -253,30 +244,12 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
         
-        //PRECISA DO MGSWIPE
-        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.red, callback: {
-            (sender: MGSwipeTableCell!) -> Bool in
-            
-            context.delete(self.arrayExameSemana[indexPath.row])
-            self.arrayExameSemana.remove(at: indexPath.row)
-            
-            do {
-                try context.save()
-            } catch {
-                print("Não foi possível retirar do BD")
-            }
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            return true
-        })]
-        
         //                cell.rightSwipeSettings.transition = MGSwipeTransition.Rotate3D
         //        cell.rightExpansion.buttonIndex = 0
         //        cell.leftExpansion.buttonIndex = 0
         
         
-        cell.leftButtons = [MGSwipeButton(title: "Check", icon: UIImage(named:"check.png"), backgroundColor: UIColor.green, callback: {
+        cell.rightButtons = [MGSwipeButton(title: "", icon: UIImage(named:"Check.png"), backgroundColor: UIColor.clear, callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             
             let exam = self.arrayExameSemana[indexPath.row]
@@ -299,7 +272,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
             return true
         })
-            ,MGSwipeButton(title: "Edit", icon: UIImage(named:"fav.png"), backgroundColor: UIColor.blue,callback: {
+            ,MGSwipeButton(title: "", icon: UIImage(named:"Edit.png"), backgroundColor: UIColor.clear,callback: {
                 (sender: MGSwipeTableCell!) -> Bool in
                 
                 
@@ -309,6 +282,30 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 self.dia = exam.value(forKey: "data") as! NSDate
                 self.hora = exam.value(forKey: "hora") as! NSDate
                 self.performSegue(withIdentifier: "MarcarExame", sender: nil)
+                
+                return true
+            })
+            
+            ,MGSwipeButton(title: "",icon: UIImage(named:"Delete.png"), backgroundColor: UIColor.clear, callback: {
+                (sender: MGSwipeTableCell!) -> Bool in
+                
+                print(self.arrayExameSemana)
+                print(self.arrayExameSemana[indexPath.row])
+                let exameExcluido = self.arrayExameSemana[indexPath.row]
+                
+                
+                context.delete(self.arrayExameSemana[indexPath.row])
+                self.arrayExameSemana.remove(at: indexPath.row)
+                
+                do {
+                    try context.save()
+                } catch {
+                    print("Não foi possível retirar do BD")
+                }
+                
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                
+                tableView.reloadData()
                 
                 return true
             })
@@ -323,29 +320,6 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //ExamesSemana.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "detalhes", sender: self)
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
-//        
-//        if editingStyle == .delete {
-//            
-//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//            let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
-//            
-//            context.delete(arrayExameSemana[indexPath.row])
-//            arrayExameSemana.remove(at: indexPath.row)
-//            do {
-//                try context.save()
-//            } catch {
-//                print("Não foi possível retirar do BD")
-//            }
-//            
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        }
     }
     
     //MARK: Funções Auxiliares
@@ -511,13 +485,63 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             print("Não foi possivel resgatar dados")
         }
         
+        print("aqui",arrayExameSemana.count)
+        
+        if(arrayExameSemana.count > 2){
+           // ordenaExame()
+        }
+        
         ExamesSemana.reloadData()
+    }
+    
+    func ordenaExame(){
+        var fim = arrayExameSemana.endIndex - 1
+        while fim > 0{
+            var maior = 0
+            for item in arrayExameSemana{
+                let i1 = arrayExameSemana.index(of: item)
+                if(item != arrayExameSemana[0]){
+                    if(i1! <= fim){
+                        
+                        let horaPrim = item.value(forKey: "hora") as! NSDate
+                        let horaSeg = arrayExameSemana[maior].value(forKey: "hora") as! NSDate
+                        
+                        if(horaPrim.isEqual(to: horaSeg as Date) == false){
+                            if(horaPrim.laterDate(horaSeg as Date) == horaPrim as Date){
+                                maior = i1!
+                                print("i1:\(i1), fim: \(fim), maior:\(maior)")
+                            }
+                        }
+                    }
+                }
+            }
+            
+            if(fim != maior){
+                let subtituido = arrayExameSemana[fim]
+                let substituto = arrayExameSemana[maior]
+                arrayExameSemana.insert(substituto, at: fim)
+                arrayExameSemana.remove(at: fim+1)
+                arrayExameSemana.insert(subtituido, at: maior)
+                arrayExameSemana.remove(at: maior+1)
+            }
+            fim -= 1
+        }
+        
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "MarcarExame") {
+            let vc = segue.destination as! NewExam
+            vc.data = dia
+            vc.edit = edit
+            if edit == true{
+                vc.horaI = hora
+            }
+        }
+        
         if(segue.identifier == "detalhes"){
-            print("kd")
             let indexPaths = ExamesSemana.indexPathForSelectedRow
             let indexPath = indexPaths! as NSIndexPath
             let exam = arrayExameSemana[indexPath.row]

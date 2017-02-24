@@ -168,7 +168,9 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view:UIView, forSection: Int) {
         if let headerTitle = view as? UITableViewHeaderFooterView {
-            headerTitle.textLabel?.textColor = UIColor(red: 231/255.0, green: 144/255.0, blue: 179/255.0, alpha: 1.0)
+            headerTitle.textLabel?.textColor = UIColor(red: 226/255.0, green: 108/255.0, blue: 132/255.0, alpha: 1.0)
+            
+            
 
       
             
@@ -240,7 +242,6 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "detalhes"){
-            print("ltra kd")
             let indexPaths = ExamesFeitos.indexPathForSelectedRow
             let indexPath = indexPaths! as NSIndexPath
             let exam = exameHistorico[indexPath.row]

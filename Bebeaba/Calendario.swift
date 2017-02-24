@@ -119,9 +119,9 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     // Data limite do calendario
     
-    func maximumDate(for calendar: FSCalendar) -> Date {
-        return self.formatter.date(from: "30/10/2017")!
-    }
+//    func maximumDate(for calendar: FSCalendar) -> Date {
+//        return self.formatter.date(from: "30/10/2017")!
+//    }
     
     // Coloca bolinha de evento na data
     
@@ -143,15 +143,15 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     //Coloca imagem na data
     
-    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        
-         let day: Int! = self.gregorian.component(.day, from: date)
-         let month: Int! = self.gregorian.component(.month, from: date)
-        let year: Int! = self.gregorian.component(.year, from: date)
-        
-        return [7].contains(day) && [6].contains(month) && [2017].contains(year) ? UIImage(named: "bebe") : nil
-
-    }
+//    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+//        
+//         let day: Int! = self.gregorian.component(.day, from: date)
+//         let month: Int! = self.gregorian.component(.month, from: date)
+//        let year: Int! = self.gregorian.component(.year, from: date)
+//        
+//        return [7].contains(day) && [6].contains(month) && [2017].contains(year) ? UIImage(named: "bebe") : nil
+//
+//    }
     
     // MARK:- FSCalendarDelegate
     
@@ -225,83 +225,26 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
 
-
-        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.red, callback: {
+        
+        cell.rightButtons = [MGSwipeButton(title: "", icon: UIImage(named:"Check.png"), backgroundColor: UIColor.clear, callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             
+            self.edit = true
+            
+            let exame = self.exameDia[indexPath.row]
             let exameExcluido = self.exameDia[indexPath.row]
+            
+            self.mudaTipoExame(item: exame, tipo: "historico")
             
             var count:Int = 0
             
-            for item in self.todasDatas {
-                if item == exameExcluido.data {
-                    self.todasDatas.remove(at: count)
+            if exameExcluido.tipo != "atrasado" {
+                for item in self.todasDatas {
+                    if item == exameExcluido.data {
+                        self.todasDatas.remove(at: count)
+                    }
+                    count += 1
                 }
-                count += 1
-            }
-            
-            count = 0
-            
-            for item in self.exame {
-                if item == exameExcluido {
-                    self.exame.remove(at: count)
-                }
-                count += 1
-            }
-            
-            //self.exame.remove(at: indexPath.row)
-            context.delete(self.exameDia[indexPath.row])
-            self.exameDia.remove(at: indexPath.row)
-            
-            do {
-                try context.save()
-            } catch {
-                print("Não foi possível retirar do BD")
-            }
-            
-            //self.separaDia(diaDado: self.diaSelecionado as Date)
-            //self.calendar.reloadData()
-            self.calendar.reloadData()
-            tableView.deleteRows(at: [indexPath], with: .fade)
-           // let diaSelect = self.calendar.selectedDate
-//            self.separaDia(diaDado: diaSelect as Date)
-           // self.calendar.reloadData()
-            
-            return true
-        })]
-        
-        //                cell.rightSwipeSettings.transition = MGSwipeTransition.Rotate3D
-        //        cell.rightExpansion.buttonIndex = 0
-        //        cell.leftExpansion.buttonIndex = 0
-        
-        
-        cell.rightButtons = [MGSwipeButton(title: "Check", icon: UIImage(named:"check.png"), backgroundColor: UIColor.green, callback: {
-            (sender: MGSwipeTableCell!) -> Bool in
-            
-            let exam = self.exameDia[indexPath.row]
-            
-            exam.setValue("historico", forKey: "tipo")
-            
-            print(exam)
-            
-            //salva mudanças
-            
-            do{
-                try context.save()
-            }
-            catch {
-                print("error")
-            }
-            
-            let exameExcluido = self.exameDia[indexPath.row]
-            
-            var count:Int = 0
-            
-            for item in self.todasDatas {
-                if item == exameExcluido.data {
-                    self.todasDatas.remove(at: count)
-                }
-                count += 1
             }
             
             self.exameDia.remove(at: indexPath.row)
@@ -311,8 +254,10 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
             
             return true
         })
-            ,MGSwipeButton(title: "Edit", icon: UIImage(named:"fav.png"), backgroundColor: UIColor.blue,callback: {
+            ,MGSwipeButton(title: "", icon: UIImage(named:"Edit.png"), backgroundColor: UIColor.clear,callback: {
                 (sender: MGSwipeTableCell!) -> Bool in
+                
+                self.edit = true
                 
                 let exam = self.exameDia[indexPath.row]
                 
@@ -322,6 +267,56 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                 
                 return true
             })
+            
+            ,MGSwipeButton(title: "", icon: UIImage(named:"Delete.png"), backgroundColor: UIColor.clear,callback: {
+                (sender: MGSwipeTableCell!) -> Bool in
+                
+                self.edit = true
+                
+                let exameExcluido = self.exameDia[indexPath.row]
+                
+                var count:Int = 0
+                
+                print("todasDatas", self.todasDatas)
+                for item in self.todasDatas {
+                    if item == exameExcluido.data {
+                        print("numero",count)
+                        self.todasDatas.remove(at: count)
+                        break
+                    }
+                    count += 1
+                }
+                
+                count = 0
+                
+                for item in self.exame {
+                   if item == exameExcluido {
+                   self.exame.remove(at: count)
+                    }
+                    count += 1
+                }
+                
+                //self.exame.remove(at: indexPath.row)
+                context.delete(self.exameDia[indexPath.row])
+                self.exameDia.remove(at: indexPath.row)
+                
+                do {
+                try context.save()
+                } catch {
+                    print("Não foi possível retirar do BD")
+                }
+                
+                //self.separaDia(diaDado: self.diaSelecionado as Date)
+                //self.calendar.reloadData()
+                self.calendar.reloadData()
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                // let diaSelect = self.calendar.selectedDate
+                //            self.separaDia(diaDado: diaSelect as Date)
+                // self.calendar.reloadData()
+                                
+                return true
+            })
+
         ]
         
         //                cell.leftSwipeSettings.transition = MGSwipeTransition.Rotate3D
@@ -334,17 +329,10 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         //ExamesDia.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
-    }
-
     
     //MARK: Funções Auxiliares
     
-    func mudaTipoExame(item: Exame){
+    func mudaTipoExame(item: Exame, tipo: String){
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
@@ -356,13 +344,15 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
             if(results.count > 0) {
                 let horaItem = item.value(forKey: "hora") as! NSDate
                 let diaItem = item.value(forKey: "data") as! NSDate
-                let tipo = "atrasado"
+                let nome = item.value(forKey: "nome") as! String
                 
                 for coisa in results{
                     if (coisa.value(forKey: "data") as! NSDate).isEqual(to: diaItem as Date){
                         if (coisa.value(forKey: "hora") as! NSDate).isEqual(to: horaItem as Date){
-                            coisa.setValue(tipo, forKey: "tipo")
-                            print(coisa)
+                            if (coisa.value(forKey: "nome") as! String) == nome{
+                                coisa.setValue(tipo, forKey: "tipo")
+                                print(coisa)
+                            }
                         }
                     }
                 }
@@ -409,13 +399,13 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                     if (horaExameDate! == diaNowDate!) == false {
                         if (horaExameDate! < horaNowDate!) == true {
                             print("Meu horario tá atrasado")
-                            self.mudaTipoExame(item: item)
+                            self.mudaTipoExame(item: item, tipo: "atrasado")
                         }
                     }
-                }
-            } else if (diaExameDate! < diaNowDate!) == true {
+                } else if (diaExameDate! < diaNowDate!) == true {
                     print("Meu dia tá atrasado")
-                    self.mudaTipoExame(item: item)
+                    self.mudaTipoExame(item: item, tipo: "atrasado")
+                }
             }
         }
     }
@@ -428,7 +418,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         todasDatas.removeAll()
         
         for item in exame {
-            print("coisa", item)
+            print("coisa", item.tipo)
             diaExame = (item.value(forKey: "data") as? NSDate)!
             tipo = item.value(forKey: "tipo") as! String
             
@@ -511,6 +501,8 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                 let tempoLongo = UIAlertController(title: "Alert", message: "A data selecionada é anterior a data atual.", preferredStyle: UIAlertControllerStyle.alert)
                 tempoLongo.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(tempoLongo, animated: true, completion: nil)
+                
+                anterior = true
 
             }
         }
@@ -520,17 +512,16 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        verificaDia()
         
-        if(segue.identifier == "MarcarExame") {
-            let vc = segue.destination as! NewExam
-            marcou = true
-            vc.data = diaSelecionado
-            vc.edit = edit
-            if edit == true{
-                vc.horaI = hora
-            }
+    if(segue.identifier == "MarcarExame") {
+        let vc = segue.destination as! NewExam
+        marcou = true
+        vc.data = diaSelecionado
+        vc.edit = edit
+        if edit == true{
+            vc.horaI = hora
         }
+    }
         
         else if(segue.identifier == "detalhes"){
             let indexPaths = ExamesDia.indexPathForSelectedRow

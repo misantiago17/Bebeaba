@@ -22,7 +22,7 @@ class NewExam: UIViewController, UITextFieldDelegate{
     
     
     
-    
+    var anterior = false
     
     var data = NSDate()
     var edit = false
@@ -108,11 +108,32 @@ class NewExam: UIViewController, UITextFieldDelegate{
     @IBAction func Voltar(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func verificaDia() {
+        
+        let calendario = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+        
+        let diaAnterior = calendario.isDateInToday(data as Date)
+        
+        if diaAnterior == false {
+            if (data as Date) < Date() {
+                anterior = true
+            }
+        }
+        
+    }
 
     @IBAction func SalvarUsuario(_ sender: Any) {
         
+        verificaDia()
+        
         let dia = data
-        let tipo = "atual"
+        let tipo: String
+        if anterior == false {
+            tipo = "atual"
+        } else {
+            tipo = "atrasado"
+        }
         let hora = self.hora.date
         let name = self.name.text
         let place = local.text
