@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import KDCircularProgress
 import MGSwipeTableCell
+import SACountingLabel
 
 class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -106,7 +107,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         progress.progressThickness = 0.5
         progress.trackThickness = 0.4
         progress.clockwise = true
-        progress.gradientRotateSpeed = 2
+        progress.gradientRotateSpeed = 2.0
         progress.roundedCorners = true
         progress.glowMode = .forward
         progress.glowAmount = 0.9
@@ -139,11 +140,12 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         
         // Label programática semanas
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+        let label = SACountingLabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
         //label.backgroundColor = UIColor.black
         label.center = CGPoint(x: progress.center.x, y: progress.center.y)
         label.textAlignment = NSTextAlignment.center
-        label.text = "\(porc)%"
+        //label.text = "\(porc)%"
+        label.countFrom(fromValue: 0, to: Float(porc), withDuration: 2.0, andAnimationType: .Linear, andCountingType: .Int)
         label.font = UIFont(name: "Avenir-Light", size: 50.0)
         label.font = UIFont.boldSystemFont(ofSize: 25)
         label.textColor = UIColor(red: 229/255, green: 82/255, blue: 152/255, alpha: 1.0)

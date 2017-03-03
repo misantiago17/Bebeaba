@@ -63,8 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 let nome = item.value(forKey: "nome") as! String
                 
-                
-                
                 if nome.isEmpty == false {
                     print("TAB BAR")
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
