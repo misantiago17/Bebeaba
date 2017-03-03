@@ -172,7 +172,6 @@ class ConfiguracoesUsuario: UIViewController, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
-        print("bananana")
         if textField == ultimaData {
             //Range.Lenth will greater than 0 if user is deleting text - Allow it to replce
             if range.length > 0
