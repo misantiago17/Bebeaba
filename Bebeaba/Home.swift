@@ -21,7 +21,7 @@ class Home: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Logo Image
         let logoImage = UIImageView(image: UIImage(named:"logo"))
         logoImage.frame = CGRect(x: 124, y: 44, width: 72, height: 100)
@@ -39,6 +39,7 @@ class Home: UIViewController, UITextFieldDelegate {
         pregnancyWeek = UITextField(frame: CGRect(x: 36, y: 266, width: 249, height: 16))
         pregnancyWeek.attributedPlaceholder = placeholderweek
         pregnancyWeek.font = UIFont(name: "System", size: 13)
+        pregnancyWeek.keyboardType = .numberPad
         self.view.addSubview(pregnancyWeek)
 
         //textField delegate
@@ -69,6 +70,8 @@ class Home: UIViewController, UITextFieldDelegate {
         button.addTarget(self, action: #selector(Home.cadastrarUsuario(_:)), for: UIControlEvents.touchUpInside)
         button.layer.cornerRadius = 10
         self.view.addSubview(button)
+        
+        
         
         
     }

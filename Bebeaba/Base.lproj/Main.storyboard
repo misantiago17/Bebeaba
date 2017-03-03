@@ -274,7 +274,9 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUv-FV-Dlw">
                                 <rect key="frame" x="261" y="493" width="43" height="30"/>
-                                <state key="normal" title="Salvar"/>
+                                <state key="normal" title="Salvar">
+                                    <color key="titleColor" red="1" green="0.45882352939999999" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="SalvarUsuario:" destination="gQd-wX-Jy2" eventType="touchUpInside" id="iaE-J9-HVM"/>
                                 </connections>
@@ -922,11 +924,11 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bjd-D5-Kq2">
-                                <rect key="frame" x="267" y="27" width="37" height="33"/>
+                                <rect key="frame" x="275" y="27" width="29" height="27"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="0Pf-ix-CC6"/>
-                                    <constraint firstAttribute="width" constant="37" id="0hi-JD-qfo"/>
-                                    <constraint firstAttribute="width" secondItem="Bjd-D5-Kq2" secondAttribute="height" multiplier="37:33" id="Zvg-Ya-zUb"/>
+                                    <constraint firstAttribute="height" constant="27" id="0Pf-ix-CC6"/>
+                                    <constraint firstAttribute="width" constant="29" id="0hi-JD-qfo"/>
+                                    <constraint firstAttribute="width" secondItem="Bjd-D5-Kq2" secondAttribute="height" multiplier="37:33" constant="-1.2727272727272698" id="Zvg-Ya-zUb"/>
                                 </constraints>
                                 <state key="normal" image="Settings-500"/>
                                 <connections>
@@ -949,7 +951,7 @@
                             <constraint firstItem="hsd-n7-Rmr" firstAttribute="centerX" secondItem="Fb1-fn-pdl" secondAttribute="centerX" id="TgG-CS-nFi"/>
                             <constraint firstItem="Bjd-D5-Kq2" firstAttribute="top" secondItem="5cf-Bc-qxs" secondAttribute="bottom" constant="7" id="W2Y-sF-Tty"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Bjd-D5-Kq2" secondAttribute="trailing" id="ZWX-mA-NeJ"/>
-                            <constraint firstItem="Bjd-D5-Kq2" firstAttribute="leading" secondItem="Kxs-Kn-2vV" secondAttribute="trailing" constant="8" id="rd2-s7-RbX"/>
+                            <constraint firstItem="Bjd-D5-Kq2" firstAttribute="leading" secondItem="Kxs-Kn-2vV" secondAttribute="trailing" constant="16" id="rd2-s7-RbX"/>
                             <constraint firstItem="hsd-n7-Rmr" firstAttribute="leading" secondItem="Fb1-fn-pdl" secondAttribute="leadingMargin" constant="-16" id="xfe-av-tsk"/>
                         </constraints>
                     </view>

@@ -142,14 +142,34 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         // Label programática semanas
         let label = SACountingLabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
         //label.backgroundColor = UIColor.black
-        label.center = CGPoint(x: progress.center.x, y: progress.center.y)
+        label.center = CGPoint(x: progress.center.x - 8, y: progress.center.y - 5)
         label.textAlignment = NSTextAlignment.center
-        //label.text = "\(porc)%"
+        label.text = "\(porc)%"
         label.countFrom(fromValue: 0, to: Float(porc), withDuration: 2.0, andAnimationType: .Linear, andCountingType: .Int)
         label.font = UIFont(name: "Avenir-Light", size: 50.0)
         label.font = UIFont.boldSystemFont(ofSize: 25)
         label.textColor = UIColor(red: 229/255, green: 82/255, blue: 152/255, alpha: 1.0)
         self.view.addSubview(label)
+        
+        // Label programática semanas
+        let labelper = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+        labelper.center = CGPoint(x: progress.center.x + 17, y: progress.center.y - 5)
+        labelper.textAlignment = NSTextAlignment.center
+        labelper.text = "%"
+        labelper.font = UIFont(name: "Avenir-Light", size: 15.0)
+        labelper.font = UIFont.boldSystemFont(ofSize: 20)
+        labelper.textColor = UIColor(red: 229/255, green: 82/255, blue: 152/255, alpha: 1.0)
+        self.view.addSubview(labelper)
+        
+        // Label do exame
+        let gravidezLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
+        gravidezLabel.center = CGPoint(x: progress.center.x, y: progress.center.y + 17)
+        gravidezLabel.textAlignment = NSTextAlignment.center
+        gravidezLabel.text = "gravidez"
+        gravidezLabel.font = UIFont(name: "Avenir-Light", size: 13.0)
+        gravidezLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        gravidezLabel.textColor = UIColor(red: 229/255.0, green: 82/255.0, blue: 152/255.0, alpha: 1.0)
+        self.view.addSubview(gravidezLabel)
         
 //        // Image
 //        var bgImage: UIImageView!
