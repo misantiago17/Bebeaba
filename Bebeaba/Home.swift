@@ -28,7 +28,7 @@ class Home: UIViewController, UITextFieldDelegate {
         self.view.addSubview(logoImage)
         
         // Name textField
-        let placeholder = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.gray])
+        let placeholder = NSAttributedString(string: "Nome", attributes: [NSForegroundColorAttributeName : UIColor.gray])
         name = UITextField(frame: CGRect(x: 36, y: 211, width: 249, height: 16))
         name.attributedPlaceholder = placeholder
         name.font = UIFont(name: "System", size: 13)
