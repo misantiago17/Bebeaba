@@ -67,8 +67,6 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             let resultsUser = try context.fetch(requestUser)
             let user = resultsUser
             
-            print(user.count)
-            
             for item in user{
                 
                 let nome = item.value(forKey: "nome") as! String
@@ -133,11 +131,6 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         
         progress.animate(fromAngle: 0, toAngle: progress.angle, duration: 2, completion: { completed in
-            if completed {
-                print("animation stopped, completed")
-            } else {
-                print("animation stopped, was interrupted")
-            }
         })
         
         
@@ -256,7 +249,6 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
             exam.setValue("historico", forKey: "tipo")
             
-            print(exam)
             
             //salva mudanças
             
@@ -289,8 +281,6 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             ,MGSwipeButton(title: "",icon: UIImage(named:"Delete.png"), backgroundColor: UIColor.clear, callback: {
                 (sender: MGSwipeTableCell!) -> Bool in
                 
-                print(self.arrayExameSemana)
-                print(self.arrayExameSemana[indexPath.row])
                 let exameExcluido = self.arrayExameSemana[indexPath.row]
                 
                 
@@ -477,7 +467,7 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
             
             if results.count>0{
-                print(arrayExameSemana)
+                print("ok")
             }else{
                 print("Não há itens no BD")
             }
@@ -485,7 +475,6 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
             print("Não foi possivel resgatar dados")
         }
         
-        print("aqui",arrayExameSemana.count)
         
         if(arrayExameSemana.count > 2){
            // ordenaExame()
@@ -509,7 +498,6 @@ class Entrada: UIViewController, UITableViewDataSource, UITableViewDelegate {
                         if(horaPrim.isEqual(to: horaSeg as Date) == false){
                             if(horaPrim.laterDate(horaSeg as Date) == horaPrim as Date){
                                 maior = i1!
-                                print("i1:\(i1), fim: \(fim), maior:\(maior)")
                             }
                         }
                     }

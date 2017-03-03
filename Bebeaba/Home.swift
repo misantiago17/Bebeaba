@@ -177,7 +177,7 @@ class Home: UIViewController, UITextFieldDelegate {
         }
         alerta = false
     }
-    
+
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {

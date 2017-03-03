@@ -57,7 +57,7 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
             exame = results
             
             if results.count>0{
-                print("esses foram os resultados encontrados no BD: \(results.count)")
+                
             }else{
                 print("Não há itens no BD")
             }
@@ -128,7 +128,7 @@ class ExamesFeitos: UIViewController, UITableViewDelegate, UITableViewDataSource
                         if(horaPrim.isEqual(to: horaSeg as Date) == false){
                             if(horaPrim.laterDate(horaSeg as Date) == horaPrim as Date){
                                 maior = i1!
-                                print("i1:\(i1), fim: \(fim), maior:\(maior)")
+                                
                             }
                         }
                     }

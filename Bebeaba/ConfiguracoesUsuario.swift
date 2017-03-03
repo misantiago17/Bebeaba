@@ -30,6 +30,9 @@ class ConfiguracoesUsuario: UIViewController, UITextFieldDelegate {
         
         nome.delegate = self
         ultimaData.delegate = self
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(Home.dissmissKeyboard))
+        view.addGestureRecognizer(tap)
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext as NSManagedObjectContext
@@ -145,20 +148,31 @@ class ConfiguracoesUsuario: UIViewController, UITextFieldDelegate {
                 print("error")
             }
             
-        alerta = false
+        }
         
         if alerta == false {
             dismiss(animated: true, completion: nil)
         }
-
+        
+        alerta = false
     }
     
     func dissmissKeyboard(){
         view.endEditing(true)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    
+    
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
+        print("bananana")
         if textField == ultimaData {
             //Range.Lenth will greater than 0 if user is deleting text - Allow it to replce
             if range.length > 0
@@ -185,7 +199,7 @@ class ConfiguracoesUsuario: UIViewController, UITextFieldDelegate {
         
         return true
     }
-    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

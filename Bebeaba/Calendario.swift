@@ -77,7 +77,6 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
             exame = results 
             
             if results.count>0{
-                print("quantidade de itens no BD \(results.count)")
                 self.ExamesDia.reloadData()
             }else{
                 print("Não há itens no BD")
@@ -157,8 +156,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         
-        print("change page to \(self.formatter.string(from: calendar.currentPage))")
-    }
+           }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
@@ -277,10 +275,10 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                 
                 var count:Int = 0
                 
-                print("todasDatas", self.todasDatas)
+               
                 for item in self.todasDatas {
                     if item == exameExcluido.data {
-                        print("numero",count)
+                        
                         self.todasDatas.remove(at: count)
                         break
                     }
@@ -351,7 +349,6 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                         if (coisa.value(forKey: "hora") as! NSDate).isEqual(to: horaItem as Date){
                             if (coisa.value(forKey: "nome") as! String) == nome{
                                 coisa.setValue(tipo, forKey: "tipo")
-                                print(coisa)
                             }
                         }
                     }
@@ -398,12 +395,12 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                 if (diaExameDate! == diaNowDate!) == true {
                     if (horaExameDate! == diaNowDate!) == false {
                         if (horaExameDate! < horaNowDate!) == true {
-                            print("Meu horario tá atrasado")
+                            
                             self.mudaTipoExame(item: item, tipo: "atrasado")
                         }
                     }
                 } else if (diaExameDate! < diaNowDate!) == true {
-                    print("Meu dia tá atrasado")
+                    
                     self.mudaTipoExame(item: item, tipo: "atrasado")
                 }
             }
@@ -418,7 +415,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         todasDatas.removeAll()
         
         for item in exame {
-            print("coisa", item.tipo)
+            
             diaExame = (item.value(forKey: "data") as? NSDate)!
             tipo = item.value(forKey: "tipo") as! String
             
@@ -432,12 +429,6 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
            
         }
         
-        
-    
-        
-        
-        print("exames totais \(exame.count)")
-        print("exames do dia \(exameDia.count)")
         
         if(exameDia.count > 2){
             ordenaExame()
@@ -470,7 +461,7 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
                         if(horaPrim.isEqual(to: horaSeg as Date) == false){
                             if(horaPrim.laterDate(horaSeg as Date) == horaPrim as Date){
                                 maior = i1!
-                                print("i1:\(i1), fim: \(fim), maior:\(maior)")
+                              
                             }
                         }
                     }
