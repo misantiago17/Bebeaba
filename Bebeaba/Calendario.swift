@@ -49,11 +49,11 @@ class Calendario: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UI
         
         ExamesDia.delegate = self
         ExamesDia.dataSource = self
-     
-       viewCalendario.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
-
+        
+        //viewCalendario.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
         
     }
+    
 
     
     //MARK: Coredata

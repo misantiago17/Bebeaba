@@ -25,7 +25,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U7V-AM-sWE" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="28" width="320" height="226"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="226" id="gsu-Cs-lwN"/>
                                 </constraints>
@@ -40,9 +39,6 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="pagingEnabled" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="scrollEnabled" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
-                                        <color key="value" red="1" green="0.23921568627450979" blue="0.49803921568627452" alpha="0.45490933641975306" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
                                         <color key="value" red="0.89803921568627454" green="0.32156862745098036" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
@@ -57,6 +53,12 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="eventSelectionColor">
                                         <color key="value" red="0.8980392157" green="0.32156862749999998" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="todaySelectionColor">
+                                        <color key="value" red="0.2470588235" green="0.72156862749999995" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                                        <color key="value" red="1" green="0.23921568630000001" blue="0.49803921569999998" alpha="0.45490933639999998" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -73,7 +75,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YAN-2F-FUa" id="3hr-Qx-66N">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lad-Ka-Ogi">
@@ -115,7 +117,7 @@
                                                 <constraint firstItem="V2B-Vn-c0g" firstAttribute="leading" secondItem="9Qo-6I-fxH" secondAttribute="trailing" constant="44" id="s2z-Pp-via"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="atraso" destination="abl-jX-Y6l" id="mzD-qg-jCt"/>
                                             <outlet property="horario" destination="V2B-Vn-c0g" id="ynk-cJ-b4G"/>
@@ -161,7 +163,7 @@
                             <constraint firstItem="eiZ-hG-MgV" firstAttribute="top" secondItem="U7V-AM-sWE" secondAttribute="bottom" constant="8" id="vhr-s0-LO4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="calendario" selectedImage="calendario" id="LmT-ao-lCt"/>
+                    <tabBarItem key="tabBarItem" title="" image="calendario" selectedImage="calendario" id="LmT-ao-lCt"/>
                     <connections>
                         <outlet property="ExamesDia" destination="eiZ-hG-MgV" id="9Ls-LF-3wO"/>
                         <outlet property="calendar" destination="U7V-AM-sWE" id="4R5-Kq-oXQ"/>
@@ -206,7 +208,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z3T-cd-5T6" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="27" y="94" width="264" height="54"/>
+                                <rect key="frame" x="27" y="95" width="264" height="54"/>
                                 <color key="tintColor" red="0.93585526320000001" green="0.73630839650000002" blue="0.96558902140000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="5Zi-su-4Fk"/>
@@ -228,7 +230,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Detalhes" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UYU-TE-WlS" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="27" y="168" width="264" height="50"/>
+                                <rect key="frame" x="27" y="169" width="264" height="50"/>
                                 <color key="tintColor" red="0.93585526320000001" green="0.73630839650000002" blue="0.96558902140000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UYU-TE-WlS" secondAttribute="height" multiplier="132:25" id="Dge-oj-fmO"/>
@@ -250,7 +252,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Local" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f7T-0W-bkx" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="27" y="241" width="264" height="50"/>
+                                <rect key="frame" x="27" y="242" width="264" height="50"/>
                                 <color key="tintColor" red="0.93585526320000001" green="0.73630839650000002" blue="0.96558902140000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="DCl-2x-KVZ"/>
@@ -271,14 +273,14 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUv-FV-Dlw">
-                                <rect key="frame" x="261" y="492" width="43" height="30"/>
+                                <rect key="frame" x="261" y="493" width="43" height="30"/>
                                 <state key="normal" title="Salvar"/>
                                 <connections>
                                     <action selector="SalvarUsuario:" destination="gQd-wX-Jy2" eventType="touchUpInside" id="iaE-J9-HVM"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hora" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImH-8d-nFo">
-                                <rect key="frame" x="27" y="325" width="37" height="21"/>
+                                <rect key="frame" x="27" y="326" width="37" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.45882352939999999" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -297,13 +299,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novo Exame" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usW-FJ-oa0">
-                                <rect key="frame" x="111" y="33" width="99" height="20.5"/>
+                                <rect key="frame" x="111" y="33" width="99" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.45882352939999999" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uDb-pW-F9O">
-                                <rect key="frame" x="27" y="363" width="246" height="121"/>
+                                <rect key="frame" x="27" y="364" width="246" height="121"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="121" id="7od-bx-mLI"/>
                                 </constraints>
@@ -547,7 +549,7 @@
             </objects>
             <point key="canvasLocation" x="751.875" y="1663.7323943661972"/>
         </scene>
-        <!--Item 2-->
+        <!--Exames Feitos-->
         <scene sceneID="iGf-va-cQQ">
             <objects>
                 <viewController id="0lS-hK-7af" customClass="ExamesFeitos" customModule="Bebeaba" customModuleProvider="target" sceneMemberID="viewController">
@@ -568,7 +570,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K6M-rb-WLI" id="d7z-u5-GF1">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nF6-Iv-dAa">
@@ -580,7 +582,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Local" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oje-i3-pjw">
                                                     <rect key="frame" x="8" y="22" width="199" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.58431372549019611" green="0.58039215686274503" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.20784313725490194" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Horario" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZb-xr-Ogp">
@@ -633,7 +635,7 @@
                             <constraint firstAttribute="trailing" secondItem="1GS-nZ-Qis" secondAttribute="trailing" id="g0J-Aa-cbA"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" image="examesfeitos" selectedImage="examesfeitos" id="FHs-cD-SDt"/>
+                    <tabBarItem key="tabBarItem" title="" image="examesfeitos" selectedImage="examesfeitos" id="FHs-cD-SDt"/>
                     <connections>
                         <outlet property="ExamesFeitos" destination="1GS-nZ-Qis" id="m7m-5d-jbK"/>
                         <outlet property="viewExamesFeitos" destination="k0x-Oe-LX7" id="I4f-HS-Mt2"/>
@@ -664,7 +666,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="arU-c3-hY5" id="JQx-kg-luW">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMs-GU-Toh">
@@ -831,7 +833,7 @@
             </objects>
             <point key="canvasLocation" x="-847.5" y="1664.7887323943662"/>
         </scene>
-        <!--Item 1-->
+        <!--Entrada-->
         <scene sceneID="tQN-M6-d5H">
             <objects>
                 <viewController id="Uct-KY-Ii2" customClass="Entrada" customModule="Bebeaba" customModuleProvider="target" sceneMemberID="viewController">
@@ -882,7 +884,7 @@
                                                         <constraint firstAttribute="width" constant="91" id="pDU-d5-jeO"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.55678772926330566" green="0.55682563781738281" blue="0.56087559461593628" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.5607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="high_importance" translatesAutoresizingMaskIntoConstraints="NO" id="J31-Vf-rFg">
@@ -948,7 +950,7 @@
                             <constraint firstItem="hsd-n7-Rmr" firstAttribute="leading" secondItem="Fb1-fn-pdl" secondAttribute="leadingMargin" constant="-16" id="xfe-av-tsk"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" image="home" selectedImage="home" id="agU-uI-3bd"/>
+                    <tabBarItem key="tabBarItem" title="" image="home" selectedImage="home" id="agU-uI-3bd"/>
                     <connections>
                         <outlet property="ExamesSemana" destination="hsd-n7-Rmr" id="FMJ-bH-U7n"/>
                         <outlet property="NomeMulher" destination="Kxs-Kn-2vV" id="edh-jX-KGj"/>
@@ -986,12 +988,13 @@
         <image name="calendario" width="19" height="19"/>
         <image name="cancel" width="67" height="67"/>
         <image name="examesfeitos" width="20" height="20"/>
-        <image name="high_importance" width="512" height="512"/>
+        <image name="high_importance" width="21" height="21"/>
         <image name="home" width="15" height="18"/>
         <image name="note" width="23" height="23"/>
         <image name="retanguloArre" width="754" height="590"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YJr-rL-caB"/>
+        <segue reference="9Vl-G3-SFE"/>
+        <segue reference="gx5-c7-r9Q"/>
     </inferredMetricsTieBreakers>
 </document>
