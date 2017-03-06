@@ -15,28 +15,37 @@ class Home: UIViewController, UITextFieldDelegate {
     
     var name : UITextField!
     var pregnancyWeek: UITextField!
-
     
-     var alerta = false
+    var alerta = false
+    
+    //Devices
+    let modelName = UIDevice.current.modelName
+    let widhtSE: CGFloat = 320
+    let heightSE: CGFloat = 568
+    var screenSize = UIScreen.main.bounds
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let factorX = screenSize.width/widhtSE
+        let factorY = screenSize.height/heightSE
 
         // Logo Image
         let logoImage = UIImageView(image: UIImage(named:"logo"))
-        logoImage.frame = CGRect(x: 124, y: 44, width: 72, height: 100)
+        logoImage.frame = CGRect(x: 124*factorX, y: 44*factorY, width: 72*factorX, height: 100*factorY)
         self.view.addSubview(logoImage)
         
         // Name textField
         let placeholder = NSAttributedString(string: "Nome", attributes: [NSForegroundColorAttributeName : UIColor.gray])
-        name = UITextField(frame: CGRect(x: 36, y: 211, width: 249, height: 16))
+        name = UITextField(frame: CGRect(x: 36*factorX, y: 211*factorY, width: 249*factorX, height: 16*factorY))
         name.attributedPlaceholder = placeholder
         name.font = UIFont(name: "System", size: 13)
         self.view.addSubview(name)
         
         // PregnancyWeek textField
         let placeholderweek = NSAttributedString(string: "Última data da menstruação", attributes: [NSForegroundColorAttributeName : UIColor.gray])
-        pregnancyWeek = UITextField(frame: CGRect(x: 36, y: 266, width: 249, height: 16))
+        pregnancyWeek = UITextField(frame: CGRect(x: 36*factorX, y: 266*factorY, width: 249*factorX, height: 16*factorY))
         pregnancyWeek.attributedPlaceholder = placeholderweek
         pregnancyWeek.font = UIFont(name: "System", size: 13)
         pregnancyWeek.keyboardType = .numberPad
@@ -50,20 +59,20 @@ class Home: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tap)
         
         // Add Line 1
-        let lineView = UIView(frame: CGRect(x: 35, y: 233.5, width: 250, height: 1))
+        let lineView = UIView(frame: CGRect(x: 35*factorX, y: 233.5*factorY, width: 250*factorX, height: 1*factorY))
         lineView.layer.borderWidth = 1.0
         lineView.layer.borderColor = UIColor(red: 255/255, green: 145/255, blue: 164/255, alpha: 1).cgColor
         self.view.addSubview(lineView)
         
         // Add Line 2
-        let lineView2 = UIView(frame: CGRect(x: 35, y: 289.5, width: 250, height: 1))
+        let lineView2 = UIView(frame: CGRect(x: 35*factorX, y: 289.5*factorY, width: 250*factorX, height: 1*factorY))
         lineView2.layer.borderWidth = 1.0
         lineView2.layer.borderColor = UIColor(red: 255/255, green: 145/255, blue: 164/255, alpha: 1).cgColor
         self.view.addSubview(lineView2)
         
         // Button
         let button = UIButton(type: .system) // let preferred over var here
-        button.frame = CGRect(x: 114, y: 345, width: 92, height: 38)
+        button.frame = CGRect(x: 114*factorX, y: 345*factorY, width: 92*factorX, height: 38*factorY)
         button.backgroundColor = UIColor(red: 255/255, green: 145/255, blue: 164/255, alpha: 1)
         button.setTitle("Bem-vinda", for: UIControlState.normal)
         button.setTitleColor(UIColor.white, for: UIControlState.normal)
